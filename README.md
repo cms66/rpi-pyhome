@@ -4,7 +4,7 @@ A Python based setup/management system for a network of Raspberry Pi's with mult
 # Quick setup
 ## First RPi
  - Create with Raspberry Pi Imager
- -  Username
+ --  Username
  -  Password
  -  Hostname
  -  WiFi?
