@@ -1,2 +1,2 @@
 # Shell script for first setup
-print("py test")
+print("sh test")
