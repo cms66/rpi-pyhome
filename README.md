@@ -9,6 +9,10 @@ A Python based setup/management system for a network of Raspberry Pi's with mult
  -  - Hostname
  -  - WiFi?
 ## Boot with SD card created with Raspberry Pi Imager
- - -  Download setup and run
-curl -L https://raw.githubusercontent.com/cms66/rpi-pyhome/main/setup.sh | bash
-## 
+###  Download
+
+curl -L https://raw.githubusercontent.com/cms66/rpi-pyhome/main/setup.sh
+
+### Run
+
+sudo sh setup.sh
