@@ -20,5 +20,6 @@ print("Python setup") # works
 # print(subprocess.run(["echo", "Geeks for geeks"], capture_output=True)) # works
 # subprocess.run(cmdinp[0], shell = True, executable="/bin/bash")
 # subprocess.run(cmdscript[0], shell = True, executable="/bin/bash")
-print(subprocess.run(["lsblk", ""], capture_output=True))
+print(subprocess.run(["lsblk", ""], capture_output=True)) # not a block device?
+print(subprocess.run(["lsblk"], capture_output=True))
 print("Python setup done") # works
