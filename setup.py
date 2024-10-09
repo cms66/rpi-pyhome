@@ -12,7 +12,7 @@ import subprocess, sys
 
 # Variables
 cmdinp = sys.argv[1:]
-cmdscript = "sudo ls"
+cmdscript = "sudo lsblk"
 
 # Run command
 # subprocess.run(command[0], shell = True, executable="/bin/bash")
