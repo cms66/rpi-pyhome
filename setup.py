@@ -4,12 +4,12 @@
 # TODO
 
 # Imports
-#import subprocess, sys
+import subprocess, sys
 
 # Set command to run
 #command = sys.argv[1:]
-#command = "lsblk"
+command = "sudo lsblk"
 
 # Run command
-#subprocess.run(command[0], shell = True, executable="/bin/bash")
-print("Base setup")
+subprocess.run(command[0], shell = True, executable="/bin/bash")
+#print("Base setup")
