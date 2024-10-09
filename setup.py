@@ -14,7 +14,7 @@ import subprocess, sys
 cmdinp = sys.argv[1:]
 cmdscript = "sudo lsblk"
 
-# Run command
+# Run commands
 # subprocess.run(command[0], shell = True, executable="/bin/bash")
 print("Python setup") # works
 # print(subprocess.run(["echo", "Geeks for geeks"], capture_output=True)) # works
