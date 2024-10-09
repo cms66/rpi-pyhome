@@ -7,7 +7,8 @@
 import subprocess, sys
 
 # Set command to run
-command = sys.argv[1:]
+#command = sys.argv[1:]
+command = "lsblk"
 
 # Run command
 subprocess.run(command[0], shell = True, executable="/bin/bash")
