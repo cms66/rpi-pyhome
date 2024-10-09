@@ -1,6 +1,6 @@
 # First boot - Base setup
 # Assumes
-# - rpi imager or sdm used to configure user/hostname
+# - rpi imager used to configure user/hostname
 # TODO
 
 # Imports
@@ -12,6 +12,7 @@ import subprocess, sys
 
 # Run command
 #subprocess.run(command[0], shell = True, executable="/bin/bash")
-print("Python setup")
+#print("Python setup")
 #print(subprocess.run(["echo", "Geeks for geeks"], capture_output=True))
-#print(subprocess.run(["sudo lsblk"], capture_output=True))
+#print(subprocess.run(["sudo lsblk"], capture_output=True
+
