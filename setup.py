@@ -20,5 +20,5 @@ sudo print("Python setup") # works
 # print(subprocess.run(["echo", "Geeks for geeks"], capture_output=True)) # works
 # subprocess.run(cmdinp[0], shell = True, executable="/bin/bash")
 # subprocess.run(cmdscript[0], shell = True, executable="/bin/bash")
-# sudo print(subprocess.run(["lsblk", "cat"], capture_output=True))
+print(subprocess.run(["sudo lsblk", ""], capture_output=True))
 print("Python setup done") # works
