@@ -15,11 +15,11 @@ cmdinp = sys.argv[1:]
 cmdscript = "sudo lsblk"
 
 # Run commands
-# subprocess.run(command[0], shell = True, executable="/bin/bash")
 print("Python setup") # works
+# subprocess.run(command[0], shell = True, executable="/bin/bash")
 # print(subprocess.run(["echo", "Geeks for geeks"], capture_output=True)) # works
 # subprocess.run(cmdinp[0], shell = True, executable="/bin/bash")
 # subprocess.run(cmdscript[0], shell = True, executable="/bin/bash")
 # print(subprocess.run(["fdisk", "-l"], capture_output=True)) # not a block device?
-print(subprocess.run(["sudo", "fdisk-l"], capture_output=True))
+print(subprocess.run(["sudo", "fdisk", "-l"], capture_output=True))
 print("Python setup done") # works
