@@ -3,15 +3,13 @@ A Python based setup/management system for a network of Raspberry Pi's with mult
 
 # Quick setup
 ## First RPi
- - Create with Raspberry Pi Imager
- - - Username
- - - Password
- - - Hostname
- - - WiFi (even if using wired connection)
-## Boot with SD card created with Raspberry Pi Imager
-## Download
-https://raw.githubusercontent.com/cms66/rpi-pyhome/main/setup.sh
+ - Create with Raspberry Pi Imager, setting
+   - Username
+   - Password
+   - Hostname
+   - WiFi (even if using wired connection)
+ - Boot with SD card created with Raspberry Pi Imager
 
-### Run
+### First boot
+wget https://raw.githubusercontent.com/cms66/rpi-pyhome/main/setup.py | python
 
-sudo sh setup.sh
