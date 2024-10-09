@@ -21,5 +21,5 @@ print("Python setup") # works
 # subprocess.run(cmdinp[0], shell = True, executable="/bin/bash")
 # subprocess.run(cmdscript[0], shell = True, executable="/bin/bash")
 # print(subprocess.run(["fdisk", "-l"], capture_output=True)) # not a block device?
-print(subprocess.run(["sudo fdisk", "-l"], capture_output=True))
+print(subprocess.run(["sudo", "fdisk-l"], capture_output=True))
 print("Python setup done") # works
