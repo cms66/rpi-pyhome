@@ -18,5 +18,5 @@ cmdscript = ""
 #subprocess.run(command[0], shell = True, executable="/bin/bash")
 print("Python setup") # works
 #print(subprocess.run(["echo", "Geeks for geeks"], capture_output=True))
-print(subprocess.run(["lsblk"], capture_output=True))
+#print(subprocess.run(["lsblk"], capture_output=True))
 print("Python setup done") # works
