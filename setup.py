@@ -8,8 +8,9 @@ import subprocess, sys
 
 # Set command to run
 #command = sys.argv[1:]
-command = "sudo lsblk"
+#command = "sudo lsblk"
 
 # Run command
-subprocess.run(command[0], shell = True, executable="/bin/bash")
-#print("Base setup")
+#subprocess.run(command[0], shell = True, executable="/bin/bash")
+print(subprocess.run(["echo", "Geeks for geeks"], capture_output=True))
+
