@@ -11,13 +11,7 @@ A Python based setup/management system for a network of Raspberry Pi's with mult
  - Boot with SD card created with Raspberry Pi Imager
 
 ### First boot
-
+- Login as created user and run 
 ```
   curl -L https://raw.githubusercontent.com/cms66/rpi-pyhome/main/setup.py | python
 ```
-
-##
-  code/text here
-
-## Run
-[Tab][Tab]/Your text
