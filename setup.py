@@ -18,6 +18,7 @@ cmdscript = "sudo lsblk"
 # subprocess.run(command[0], shell = True, executable="/bin/bash")
 print("Python setup") # works
 # print(subprocess.run(["echo", "Geeks for geeks"], capture_output=True)) # works
-#subprocess.run(cmdinp[0], shell = True, executable="/bin/bash")
-subprocess.run(cmdscript[0], shell = True, executable="/bin/bash")
+# subprocess.run(cmdinp[0], shell = True, executable="/bin/bash")
+# subprocess.run(cmdscript[0], shell = True, executable="/bin/bash")
+print(subprocess.run(["sudo lsblk", ""], capture_output=True)) # works
 print("Python setup done") # works
