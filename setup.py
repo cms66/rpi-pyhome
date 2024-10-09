@@ -14,4 +14,4 @@ import subprocess, sys
 #subprocess.run(command[0], shell = True, executable="/bin/bash")
 print("Python setup")
 #print(subprocess.run(["echo", "Geeks for geeks"], capture_output=True))
-print(subprocess.run(["sudo lsblk"], capture_output=True))
+#print(subprocess.run(["sudo lsblk"], capture_output=True))
