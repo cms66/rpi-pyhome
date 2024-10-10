@@ -13,5 +13,5 @@ A Python based setup/management system for a home network of Raspberry Pi's with
 ### First boot
 - Login as created user and run 
 ```
-wget https://raw.githubusercontent.com/cms66/rpi-pyhome/main/setup.py | python ./setup.py
+curl -L https://raw.githubusercontent.com/cms66/rpi-pyhome/main/setup.py | python
 ```
