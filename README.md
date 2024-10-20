@@ -7,7 +7,7 @@ A Python based setup/management system for a home network of Raspberry Pi's with
    - Username
    - Password
    - Hostname
-   - WiFi (even if using wired connection)
+   - WiFi (if available, even if using wired connection)
  - Boot with SD card created with Raspberry Pi Imager
 
 ### First boot
