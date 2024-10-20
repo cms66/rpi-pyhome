@@ -90,14 +90,39 @@ setup_firewall()
 	yes | sudo ufw enable
 }
 
+# Update firmware - Only applies to model 4/5
+update_firmware()
+{
+	if [ $pimodelnum = "4" ] || [ $pimodelnum = "5" ]; then # Model has firmware
+		printf "Model has firmware\n"
+		updfirm=$(sudo rpi-eeprom-update | grep BOOTLOADER | cut -d ":" -f 2 | tr -d '[:blank:]') # Check for updates
+		printf "Update status: $updfirm\n"
+ 		if ! [ $updfirm = "uptodate" ]; then # Update available - TODO - too many args
+ 			printf "Update available\n"
+  			read -p "Firmware update available, press y to update now or any other key to continue: " input </dev/tty
+  			printf "Update selected\n"
+    			if [ X$input = X"y" ]; then # Apply firmware update
+    				printf "Update firmware\n"
+				# rpi-eeprom-update -a
+   		fi
+     else
+     	printf "Firmware is up to date\n"
+     fi
+else
+	printf "No firmware\n"
+fi
+}
+
+
 # Run setup
 set_default_shell
 update_system
 setup_fail2ban
 disable_root_ssh
 setup_network
-setup_git
+# setup_git # TODO
 # setup_firewall # TODO
+# update_firmware # TODO
 
 read -rp "Finished base setup press p to poweroff or any other key to reboot: " inp </dev/tty
 if [ X$inp = X"p" ]
