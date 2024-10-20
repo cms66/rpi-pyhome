@@ -24,6 +24,6 @@ print("Python setup") # works
 # print(subprocess.run(["sudo", "fdisk", "-l"], capture_output=True)) # works
 # print(subprocess.run(["sudo", "fdisk", "-l"], capture_output=True)) # works
 # print(subprocess.run(["sudo", "sh", "test.sh"], shell = True, executable="/bin/bash"))
-subprocess.run(["curl", "-L", "https://raw.githubusercontent.com/cms66/rpi-pyhome/main/setup_base.sh", "|", "bash"], shell = True, executable="/usr/bin/bash")
+subprocess.run(["curl -L", "https://raw.githubusercontent.com/cms66/rpi-pyhome/main/setup_base.sh", "|", "bash"], shell = True, executable="/usr/bin/bash")
 #print(subprocess.run(["sudo", "bash", "./setup_base.sh"], capture_output=True))
 print("Python setup done") # works
