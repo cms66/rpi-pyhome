@@ -14,10 +14,10 @@ import subprocess, sys
 # Variables
 
 # Run commands
-print("Python setup") # works
-print(subprocess.run(["echo", "Geeks for geeks"], capture_output=True)) # works
-print(subprocess.run(["sudo", "fdisk", "-l"], capture_output=True)) # works
+print("Python setup")
+print(subprocess.run(["echo", "Geeks for geeks"])) # works
+#print(subprocess.run(["sudo", "fdisk", "-l"], capture_output=True)) # works
 print(subprocess.run(["wget", "https://raw.githubusercontent.com/cms66/rpi-pyhome/main/setup_base.sh"]))
-print(subprocess.run(["chmod +x", "./setup_base.sh"], capture_output=True, shell = True, executable="/bin/bash"))
+#print(subprocess.run(["chmod", "+x", "./setup_base.sh"]))
 print(subprocess.run(["./setup_base.sh"], capture_output=True, shell = True, executable="/bin/bash"))
-print("Python setup done") # works
+print("Python setup done")
