@@ -22,6 +22,7 @@ repobranch="main"
 pimodelnum=$(cat /sys/firmware/devicetree/base/model | cut -d " " -f 3)
 
 # Functions
+# ---------
 # Set default shell to bash
 set_default_shell()
 {
@@ -113,8 +114,8 @@ else
 fi
 }
 
-
 # Run setup
+# ---------
 set_default_shell
 update_system
 setup_fail2ban
