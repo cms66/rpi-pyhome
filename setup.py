@@ -15,9 +15,6 @@ import subprocess, sys
 
 # Run commands
 print("Python setup")
-print(subprocess.run(["echo", "Geeks for geeks"])) # works
-#print(subprocess.run(["sudo", "fdisk", "-l"], capture_output=True)) # works
 print(subprocess.run(["wget", "https://raw.githubusercontent.com/cms66/rpi-pyhome/main/setup_base.sh"]))
-#print(subprocess.run(["chmod", "+x", "./setup_base.sh"]))
 print(subprocess.call(["sudo", "bash", "./setup_base.sh"]))
 print("Python setup done")
