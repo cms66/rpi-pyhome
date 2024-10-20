@@ -11,8 +11,6 @@
 # Imports
 import subprocess, sys
 
-# Variables
-
 # Run commands
 print("Python setup")
 # print(subprocess.run(["wget", "https://raw.githubusercontent.com/cms66/rpi-pyhome/main/setup_base.sh"]))
