@@ -35,7 +35,8 @@ reposcr=$PWD
 show_menu()
 {
 	#printf "${$1[@]}\n"
-	printf "$1\n" 
+	printf "$1\n"
+	show_system_summary 
 }
 
 # Source setup shell scripts in same directory
