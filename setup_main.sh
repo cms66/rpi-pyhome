@@ -35,7 +35,8 @@ export reposcr
 show_menu()
 {
 	printf "Main Menu\n"
-	printf "${arrSetupMenu[@]}\n" 
+	#printf "${$1[@]}\n"
+	printf "$1" 
 }
 # Associative array for menu/actions
 declare -A arrSetupMenu
@@ -47,5 +48,5 @@ do
   source $file;
 done
 
-show_menu
+show_menu "Main menu - Bash"
 read -rp "Finished setup system: " inp </dev/tty
