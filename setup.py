@@ -13,6 +13,6 @@ import subprocess, sys
 
 # Run commands
 print("Python setup")
-subprocess.run(["wget", "https://raw.githubusercontent.com/cms66/rpi-pyhome/main/setup_base.sh"])
+subprocess.run(["wget", "https://raw.githubusercontent.com/cms66/rpi-pyhome/main/base_setup.sh"])
 print(subprocess.call(["sudo", "bash", "./setup_base.sh"]))
 print("Python setup done")
