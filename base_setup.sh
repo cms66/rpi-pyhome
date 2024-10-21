@@ -139,9 +139,9 @@ update_firmware()
 #update_system
 #setup_fail2ban
 #disable_root_ssh
-create_local
 setup_network
 setup_git # TODO
+create_local
 create_venv
 setup_firewall # TODO
 update_firmware # TODO
