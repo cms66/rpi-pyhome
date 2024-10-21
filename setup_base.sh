@@ -116,19 +116,19 @@ fi
 
 # Run setup
 # ---------
-set_default_shell
-update_system
-setup_fail2ban
-disable_root_ssh
-setup_network
-# setup_git # TODO
-# setup_firewall # TODO
+#set_default_shell
+#update_system
+#setup_fail2ban
+#disable_root_ssh
+#setup_network
+#setup_git # TODO
+setup_firewall # TODO
 # update_firmware # TODO
 
 read -rp "Finished base setup press p to poweroff or any other key to reboot: " inp </dev/tty
 if [ X$inp = X"p" ]
 then
-	poweroff
+	printf "poweroff"
 else
-	reboot
+	printf "reboot"
 fi
