@@ -57,6 +57,15 @@ setup_git()
 	echo "alias mytest=\"sudo bash ~/.pisetup/$repo/test_main.sh\"" >> /home/$usrname/.bashrc
 }
 
+# - Create python Virtual Environment (with access to system level packages) and bash alias for activation
+create_venv()
+{
+	python -m venv --system-site-packages /home/$usrname/.venv
+	echo "alias myvp=\"source ~/.venv/bin/activate\"" >> /home/$usrname/.bashrc
+	echo "alias dvp=\"deactivate\"" >> /home/$usrname/.bashrc
+	chown -R $usrname:$usrname /home/$usrname/.venv
+}
+
 # Configure fail2ban
 setup_fail2ban()
 {
@@ -68,6 +77,13 @@ setup_fail2ban()
 disable_root_ssh()
 {
 	sed -i 's/#PermitRootLogin\ prohibit-password/PermitRootLogin\ no/g' /etc/ssh/sshd_config
+}
+
+# create local folder structure for created user with code examples
+create_local()
+{
+	tar -xvzf /home/$usrname/.pisetup/$repo/local.tgz -C /home/$usrname
+	chown -R $usrname:$usrname /home/$usrname/local/
 }
 
 # Networking
@@ -123,6 +139,7 @@ set_default_shell
 update_system
 setup_fail2ban
 disable_root_ssh
+creat_local
 setup_network
 setup_git # TODO
 setup_firewall # TODO
