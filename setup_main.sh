@@ -27,7 +27,7 @@ pimem=$(free -mt)
 export pimem
 osarch=$(getconf LONG_BIT)
 export osarch
-repo="rpi-nvme"
+repo="rpi-pyhome"
 export repo
 reposcr=$PWD
 export reposcr
