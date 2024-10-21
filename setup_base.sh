@@ -104,14 +104,14 @@ update_firmware()
   			printf "Update selected\n"
     			if [ X$input = X"y" ]; then # Apply firmware update
     				printf "Update firmware\n"
-				# rpi-eeprom-update -a
-   		fi
-     else
-     	printf "Firmware is up to date\n"
-     fi
-else
-	printf "No firmware\n"
-fi
+				rpi-eeprom-update -a
+   			fi
+    	 	else
+     			printf "Firmware is up to date\n"
+     		fi
+	else
+		printf "No firmware\n"
+	fi
 }
 
 # Run setup
@@ -122,8 +122,8 @@ fi
 #disable_root_ssh
 #setup_network
 #setup_git # TODO
-setup_firewall # TODO
-# update_firmware # TODO
+#setup_firewall # TODO
+update_firmware # TODO
 
 read -rp "Finished base setup press p to poweroff or any other key to reboot: " inp </dev/tty
 if [ X$inp = X"p" ]
