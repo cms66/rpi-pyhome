@@ -12,34 +12,31 @@ trap handle_error ERR
 
 # create variables for other functions
 usrname=$(logname)
-export usrname
+#export usrname
 usrpath="/home/$usrname"
-export usrpath
+#export usrpath
 pinum=$(hostname | tr -cd '[:digit:].')
-export pinum
+#export pinum
 localnet=$(ip route | awk '/proto/ && !/default/ {print $1}')
-export localnet
+#export localnet
 pimodel=$(cat /sys/firmware/devicetree/base/model)
-export pimodel
+#export pimodel
 pirev=$(cat /proc/cpuinfo | grep 'Revision' | awk '{print $3}' | sed 's/^1000//')
-export pirev
+#export pirev
 pimem=$(free -mt)
-export pimem
+#export pimem
 osarch=$(getconf LONG_BIT)
-export osarch
+#export osarch
 repo="rpi-pyhome"
-export repo
+#export repo
 reposcr=$PWD
-export reposcr
+#export reposcr
 
 show_menu()
 {
 	#printf "${$1[@]}\n"
 	printf "$1\n" 
 }
-# Associative array for menu/actions
-declare -A arrSetupMenu
-arrSetupMenu+=([System-Summary]="show_system_summary")
 
 # Source setup shell scripts in same directory
 for file in $(find $(dirname -- "$0") -type f -name "setup_*.sh" ! -name $(basename "$0"));
