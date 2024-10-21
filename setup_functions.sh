@@ -6,7 +6,7 @@ show_system_summary()
 	strtitle="System summary ($(hostname))"
 	printf $strtitle;printf -- '=%.0s' $(seq 1 ${#strtitle})
 	printf "\nRepo: $repo \n"
-	printf "\nRepo - script: $reposcr \n"
+	printf "\nScript run from: $dirscr \n"
 	printf "\nModel: $pimodel \n"
 	printf "Revision: $pirev \n"
 	printf "Architecture: $osarch \n"
