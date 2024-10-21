@@ -135,11 +135,11 @@ update_firmware()
 
 # Run setup
 # ---------
-set_default_shell
-update_system
-setup_fail2ban
-disable_root_ssh
-creat_local
+#set_default_shell
+#update_system
+#setup_fail2ban
+#disable_root_ssh
+create_local
 setup_network
 setup_git # TODO
 create_venv
