@@ -56,6 +56,7 @@ setup_git()
 	echo "alias mysetup=\"sudo bash ~/.pisetup/$repo/setup_main.sh\"" >> /home/$usrname/.bashrc
 	echo "alias mytest=\"sudo bash ~/.pisetup/$repo/test_main.sh\"" >> /home/$usrname/.bashrc
 	echo "alias pysetup=\"sudo python ~/.pisetup/$repo/setup_main.py\"" >> /home/$usrname/.bashrc 	
+	echo "alias pytest=\"sudo python ~/.pisetup/$repo/test_main.py\"" >> /home/$usrname/.bashrc
 }
 
 # - Create python Virtual Environment (with access to system level packages) and bash alias for activation
