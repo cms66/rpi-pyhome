@@ -1,4 +1,4 @@
-# Python based management system
+# Entry point for python based management system
 
 # Imports
 import subprocess, sys
