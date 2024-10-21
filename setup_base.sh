@@ -52,6 +52,9 @@ setup_git()
 	repo = $repo\n\
 	repobranch = $repobranch\n" > /home/$usrname/.pisetup/custom.conf
 	chown -R $usrname:$usrname /home/$usrname/.pisetup
+	# Add bash alias for setup and test menu
+	echo "alias mysetup=\"sudo bash ~/.pisetup/$repo/setup_main.sh\"" >> /home/$usrname/.bashrc
+	echo "alias mytest=\"sudo bash ~/.pisetup/$repo/test_main.sh\"" >> /home/$usrname/.bashrc
 }
 
 # Configure fail2ban
@@ -98,7 +101,7 @@ update_firmware()
 		printf "Model has firmware\n"
 		updfirm=$(sudo rpi-eeprom-update | grep BOOTLOADER | cut -d ":" -f 2 | tr -d '[:blank:]') # Check for updates
 		printf "Update status: $updfirm\n"
- 		if ! [ $updfirm = "uptodate" ]; then # Update available - TODO - too many args
+ 		if ! [ $updfirm = "uptodate" ]; then # Update available - TODO - test when updates are available
  			printf "Update available\n"
   			read -p "Firmware update available, press y to update now or any other key to continue: " input </dev/tty
   			printf "Update selected\n"
@@ -121,9 +124,9 @@ update_firmware()
 #setup_fail2ban
 #disable_root_ssh
 #setup_network
-#setup_git # TODO
+setup_git # TODO
 #setup_firewall # TODO
-update_firmware # TODO
+#update_firmware # TODO
 
 read -rp "Finished base setup press p to poweroff or any other key to reboot: " inp </dev/tty
 if [ X$inp = X"p" ]
