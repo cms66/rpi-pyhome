@@ -142,6 +142,7 @@ disable_root_ssh
 creat_local
 setup_network
 setup_git # TODO
+create_venv
 setup_firewall # TODO
 update_firmware # TODO
 
