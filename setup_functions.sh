@@ -26,3 +26,11 @@ git_pull_setup()
     cd $OLDPWD
     read -p "Finished setup update, press enter to return to menu" input
 }
+
+# Update sytem
+update_system()
+{
+	apt-get -y update
+	apt-get -y upgrade
+	read -p "Finished System update, press enter to return to menu" input
+}
