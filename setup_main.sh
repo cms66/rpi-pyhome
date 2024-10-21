@@ -1,4 +1,4 @@
-# Entry point for management system
+# Entry point for bash based management system
 
 # Error handling
 set -e
