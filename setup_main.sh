@@ -10,7 +10,7 @@ handle_error()
 # Set the error handler to be called when an error occurs
 trap handle_error ERR
 
-# create/export variables for other scripts
+# create variables for other functions
 usrname=$(logname)
 export usrname
 usrpath="/home/$usrname"
@@ -34,9 +34,8 @@ export reposcr
 
 show_menu()
 {
-	printf "Main Menu\n"
 	#printf "${$1[@]}\n"
-	printf "$1" 
+	printf "$1\n" 
 }
 # Associative array for menu/actions
 declare -A arrSetupMenu
