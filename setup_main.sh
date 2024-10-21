@@ -32,9 +32,33 @@ export repo
 reposcr=$PWD
 export reposcr
 
+show_system_summary()
+{
+	clear
+	#printf "System summary - $(hostname))\n--------------\n"
+	strtitle="System summary ($(hostname))"
+	echo $strtitle;printf -- '=%.0s' $(seq 1 ${#strtitle})
+	printf "\nRepo: $repo \n"
+	printf "\nRepo - script: $reposcr \n"
+	printf "\nModel: $pimodel \n"
+	printf "Revision: $pirev \n"
+	printf "Architecture: $osarch \n"
+	printf "Firmware: $(rpi-eeprom-update) \n"
+	printf "\nMemory:\n$pimem \n"
+	printf "\nStorage:\n$(lsblk) \n"
+	printf "Firewall "
+	ufw status
+	read -p "Press enter to return to menu" input
+}
+
+show_menu()
+{
+	printf "Main Menu\n"
+	printf "${arrSetupMenu[@]}\n" 
+}
 # Associative array for menu/actions
 declare -A arrSetupMenu
-
+arrSetupMenu+=([System-Summary]="show_system_summary")
 
 # Source setup shell scripts in same directory
 for file in $(find $(dirname -- "$0") -type f -name "setup_*.sh" ! -name $(basename "$0"));
@@ -42,4 +66,5 @@ do
   source $file;
 done
 
+show_menu
 read -rp "Finished setup system: " inp </dev/tty
