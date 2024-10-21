@@ -42,3 +42,4 @@ do
   source $file;
 done
 
+read -rp "Finished setup system: " inp </dev/tty
