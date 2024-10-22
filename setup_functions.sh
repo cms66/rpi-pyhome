@@ -22,16 +22,19 @@ show_system_summary()
 # Pull git updates and return to working directory
 git_pull_setup()
 {
-    cd /home/$usrname/.pisetup/$repo
-    git pull https://github.com/cms66/$repo
-    cd $OLDPWD
-    read -p "Finished setup update, press enter to return to menu" input
+	cd /home/$usrname/.pisetup/$repo
+	git pull https://github.com/cms66/$repo
+	cd $OLDPWD
+	read -p "Finished setup update, press enter to return to menu" input
 }
 
 # Update sytem
 update_system()
 {
+	# TODO - Check for firmware update if model 4/5
 	apt-get -y update
 	apt-get -y upgrade
 	read -p "Finished System update, press enter to return to menu" input
 }
+
+
