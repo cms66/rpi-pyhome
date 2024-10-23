@@ -12,7 +12,7 @@ show_system_summary()
 	printf "Architecture: $osarch \n"
 	printf "Firmware: $(rpi-eeprom-update) \n"
 	printf "\nMemory:\n$pimem \n"
-	#printf "\nStorage:\n$(lsblk) \n"
+	printf "\nStorage:\n$(lsblk) \n"
  	#printf "\nDrive usage:\n$(df) \n"
 	printf "Firewall "
 	ufw status
