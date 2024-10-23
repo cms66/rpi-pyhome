@@ -6,7 +6,6 @@ show_system_summary()
 	strtitle="System summary - $(hostname)"
 	printf "$strtitle\n";printf -- '=%.0s' $(seq 1 ${#strtitle})
 	printf "\nRepo: $repo \n"
-	printf "\nScript run from: $dirscr \n"
 	printf "\nModel: $pimodel \n"
 	printf "Revision: $pirev \n"
 	printf "Architecture: $osarch \n"
@@ -38,4 +37,9 @@ update_system()
 	read -p "Finished System update, press enter to return to menu" input
 }
 
-
+setup_nfs_server()
+{
+	apt-get -y install nfs-kernel-server
+	ufw allow from $localnet to any port nfs
+	read -p "NFS Server setup done, press any key to return to menu" input
+}
