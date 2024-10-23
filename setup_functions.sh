@@ -15,7 +15,7 @@ show_system_summary()
 	printf "\nStorage:\n$(lsblk) \n"
 	printf "\nDrive usage:\n"
  	df -h
-	printf "Firewall "
+	printf "\nFirewall "
 	ufw status
 	read -p "Press enter to return to menu" input
 }
