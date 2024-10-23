@@ -13,7 +13,7 @@ show_system_summary()
 	printf "Firmware: $(rpi-eeprom-update) \n"
 	printf "\nMemory:\n$pimem \n"
 	printf "\nStorage:\n$(lsblk) \n"
- 	#printf "\nDrive usage:\n$(df) \n"
+ 	printf "\nDrive usage:\n$(df -h) \n"
 	printf "Firewall "
 	ufw status
 	read -p "Press enter to return to menu" input
