@@ -3,7 +3,7 @@
 show_system_summary()
 {
 	clear
-	strtitle="System summary ($(hostname))"
+	strtitle="System summary - $(hostname)"
 	printf $strtitle;printf -- '=%.0s' $(seq 1 ${#strtitle})
 	printf "\nRepo: $repo \n"
 	printf "\nScript run from: $dirscr \n"
@@ -13,7 +13,7 @@ show_system_summary()
 	printf "Firmware: $(rpi-eeprom-update) \n"
 	printf "\nMemory:\n$pimem \n"
 	printf "\nStorage:\n$(lsblk) \n"
- 	printf "\nDrive usage:\n$(df -h) \n"
+ 	printf "\nDrive usage:\n$(df) \n"
 	printf "Firewall "
 	ufw status
 	read -p "Press enter to return to menu" input
