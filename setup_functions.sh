@@ -14,6 +14,7 @@ show_system_summary()
 	printf "\nMemory:\n$pimem \n"
 	printf "\nStorage:\n$(lsblk) \n"
 	printf "\nDrive usage:\n"
+ 	df -h
 	printf "Firewall "
 	ufw status
 	read -p "Press enter to return to menu" input
