@@ -1,5 +1,12 @@
 # Simple/generic functions
 
+show_menu() # Takes title and array as arguments
+{
+	clear
+	printf "$1\n";printf -- '=%.0s' $(seq 1 ${#1}) # Print underlined title
+	# Print numbered menu options
+}
+
 show_system_summary()
 {
 	clear
@@ -28,7 +35,7 @@ git_pull_setup()
 	read -p "Finished setup update, press enter to return to menu" input
 }
 
-# Update sytem
+# Update system
 update_system()
 {
 	# TODO - Check for firmware update if model 4/5
