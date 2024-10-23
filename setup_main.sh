@@ -24,6 +24,7 @@ dirscr=$PWD # Directory of calling script
 
 show_menu()
 {
+	clear
 	#printf "${$1[@]}\n"
 	printf "$1\n" 
 }
