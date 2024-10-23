@@ -22,11 +22,10 @@ osarch=$(getconf LONG_BIT)
 repo="rpi-pyhome"
 dirscr=$PWD # Directory of calling script
 
-show_menu()
+show_menu() # Takes title and array as arguments
 {
 	clear
-	#printf "${$1[@]}\n"
-	printf "$1\n";printf -- '=%.0s' $(seq 1 ${#1})
+	printf "$1\n";printf -- '=%.0s' $(seq 1 ${#1}) # Print underlined title
 }
 
 # Source setup shell scripts in same directory
@@ -35,5 +34,5 @@ do
   source $file;
 done
 
-show_menu "Main menu - Bash"
+show_menu "Setup - main menu"
 read -rp "Finished setup system: " inp </dev/tty
