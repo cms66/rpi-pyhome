@@ -26,7 +26,8 @@ show_menu()
 {
 	clear
 	#printf "${$1[@]}\n"
-	printf "$1\n" 
+	printf "$1\n"
+	printf "$1\n";printf -- '=%.0s' $(seq 1 ${#$1})
 }
 
 # Source setup shell scripts in same directory
