@@ -25,8 +25,7 @@ dirscr=$PWD # Directory of calling script
 show_menu()
 {
 	#printf "${$1[@]}\n"
-	printf "$1\n"
-	show_system_summary 
+	printf "$1\n" 
 }
 
 # Source setup shell scripts in same directory
