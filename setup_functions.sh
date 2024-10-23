@@ -3,8 +3,8 @@
 show_system_summary()
 {
 	clear
-	strtitle="System summary - $(hostname)\n"
-	printf $strtitle;printf -- '=%.0s' $(seq 1 ${#strtitle})
+	strtitle="System summary - $(hostname)"
+	printf "$strtitle";printf -- '=%.0s' $(seq 1 ${#strtitle})
 	printf "\nRepo: $repo \n"
 	printf "\nScript run from: $dirscr \n"
 	printf "\nModel: $pimodel \n"
