@@ -10,7 +10,7 @@ handle_error()
 # Set the error handler to be called when an error occurs
 trap handle_error ERR
 
-# create variables for other functions
+# Variables
 usrname=$(logname)
 usrpath="/home/$usrname"
 pinum=$(hostname | tr -cd '[:digit:].')
@@ -21,13 +21,6 @@ pimem=$(free -mt)
 osarch=$(getconf LONG_BIT)
 repo="rpi-pyhome"
 dirscr=$PWD # Directory of calling script
-
-show_menu() # Takes title and array as arguments
-{
-	clear
-	printf "$1\n";printf -- '=%.0s' $(seq 1 ${#1}) # Print underlined title
-	# Print numbered menu options
-}
 
 # Source setup shell scripts in same directory
 for file in $(find $(dirname -- "$0") -type f -name "setup_*.sh" ! -name $(basename "$0"));
