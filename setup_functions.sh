@@ -3,7 +3,7 @@
 show_menu() # Takes title and array as arguments
 {
 	clear
-	printf "$1\n";printf -- '=%.0s' $(seq 1 ${#1})\n # Print underlined title
+	printf "$1\n";printf -- '=%.0s' $(seq 1 ${#1});printf "\n" # Print underlined title
 	# Print numbered menu options
 }
 
