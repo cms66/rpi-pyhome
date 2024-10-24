@@ -46,7 +46,14 @@ update_system()
 
 setup_nfs_server()
 {
-	apt-get -y install nfs-kernel-server
-	ufw allow from $localnet to any port nfs
+	#apt-get -y install nfs-kernel-server
+	#ufw allow from $localnet to any port nfs
+ 	check_package_status nfs-kernel-server
 	read -p "NFS Server setup done, press any key to return to menu" input
+}
+
+check_package_status()
+{
+	printf "Package: $1\n"
+	printf "$(dpkg -l | grep $1 | cut -f 1 -d " ")\n"
 }
