@@ -29,4 +29,5 @@ do
 done
 
 show_menu "Setup - main menu"
+check_package_status nfs-kernel-server
 read -rp "Finished setup system: " inp </dev/tty
