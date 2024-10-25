@@ -60,7 +60,7 @@ check_package_status() # Takes package name and install as arguments
 		then
 			#printf "$(apt-get install y $1\n"
 			printf "installing $1\n"
-			apt-get install y $1
+			apt-get install -y $1
 		else
 			printf "$1 not installed - not installing"
 		fi
