@@ -29,5 +29,5 @@ do
 done
 
 show_menu "Setup - main menu"
-check_package_status nfs-kernel-server
+check_package_status nfs-kernel-server y
 read -rp "Finished setup system: " inp </dev/tty
