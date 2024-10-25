@@ -52,8 +52,19 @@ setup_nfs_server()
 	read -p "NFS Server setup done, press any key to return to menu" input
 }
 
-check_package_status()
+check_package_status() # Takes package name and install as arguments
 {
-	printf "Package: $1\n"
-	printf "$(dpkg -l | grep $1 | cut -f 1 -d " ")\n"
+	if [[ "$(dpkg -l | grep $1 | cut --fields 1 -d " ")" == "" ]] # Not installed
+	then
+		if [[ $2 == "y" ]] # Do install
+		then
+			#printf "$(apt-get install y $1\n"
+			printf "installing $1\n"
+			apt-get install y $1
+		else
+			printf "$1 not installed - not installing"
+		fi
+	else
+		printf "$1 already installed\n"
+	fi
 }
