@@ -28,6 +28,5 @@ do
   source $file;
 done
 
-show_menu "Setup - main menu"
-check_package_status nfs-kernel-server y
+show_menu "Setup - main menu" # Show main menu
 read -rp "Finished setup system: " inp </dev/tty
