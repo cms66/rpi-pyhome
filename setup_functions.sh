@@ -52,7 +52,7 @@ setup_nfs_server()
 	read -p "NFS Server setup done, press any key to return to menu" input
 }
 
-check_package_status() # Takes package name and install as arguments
+check_package_status() # Takes package name and install (if needed) as arguments
 {
 	if [[ "$(dpkg -l | grep $1 | cut --fields 1 -d " ")" == "" ]] # Not installed
 	then
