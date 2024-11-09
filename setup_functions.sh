@@ -2,6 +2,7 @@
 
 show_menu()
 {
+	# Takes arguments for Title and arrays for Prompts/Actions
 	arg2=$2[@]
 	arrMenuPrompts=("${!arg2}")
 	local -n arrMenuActions=$3
