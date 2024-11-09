@@ -51,7 +51,7 @@ git_pull_setup()
 	cd /home/$usrname/.pisetup/$repo
 	git pull https://github.com/cms66/$repo
 	cd $OLDPWD
-	read -p "Finished setup update, press enter to return to menu" input
+	#read -p "Finished setup update, press enter to return to menu" input
 }
 
 # Update system
@@ -61,7 +61,7 @@ update_system()
 	apt-get -y update
 	apt-get -y upgrade
  	update_firmware
-	read -p "Finished System update, press enter to return to menu" input
+	#read -p "Finished System update, press enter to return to menu" input
 }
 
 setup_nfs_server()
@@ -69,7 +69,7 @@ setup_nfs_server()
 	#apt-get -y install nfs-kernel-server
 	#ufw allow from $localnet to any port nfs
  	check_package_status nfs-kernel-server y
-	read -p "NFS Server setup done, press any key to return to menu" input
+	#read -p "NFS Server setup done, press any key to return to menu" input
 }
 
 check_package_status() # Takes package name and install (if needed) as arguments
