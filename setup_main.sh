@@ -10,6 +10,12 @@ handle_error()
 # Set the error handler to be called when an error occurs
 trap handle_error ERR
 
+# Source setup shell scripts in same directory
+for file in $(find $(dirname -- "$0") -type f -name "setup_*.sh" ! -name $(basename "$0"));
+do
+  source $file;
+done
+
 # Variables
 usrname=$(logname)
 usrpath="/home/$usrname"
@@ -21,12 +27,6 @@ pimem=$(free -mt)
 osarch=$(getconf LONG_BIT)
 repo="rpi-pyhome"
 dirscr=$PWD # Directory of calling script
-
-# Source setup shell scripts in same directory
-for file in $(find $(dirname -- "$0") -type f -name "setup_*.sh" ! -name $(basename "$0"));
-do
-  source $file;
-done
 
 show_menu "Setup - main menu" mnuMainPrompts mnuMainActions # Show main menu
 #read -rp "Finished setup system: " inp </dev/tty
