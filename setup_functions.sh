@@ -22,7 +22,7 @@ show_menu()
 			fi
 			clear
 			printf "$1\n";printf -- '=%.0s' $(seq 1 ${#1});printf "\n" # Print first arg with underline
-   			select menu in "${arrMenuPrompts[@]}"; # Print menu
+   			select menu in "${arrMenuPrompts[@]}" # Print menu
 		done
 	done
 }
