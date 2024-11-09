@@ -17,7 +17,7 @@ show_menu()
 			then
 		  		#read -p "you picked $menu ($REPLY) = Action: ${arrMenuActions[$menu]}"
 		  		${arrMenuActions[$menu]}
-      				read -p "$menu done"
+      				read -p "Press enter to return to menu"
 			else
 				read -p "Not a valid selection"
 			fi
