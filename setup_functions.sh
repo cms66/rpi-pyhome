@@ -42,6 +42,7 @@ show_system_summary()
 	printf "\nFirewall "
 	ufw status
 	read -p "Press enter to return to menu" input
+ 	break 2
 }
 
 # Pull git updates and return to working directory
