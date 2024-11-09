@@ -17,7 +17,7 @@ show_menu()
 			then
 		  		#read -p "you picked $menu ($REPLY) = Action: ${arrMenuActions[$menu]}"
 		  		${arrMenuActions[$menu]}
-      				printf "you picked $menu done"
+      				printf "$menu done"
 			else
 				read -p "Not a valid selection"
 			fi
