@@ -59,13 +59,10 @@ update_system()
 	# TODO - Check for firmware update if model 4/5
 	apt-get -y update
 	apt-get -y upgrade
+ 	update_firmware
 	read -p "Finished System update, press enter to return to menu" input
 }
 
-setup_hardware()
-{
-	show_menu "Setup - Hardware menu" mnuHardwarePrompts mnuHardwareActions
-}
 setup_nfs_server()
 {
 	#apt-get -y install nfs-kernel-server
