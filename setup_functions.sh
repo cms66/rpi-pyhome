@@ -22,6 +22,7 @@ show_menu()
 			fi
 			clear
 			printf "$1\n";printf -- '=%.0s' $(seq 1 ${#1});printf "\n" # Print first arg with underline
+   			select menu in "${arrMenuPrompts[@]}"; # Print menu
 		done
 	done
 }
@@ -42,7 +43,6 @@ show_system_summary()
 	printf "\nFirewall "
 	ufw status
 	read -p "Press enter to return to menu" input
- 	break 2
 }
 
 # Pull git updates and return to working directory
