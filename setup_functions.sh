@@ -20,8 +20,8 @@ show_menu()
 			else
 				read -p "Not a valid selection"
 			fi
-			clear
-			printf "$1\n";printf -- '=%.0s' $(seq 1 ${#1});printf "\n" # Print first arg with underline
+			#clear
+			#printf "$1\n";printf -- '=%.0s' $(seq 1 ${#1});printf "\n" # Print first arg with underline
 		done
 	done
 }
