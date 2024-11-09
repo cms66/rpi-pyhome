@@ -28,5 +28,5 @@ do
   source $file;
 done
 
-show_menu "Setup - main menu" # Show main menu
-read -rp "Finished setup system: " inp </dev/tty
+show_menu "Setup - main menu" mnuMainPrompts mnuMainActions # Show main menu
+#read -rp "Finished setup system: " inp </dev/tty
