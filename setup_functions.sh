@@ -1,12 +1,29 @@
 # Simple/generic functions
 
-show_menu() # Takes title and array as arguments
+show_menu()
 {
-	clear
-	printf "$1\n";printf -- '=%.0s' $(seq 1 ${#1});printf "\n" # Print underlined title
-	# Print numbered menu options
+	arg2=$2[@]
+	arrMenuPrompts=("${!arg2}")
+	local -n arrMenuActions=$3
+	PS3="Select option: " # Select prompt
+	while true
+	do
+		clear
+		printf "$1\n";printf -- '=%.0s' $(seq 1 ${#1});printf "\n" # Print first arg with underline
+		select menu in "${arrMenuPrompts[@]}"; # Print menu
+		do
+			if [[ $menu ]]
+			then
+		  		read -p "you picked $menu ($REPLY) = Action: ${arrMenuActions[$menu]}"
+		  		${arrMenuActions[$menu]}
+			else
+				read -p "Not a valid selection"
+			fi
+			clear
+			printf "$1\n";printf -- '=%.0s' $(seq 1 ${#1});printf "\n" # Print first arg with underline
+		done
+	done
 }
-
 show_system_summary()
 {
 	clear
@@ -44,6 +61,10 @@ update_system()
 	read -p "Finished System update, press enter to return to menu" input
 }
 
+setup_hardware()
+{
+	show_menu "Setup - Hardware menu" mnuHardwarePrompts mnuHardwareActions
+}
 setup_nfs_server()
 {
 	#apt-get -y install nfs-kernel-server
