@@ -5,6 +5,15 @@ setup_hardware()
 	show_menu "Setup - Hardware menu" mnuHardwareFull
 }
 
+setup_camera_csi()
+{
+	read -p "Function not yet available, press enter to continue"
+}
+
+setup_camera_usb()
+{
+	read -p "Function not yet available, press enter to continue"
+}
 update_firmware()
 {
 	if [ $pimodelnum = "4" ] || [ $pimodelnum = "5" ]; then # Model has firmware
