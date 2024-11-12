@@ -28,5 +28,5 @@ osarch=$(getconf LONG_BIT)
 repo="rpi-pyhome"
 dirscr=$PWD # Directory of calling script
 
-show_menu "Setup - main menu" mnuMainPrompts mnuMainActions # Show main menu
+show_menu "Setup - main menu" mnuMainFull # Show main menu
 #read -rp "Finished setup system: " inp </dev/tty
