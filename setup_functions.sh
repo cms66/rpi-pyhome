@@ -33,8 +33,8 @@ show_menu()
 		else
 			if [[ "$inp" =~ ^[0-9]+$ ]] && [[ $inp -ge 1 ]] && [[ "$inp" -le ${#arrMenuPrompts[@]} ]]
 			then # integer in menu range
-				read -p "Action - ${arrMenuActions[((inp -1))]}"
 				${arrMenuActions[((inp -1))]}
+    				read -p "Done, press enter to continue"
 			else
 				read -p "Invalid option $inp, press enter to continue"
 			fi
