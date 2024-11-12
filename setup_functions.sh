@@ -8,12 +8,12 @@ show_menu()
  	declare -a arrMenuActions=()
 	for i in "${arrFull[@]}"
 	do
-		strOpt="$(echo $i | cut -f 1 -d '#')"
-		strAct="$(echo $i | cut -f 2 -d '#')"
-		arrMenuPrompts+=("$strOpt")
-		arrMenuActions+=("$strAct")
+		#strOpt="$(echo $i | cut -f 1 -d '#')"
+		#strAct="$(echo $i | cut -f 2 -d '#')"
+		arrMenuPrompts+=("$(echo $i | cut -f 1 -d '#')")
+		arrMenuActions+=("$(echo $i | cut -f 2 -d '#')")
 	done
-while true
+	while true
 	do
 		# show menu - title from arg 1
 		i=0 # index ignoring 0
@@ -23,11 +23,11 @@ while true
 		do
 			if [[ $i -gt 0 ]]
 			then
-				printf "%s\n" "$i - $opt = ${arrMenuActions[$i]}"
+				printf "%s\n" "$i - $opt #= ${arrMenuActions[$i]}"
 			fi
 			((i=i+1))
 		done
-		printf "%s\n" "${#arrMenuPrompts[@]} - ${arrMenuPrompts[0]} = ${arrMenuActions[0]}"
+		printf "%s\n" "${#arrMenuPrompts[@]} - ${arrMenuPrompts[0]} #= ${arrMenuActions[0]}"
 		# Get user input
 		read -p "Select option: " inp
 		# Process input
