@@ -13,17 +13,21 @@ show_menu()
 		arrMenuPrompts+=("$strOpt")
 		arrMenuActions+=("$strAct")
 	done
-	while true
+while true
 	do
 		# show menu - title from arg 1
-		i=1 # index ignoring 0
+		i=0 # index ignoring 0
 		clear
 		printf "$1\n";printf -- '=%.0s' $(seq 1 ${#1});printf "\n" # Print underlined title
 		for opt in "${arrMenuPrompts[@]}"
 		do
-			printf "%s\n" "$i - $opt" #= ${arrMenuActions[((i -1))]}"
+			if [[ $i -gt 0 ]]
+			then
+				printf "%s\n" "$i - $opt = ${arrMenuActions[$i]}"
+			fi
 			((i=i+1))
 		done
+		printf "%s\n" "${#arrMenuPrompts[@]} - ${arrMenuPrompts[0]} = ${arrMenuActions[0]}"
 		# Get user input
 		read -p "Select option: " inp
 		# Process input
@@ -31,15 +35,21 @@ show_menu()
 		then # user pressed enter
 			read -p "No option selected, press enter to continue"
 		else
-			if [[ "$inp" =~ ^[0-9]+$ ]] && [[ $inp -ge 1 ]] && [[ "$inp" -le ${#arrMenuPrompts[@]} ]]
+			if [[ "$inp" =~ ^[0-9]+$ ]] && [[ "$inp" -ge 1 ]] && [[ "$inp" -le ${#arrMenuPrompts[@]} ]]
 			then # integer in menu range
-				${arrMenuActions[((inp -1))]}
-    				read -p "Done, press enter to continue"
+				if [[ "$inp" -lt ${#arrMenuPrompts[@]} ]]
+				then
+					read -p "Action - ${arrMenuActions[$inp]}"
+					${arrMenuActions[$inp]}
+				else
+					read -p "Action - ${arrMenuActions[0]}"
+					${arrMenuActions[0]}
+				fi
 			else
 				read -p "Invalid option $inp, press enter to continue"
 			fi
 		fi
-	done
+	done	
 }
 show_system_summary()
 {
