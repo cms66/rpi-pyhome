@@ -52,6 +52,10 @@ show_menu()
 	done	
 }
 
+underline() # Print line with configurable underline character (defaults to "=")
+{
+	echo $1; for (( i=0; $i<${#1}; i=$i+1)); do printf "${2:-=}"; done; printf "\n";
+}
 show_system_summary()
 {
 	clear
