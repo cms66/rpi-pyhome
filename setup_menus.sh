@@ -1,7 +1,7 @@
 # Declare menus
 
 declare -a mnuMainFull=(
-"Hardware#show_menu \"Hardware menu\" mnuHardwareFull"
+"Hardware#setup_hardware"
 "Update setup#git_pull_setup"
 "Update system#update_system"
 "System summary#show_system_summary"
