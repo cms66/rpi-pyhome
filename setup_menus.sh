@@ -7,14 +7,9 @@ declare -a mnuMainFull=(
 "System summary#show_system_summary"
 "Quit#break 2"
 )
-#declare -A mnuMainActions;  declare -a mnuMainPrompts;
-#mnuMainActions["Hardware"]="setup_hardware"; mnuMainPrompts+=("Hardware");
-#mnuMainActions["Update setup"]="git_pull_setup"; mnuMainPrompts+=("Update setup");
-#mnuMainActions["Update system"]="update_system"; mnuMainPrompts+=("Update system");
-#mnuMainActions["System summary"]="show_system_summary"; mnuMainPrompts+=("System summary");
-#mnuMainActions["Quit"]="break 2"; mnuMainPrompts+=("Quit");
+declare -a mnuHardwareFull=(
+"Camera - CSI#setup_camera_csi"
+"Camera - USB#setup_camera_usb"
+"Back#break 2"
+)
 
-#declare -A mnuHardwareActions;      declare -a mnuHardwarePrompts;
-#mnuHardwareActions["Camera - CSI"]="setup_camera_csi"; mnuHardwarePrompts+=("Camera - CSI");
-#mnuHardwareActions["Camera - USB"]="setup_camera_usb"; mnuHardwarePrompts+=("Camera - USB");
-#mnuHardwareActions["Back"]="break 2"; mnuHardwarePrompts+=("Back");
