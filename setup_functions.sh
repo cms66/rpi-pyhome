@@ -2,10 +2,10 @@
 
 show_menu()
 {
-	arg2=$2[@]
-	arrFull=("${!arg2}")
-	declare -a arrPrompts=()
- 	declare -a arrActions=()
+	#arg2=$2[@]
+	#arrFull=("${!arg2}")
+	declare -a arrMenuPrompts=()
+ 	declare -a arrMenuActions=()
 	for i in "${arrFull[@]}"
 	do
 		strOpt="$(echo $i | cut -f 1 -d '#')"
