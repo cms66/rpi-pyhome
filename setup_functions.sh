@@ -6,19 +6,17 @@ show_menu()
 	arrFull=("${!arg2}")
 	declare -a arrMenuPrompts=()
  	declare -a arrMenuActions=()
-	for i in "${arrFull[@]}"
+	for i in "${arrFull[@]}" # Populate Prompt/Action arrays from Full array
 	do
-		#strOpt="$(echo $i | cut -f 1 -d '#')"
-		#strAct="$(echo $i | cut -f 2 -d '#')"
 		arrMenuPrompts+=("$(echo $i | cut -f 1 -d '#')")
 		arrMenuActions+=("$(echo $i | cut -f 2 -d '#')")
 	done
 	while true
 	do
 		# show menu - title from arg 1
-		i=0 # index ignoring 0
 		clear
 		printf "$1\n";printf -- '=%.0s' $(seq 1 ${#1});printf "\n" # Print underlined title
+  		i=0 # index 0 will be shown at end of menu
 		for opt in "${arrMenuPrompts[@]}"
 		do
 			if [[ $i -gt 0 ]]
@@ -37,12 +35,11 @@ show_menu()
 		else
 			if [[ "$inp" =~ ^[0-9]+$ ]] && [[ "$inp" -ge 1 ]] && [[ "$inp" -le ${#arrMenuPrompts[@]} ]]
 			then # integer in menu range
-				if [[ "$inp" -lt ${#arrMenuPrompts[@]} ]]
+				if [[ "$inp" -lt ${#arrMenuPrompts[@]} ]] # input 1 to array length -1
 				then
-					read -p "Action - ${arrMenuActions[$inp]}"
+					#read -p "Action - ${arrMenuActions[$inp]}"
 					${arrMenuActions[$inp]}
-				else
-					read -p "Action - ${arrMenuActions[0]}"
+				else # last menu item = Break
 					${arrMenuActions[0]}
 				fi
 			else
