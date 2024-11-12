@@ -41,6 +41,7 @@ show_menu()
      					read -p "Done - ${arrMenuPrompts[$inp]}"
 				else # last menu item = Break
 					${arrMenuActions[0]}
+     					read -p "Leaving now"
 				fi
 			else
 				read -p "Invalid option $inp, press enter to continue"
