@@ -37,8 +37,8 @@ show_menu()
 			then # integer in menu range
 				if [[ "$inp" -lt ${#arrMenuPrompts[@]} ]] # input 1 to array length -1
 				then
-					#read -p "Action - ${arrMenuActions[$inp]}"
 					${arrMenuActions[$inp]}
+     					read -p "Done - ${arrMenuPrompts[$inp]}"
 				else # last menu item = Break
 					${arrMenuActions[0]}
 				fi
