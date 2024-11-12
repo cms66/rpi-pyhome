@@ -2,16 +2,16 @@
 
 show_menu()
 {
-	#arg2=$2[@]
-	#arrFull=("${!arg2}")
+	arg2=$2[@]
+	arrFull=("${!arg2}")
 	declare -a arrMenuPrompts=()
  	declare -a arrMenuActions=()
 	for i in "${arrFull[@]}"
 	do
 		strOpt="$(echo $i | cut -f 1 -d '#')"
 		strAct="$(echo $i | cut -f 2 -d '#')"
-		arrPrompts+=("$strOpt")
-		arrActions+=("$strAct")
+		arrMenuPrompts+=("$strOpt")
+		arrMenuActions+=("$strAct")
 	done
 	while true
 	do
