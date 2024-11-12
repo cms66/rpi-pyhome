@@ -3,7 +3,7 @@
 show_menu()
 {
 	arg2=$2[@]
-	arrFull=("${!arg2}")
+	arrFull=("${arg2}")
 	declare -a arrPrompts=()
  	declare -a arrActions=()
 	for i in "${arrFull[@]}"
