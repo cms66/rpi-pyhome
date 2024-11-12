@@ -2,7 +2,7 @@
 
 setup_hardware()
 {
-	show_menu "Setup - Hardware menu" mnuHardwarePrompts mnuHardwareActions
+	show_menu "Setup - Hardware menu" mnuHardwareFull
 }
 
 update_firmware()
