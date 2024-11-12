@@ -38,10 +38,10 @@ show_menu()
 				if [[ "$inp" -lt ${#arrMenuPrompts[@]} ]] # input 1 to array length -1
 				then
 					${arrMenuActions[$inp]}
-     					read -p "Done - ${arrMenuPrompts[$inp]}"
+     					#read -p "Done - ${arrMenuPrompts[$inp]}"
 				else # last menu item = Break
 					${arrMenuActions[0]}
-     					read -p "Leaving now"
+     					#read -p "Leaving now"
 				fi
 			else
 				read -p "Invalid option $inp, press enter to continue"
