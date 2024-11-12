@@ -23,11 +23,11 @@ show_menu()
 		do
 			if [[ $i -gt 0 ]]
 			then
-				printf "%s\n" "$i - $opt #= ${arrMenuActions[$i]}"
+				printf "%s\n" "$i - $opt" #= ${arrMenuActions[$i]}"
 			fi
 			((i=i+1))
 		done
-		printf "%s\n" "${#arrMenuPrompts[@]} - ${arrMenuPrompts[0]} #= ${arrMenuActions[0]}"
+		printf "%s\n" "${#arrMenuPrompts[@]} - ${arrMenuPrompts[0]}" #= ${arrMenuActions[0]}"
 		# Get user input
 		read -p "Select option: " inp
 		# Process input
