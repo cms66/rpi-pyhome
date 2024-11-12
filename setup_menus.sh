@@ -11,5 +11,6 @@ declare -a mnuHardwareFull=(
 "Back#break 2"
 "Camera - CSI#setup_camera_csi"
 "Camera - USB#setup_camera_usb"
+"Sense Hat#setup_sense_hat"
 )
 
