@@ -51,6 +51,7 @@ show_menu()
 		fi
 	done	
 }
+
 show_system_summary()
 {
 	clear
@@ -67,7 +68,7 @@ show_system_summary()
  	df -h
 	printf "\nFirewall "
 	ufw status
-	#read -p "Press enter to return to menu" input
+	read -p "Press enter to return to menu"
 }
 
 # Pull git updates and return to working directory
@@ -76,7 +77,7 @@ git_pull_setup()
 	cd /home/$usrname/.pisetup/$repo
 	git pull https://github.com/cms66/$repo
 	cd $OLDPWD
-	#read -p "Finished setup update, press enter to return to menu" input
+	read -p "Finished setup update, press enter to return to menu"
 }
 
 # Update system
@@ -86,15 +87,7 @@ update_system()
 	apt-get -y update
 	apt-get -y upgrade
  	update_firmware
-	#read -p "Finished System update, press enter to return to menu" input
-}
-
-setup_nfs_server()
-{
-	#apt-get -y install nfs-kernel-server
-	#ufw allow from $localnet to any port nfs
- 	check_package_status nfs-kernel-server y
-	#read -p "NFS Server setup done, press any key to return to menu" input
+	read -p "Finished System update, press enter to return to menu"
 }
 
 check_package_status() # Takes package name and install (if needed) as arguments
