@@ -2,28 +2,43 @@
 
 show_menu()
 {
-	# Takes arguments for Title and arrays for Prompts/Actions
 	arg2=$2[@]
-	arrMenuPrompts=("${!arg2}")
-	local -n arrMenuActions=$3
-	PS3="Select option: " # Select prompt
+	arrFull=("${!arg2}")
+	declare -a arrPrompts=()
+ 	declare -a arrActions=()
+	for i in "${arrFull[@]}"
+	do
+		strOpt="$(echo $i | cut -f 1 -d '#')"
+		strAct="$(echo $i | cut -f 2 -d '#')"
+		arrPrompts+=("$strOpt")
+		arrActions+=("$strAct")
+	done
 	while true
 	do
+		# show menu - title from arg 1
+		i=1 # index ignoring 0
 		clear
-		printf "$1\n";printf -- '=%.0s' $(seq 1 ${#1});printf "\n" # Print first arg with underline
-		select menu in "${arrMenuPrompts[@]}"; # Print menu
+		printf "$1\n";printf -- '=%.0s' $(seq 1 ${#1});printf "\n" # Print underlined title
+		for opt in "${arrMenuPrompts[@]}"
 		do
-			if [[ $menu ]]
-			then
-		  		#read -p "you picked $menu ($REPLY) = Action: ${arrMenuActions[$menu]}"
-		  		${arrMenuActions[$menu]}
-      				read -p "Press enter to return to menu"
-			else
-				read -p "Not a valid selection"
-			fi
-			clear
-			printf "$1\n";printf -- '=%.0s' $(seq 1 ${#1});printf "\n" # Print first arg with underline
+			printf "%s\n" "$i - $opt" #= ${arrMenuActions[((i -1))]}"
+			((i=i+1))
 		done
+		# Get user input
+		read -p "Select option: " inp
+		# Process input
+		if [[ ${#inp} -eq 0 ]]
+		then # user pressed enter
+			read -p "No option selected, press enter to continue"
+		else
+			if [[ "$inp" =~ ^[0-9]+$ ]] && [[ $inp -ge 1 ]] && [[ "$inp" -le ${#arrMenuPrompts[@]} ]]
+			then # integer in menu range
+				read -p "Action - ${arrMenuActions[((inp -1))]}"
+				${arrMenuActions[((inp -1))]}
+			else
+				read -p "Invalid option $inp, press enter to continue"
+			fi
+		fi
 	done
 }
 show_system_summary()
