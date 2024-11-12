@@ -1,6 +1,6 @@
 # NFS functions
 
-setup_nfs_server()
+install_nfs_server()
 {
 	#apt-get -y install nfs-kernel-server
 	#ufw allow from $localnet to any port nfs
