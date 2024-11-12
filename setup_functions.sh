@@ -4,8 +4,8 @@ show_menu()
 {
 	arg2=$2[@]
 	arrFull=("${!arg2}")
- 	arrMenuPrompts=()
-  	arrMenuActions=()
+ 	declare -a arrMenuPrompts=()
+  	declare -a arrMenuActions=()
 	for i in "${arrFull[@]}" # Populate Prompt/Action arrays from Full array
 	do
 		arrMenuPrompts+=("$(echo $i | cut -f 1 -d '#')")
