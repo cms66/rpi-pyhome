@@ -83,7 +83,6 @@ git_pull_setup()
 # Update system
 update_system()
 {
-	# TODO - Check for firmware update if model 4/5
 	apt-get -y update
 	apt-get -y upgrade
  	update_firmware
@@ -96,13 +95,12 @@ check_package_status() # Takes package name and install (if needed) as arguments
 	then
 		if [[ $2 == "y" ]] # Do install
 		then
-			#printf "$(apt-get install y $1\n"
-			printf "installing $1\n"
 			apt-get install -y -q $1
+   			read -p "$1 installed"
 		else
-			printf "$1 not installed - not installing"
+			read -p "$1 not installed not installing"
 		fi
 	else
-		printf "$1 already installed\n"
+		read -p "$1 already installed"
 	fi
 }
