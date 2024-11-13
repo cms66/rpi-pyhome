@@ -1,4 +1,4 @@
-# NFS functions
+# NFS setup functions
 
 install_nfs_server()
 {
