@@ -15,9 +15,13 @@ install_nfs_server()
 add_nfs_local()
 {
  	# Check server installed
-  	if ! [[ $(check_package_status nfs-kernel-server | grep "not installed") ]]
+  	if [[ $(check_package_status nfs-kernel-server | grep "not installed") ]]
    	then
-    		read -p "NFS server not installed, press any key to return to menu" input
+    		read -p "NFS server not installed, install now?" input
+      		if [[ $input == "y" ]]
+		then
+  			install_nfs_server
+     		fi
     	fi	
   	# check export exists
    	# Add export
