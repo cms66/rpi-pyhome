@@ -44,6 +44,7 @@ underline() # Print line with configurable underline character (defaults to "=")
 {
 	echo $1; for (( i=0; $i<${#1}; i=$i+1)); do printf "${2:-=}"; done; printf "\n";
 }
+
 show_system_summary()
 {
 	clear
@@ -86,11 +87,11 @@ check_package_status() # Takes package name and install (if needed) as arguments
 		if [[ $2 == "y" ]] # Do install
 		then
 			apt-get install -y -q $1
-   			read -p "$1 installed"
+   			read -p "$1 installed, press enter to continue"
 		else
-			read -p "$1 not installed not installing"
+			read -p "$1 not installed not installing, press enter to continue"
 		fi
 	else
-		read -p "$1 already installed"
+		read -p "$1 already installed, press enter to continue"
 	fi
 }
