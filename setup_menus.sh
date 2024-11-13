@@ -1,4 +1,4 @@
-# Declare menus - Break option 0 will show at end of menu
+# Declare menus - Option 0 used for menu title
 
 declare -a mnuMainFull=(
 "Setup - Main menu#"
