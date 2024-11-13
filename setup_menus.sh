@@ -2,11 +2,11 @@
 
 declare -a mnuMainFull=(
 "Setup - Main menu#"
-"Hardware#show_menu mnuHardwareFull"
-"NFS#show_menu mnuNFSFull"
-"OpenMPI#show_menu mnuOpenMPIFull"
-"OpenCV#show_menu mnuOpenCVFull"
-"SDM#show_menu mnuSDMFull"
+"Hardware#setup_hardware"
+"NFS#setup_nfs"
+"OpenMPI#setup_openmpi"
+"OpenCV#setup_opencv"
+"SDM#setup_sdm"
 "Update setup#git_pull_setup"
 "Update system#update_system"
 "System summary#show_system_summary"
