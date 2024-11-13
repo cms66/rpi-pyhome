@@ -87,9 +87,9 @@ check_package_status() # Takes package name and install (if needed) as arguments
 		if [[ $2 == "y" ]] # Do install
 		then
 			apt-get install -y -q $1
-   			read -p "$1 installed, press enter to continue"
+   			read -p "$1 install done, press enter to continue"
 		else
-			read -p "$1 not installed not installing, press enter to continue"
+			read -p "$1 not installed - not installing, press enter to continue"
 		fi
 	else
 		read -p "$1 already installed, press enter to continue"
