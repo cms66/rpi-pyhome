@@ -47,9 +47,7 @@ underline() # Print line with configurable underline character (defaults to "=")
 show_system_summary()
 {
 	clear
-	strtitle="System summary - $(hostname)"
-	printf "$strtitle\n";printf -- '=%.0s' $(seq 1 ${#strtitle})
-	printf "\nRepo: $repo \n"
+	underline "System summary - $(hostname)" # Print underlined title
 	printf "\nModel: $pimodel \n"
 	printf "Revision: $pirev \n"
 	printf "Architecture: $osarch \n"
