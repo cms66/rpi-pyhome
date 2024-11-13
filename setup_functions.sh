@@ -1,55 +1,43 @@
 # Simple/generic functions
-
 show_menu()
 {
-	arg2=$2[@]
-	arrFull=("${!arg2}")
- 	declare -a arrMenuPrompts=()
-  	declare -a arrMenuActions=()
-   	unset arrMenuPrompts
-    	unset arrMenuActions
-	for i in "${arrFull[@]}" # Populate Prompt/Action arrays from Full array
+	declare -a arrMenuOptions=()
+	declare -a arrMenuActions=()
+	arg1=$1[@]
+	arrFull=("${!arg1}")	
+	for item in "${arrFull[@]}" # Populate Prompt/Action arrays from Full array
 	do
-		arrMenuPrompts+=("$(echo $i | cut -f 1 -d '#')")
-		arrMenuActions+=("$(echo $i | cut -f 2 -d '#')")
+		arrMenuOptions+=("$(echo $item | cut -f 1 -d '#')")
+		arrMenuActions+=("$(echo $item | cut -f 2 -d '#')")
 	done
-	while true
+	while true # Print menu
 	do
-		# show menu - title from arg 1
 		clear
-		printf "$1\n";printf -- '=%.0s' $(seq 1 ${#1});printf "\n" # Print underlined title
-  		i=0 # index 0 will be shown at end of menu
-		for opt in "${arrMenuPrompts[@]}"
+		ind=0
+		for opt in "${arrMenuOptions[@]}"
 		do
-			if [[ $i -gt 0 ]]
-			then
-				printf "%s\n" "$i - $opt" #= ${arrMenuActions[$i]}"
+			if [[ $ind -eq 0 ]]
+			then				
+				underline "${arrMenuOptions[0]}" # Print underlined title
+			else
+				printf "%s\n" "$ind - $opt" # Print numbered menu option
 			fi
-			((i=i+1))
+			((ind=ind+1))
 		done
-		printf "%s\n" "${#arrMenuPrompts[@]} - ${arrMenuPrompts[0]}" #= ${arrMenuActions[0]}"
-		# Get user input
 		read -p "Select option: " inp
 		# Process input
 		if [[ ${#inp} -eq 0 ]]
-		then # user pressed enter
+		then # user pressed enter or space
 			read -p "No option selected, press enter to continue"
 		else
-			if [[ "$inp" =~ ^[0-9]+$ ]] && [[ "$inp" -ge 1 ]] && [[ "$inp" -le ${#arrMenuPrompts[@]} ]]
+			if [[ "$inp" =~ ^[0-9]+$ ]] && [[ "$inp" -ge 1 ]] && [[ "$inp" -lt ${#arrMenuOptions[@]} ]]
 			then # integer in menu range
-				if [[ "$inp" -lt ${#arrMenuPrompts[@]} ]] # input 1 to array length -1
-				then
-					${arrMenuActions[$inp]}
-     					#read -p "Done - ${arrMenuPrompts[$inp]}"
-				else # last menu item = Break
-					${arrMenuActions[0]}
-     					#read -p "Leaving now"
-				fi
+				${arrMenuActions[$inp]}
 			else
 				read -p "Invalid option $inp, press enter to continue"
 			fi
-		fi
-	done	
+		fi	
+	done
 }
 
 underline() # Print line with configurable underline character (defaults to "=")
