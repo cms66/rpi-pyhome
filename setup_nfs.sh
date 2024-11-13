@@ -3,8 +3,9 @@
 install_nfs_server()
 {
  	check_package_status nfs-kernel-server y
-  	if ! [[ $(ufw status | grep 2049) ]] # Add firewall rule
+  	if [[ $(ufw status | grep 2049) -eq "" ]] # Add firewall rule
    	then
+    		read -p "Firewall rule needed"
     		ufw allow from $localnet to any port nfs
       	fi
 	read -p "NFS Server setup done, press any key to return to menu" input
