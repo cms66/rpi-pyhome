@@ -2,7 +2,7 @@
 
 declare -a mnuMainFull=(
 "Setup - Main menu#"
-"Hardware#setup_hardware"
+"Hardware#show_menu mnuHardwareFull"
 "NFS#setup_nfs"
 "OpenMPI#setup_openmpi"
 "OpenCV#setup_opencv"
