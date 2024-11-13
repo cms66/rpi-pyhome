@@ -5,18 +5,22 @@ install_nfs_server()
  	check_package_status nfs-kernel-server y
   	if ! [[ $(ufw status | grep 2049) ]] # Add firewall rule
    	then
-    		read -p "Firewall rule needed"
+    		#read -p "Firewall rule needed"
     		ufw allow from $localnet to any port nfs
-      	else
-    		read -p "Firewall rule exists"
-       fi
+       	fi
 	read -p "NFS Server setup done, press any key to return to menu" input
 }
 
 # Add local export
 add_nfs_local()
 {
-	read -p "NFS local export TODO, press enter to return to menu" input
+ 	# Check server installed
+  	if ! [[ $(check_package_status nfs-kernel-server)  ]]
+   	then
+    		
+  	# check export exists
+   	# Add export
+    	read -p "NFS export added, press any key to return to menu" input
 }
 
 # Add remote mount
