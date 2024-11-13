@@ -20,9 +20,9 @@ add_nfs_local()
     		read -p "NFS server not installed, install now?" input
       		if [[ $input == "y" ]]
 		then
-  			install_nfs_server
+  			install_nfs_server -y
      		fi
-    	fi	
+     	fi	
   	# check export exists
    	# Add export
     	read -p "NFS export added, press any key to return to menu" input
