@@ -6,7 +6,7 @@ install_nfs_server()
   	if [[ $(ufw status | grep 2049) -eq "" ]] # Add firewall rule
    	then
     		read -p "Firewall rule needed"
-    		yes | ufw allow from $localnet to any port nfs
+    		yes | sudo ufw allow from $localnet to any port nfs
       	fi
 	read -p "NFS Server setup done, press any key to return to menu" input
 }
