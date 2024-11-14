@@ -5,10 +5,9 @@ install_nfs_server()
  	check_package_status nfs-kernel-server y
   	if ! [[ $(ufw status | grep 2049) ]] # Add firewall rule
    	then
-    		#read -p "Firewall rule needed"
     		ufw allow from $localnet to any port nfs
        	fi
-	read -p "NFS Server setup done, press any key to return to menu" input
+	read -p "NFS Server setup done, press any key to continue" input
 }
 
 # Add local export
@@ -17,17 +16,14 @@ add_nfs_local()
  	# Check server installed
   	if [[ $(check_package_status nfs-kernel-server | grep "not installed") ]]
    	then
-    		read -p "NFS server not installed, install now?" input
-      		if [[ X$input = X"y" ]]
-		then
-  			install_nfs_server -y
-     		else
-       			# check export exists
-	  		read -p "check export"
-     		fi
-     	fi	
-  	
-   	# Add export
+    		install_nfs_server
+     	fi
+   	# Check mount type
+    	read -p ""
+    	# System mount (default /usr/local/)
+     	# Data (default /var/), option to populate with standard content
+	read -p "Path to directory containing share (press enter for default = /var/): " userdir
+	nfsdir=${userdir:="/var/"}    	
     	read -p "NFS export added, press any key to return to menu" input
 }
 
