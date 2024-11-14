@@ -18,7 +18,7 @@ add_nfs_local()
   	if [[ $(check_package_status nfs-kernel-server | grep "not installed") ]]
    	then
     		read -p "NFS server not installed, install now?" input
-      		if [[ $input == "y" ]]
+      		if [[ $input = "y" ]]
 		then
   			install_nfs_server -y
      		else
