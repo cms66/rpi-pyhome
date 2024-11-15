@@ -20,7 +20,7 @@ show_menu()
 			then				
 				underline "${arrMenuOptions[0]}" # Print underlined title
 			else
-   				if [[ $ind -eq ${#arrMenuOptions[@] - 1} ]] # Last item = break
+   				if [[ $ind -eq ((${#arrMenuOptions[@] - 1})) ]] # Last item = break
        				then
 	   				printf "%s\n" "$opt" # Print quit/back option without number
 	   			else
