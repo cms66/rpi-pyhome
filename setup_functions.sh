@@ -20,7 +20,11 @@ show_menu()
 			then				
 				underline "${arrMenuOptions[0]}" # Print underlined title
 			else
-				printf "%s\n" "$ind - $opt" # Print numbered menu option
+   				if [[ $ind -eq ${#arrMenuOptions[@] - 1} ]] # Last item = break
+       				then
+	   				printf "%s\n" "$opt" # Print quit/back option without number
+	   			else
+					printf "%s\n" "$ind - $opt" # Print numbered menu option
 			fi
 			((ind=ind+1))
 		done
@@ -30,11 +34,16 @@ show_menu()
 		then # user pressed enter or space
 			read -p "No option selected, press enter to continue"
 		else
-			if [[ "$inp" =~ ^[0-9]+$ ]] && [[ "$inp" -ge 1 ]] && [[ "$inp" -lt ${#arrMenuOptions[@]} ]]
-			then # integer in menu range
-				${arrMenuActions[$inp]}
+  			if [[ ${inp,} = "q" ]] || [[ ${inp,} = "b" ]] # Q/q or B/b selected - last menu item
+     			then
+				break 2
 			else
-				read -p "Invalid option $inp, press enter to continue"
+				if [[ "$inp" =~ ^[0-9]+$ ]] && [[ "$inp" -ge 1 ]] && [[ "$inp" -lt ${#arrMenuOptions[@]} ]]
+				then # integer in menu range
+					${arrMenuActions[$inp]}
+				else
+					read -p "Invalid option $inp, press enter to continue"
+     				fi
 			fi
 		fi	
 	done
