@@ -6,17 +6,14 @@ show_menu()
 	declare -a arrMenuActions=()
 	arg1=$1[@]
 	arrFull=("${!arg1}")	
-	for item in "${arrFull[@]}" # Populate Prompt/Action arrays from Full array
-	do
+	for item in "${arrFull[@]}"; do # Populate Prompt/Action arrays from Full array
 		arrMenuOptions+=("$(echo $item | cut -f 1 -d '#')")
 		arrMenuActions+=("$(echo $item | cut -f 2 -d '#')")
 	done
-	while true # Print menu
-	do
+	while true; do # Print menu
 		clear
 		ind=0
-		for opt in "${arrMenuOptions[@]}"
-		do
+		for opt in "${arrMenuOptions[@]}"; do
 			if [[ $ind -eq 0 ]]
 			then				
 				underline "${arrMenuOptions[0]}" # Print underlined title
