@@ -26,7 +26,8 @@ show_menu()
 		done
 		read -p "Select option: " inp
 		# Process input
-		if [[ ${#inp} -eq 0 ]]
+		#if [[ ${#inp} -eq 0 ]]
+  		if [[ ${inp} ]]
 		then # user pressed enter or space
 			read -p "No option selected, press enter to continue"
 		else
