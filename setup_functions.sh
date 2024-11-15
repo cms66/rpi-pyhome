@@ -1,5 +1,6 @@
 # Simple/generic functions
 show_menu()
+# TODO remove number from last option
 {
 	declare -a arrMenuOptions=()
 	declare -a arrMenuActions=()
