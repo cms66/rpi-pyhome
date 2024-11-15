@@ -25,6 +25,7 @@ show_menu()
 	   				printf "%s\n" "$opt" # Print quit/back option without number
 	   			else
 					printf "%s\n" "$ind - $opt" # Print numbered menu option
+     				fi
 			fi
 			((ind=ind+1))
 		done
