@@ -19,11 +19,18 @@ add_nfs_local()
     		install_nfs_server
      	fi
    	# Check mount type
-    	read -p ""
-    	# System mount (default /usr/local/)
-     	# Data (default /var/), option to populate with standard content
+    	read -p "System mount (default /usr/local/) or Data mount? (s/d) " inp
+     	if [[ ${inp,} = "s" ]]
+      	then # System mount (default /usr/local/)
+       	
+       	elif [[ ${inp,} = "d" ]]
+	then
+ 
+    	    	
+     	# Data mount (default /var/), option to populate with standard content
 	read -p "Path to directory containing share (press enter for default = /var/): " userdir
-	nfsdir=${userdir:="/var/"}    	
+	nfsdir=${userdir:="/var/"}
+ 	# Data share (default /home/username/share name)
     	read -p "NFS export added, press any key to return to menu" input
 }
 
