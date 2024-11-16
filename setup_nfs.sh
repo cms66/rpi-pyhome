@@ -19,19 +19,34 @@ add_nfs_local()
     		install_nfs_server
      	fi
    	# Check mount type
-    	read -p "System mount (default /usr/local/) or Data mount? (s/d) " inp
-     	if [[ ${inp,} = "s" ]]
-      	then # System mount (default /usr/local/)
-       	
-       	elif [[ ${inp,} = "d" ]]
-	then
- 
-    	    	
-     	# Data mount (default /var/), option to populate with standard content
-	read -p "Path to directory containing share (press enter for default = /var/): " userdir
-	nfsdir=${userdir:="/var/"}
- 	# Data share (default /home/username/share name)
-    	read -p "NFS export added, press any key to return to menu" input
+    read -p "System mount (default /usr/local) or Data share? (s/d) " inp
+    if [[ ${inp,} = "s" ]]
+    then # System mount (default /usr/local)
+    	defdir="/usr/local"
+    	read -p "Path of directory to be shared (press enter for default = $defdir): " userdir
+		nfsdir=${userdir:="$defdir"}
+		# Check mount exists
+	 	if grep -F "$nfsdir" "/etc/exports"
+	 	then
+	  		read -p "export  exists"
+	  	else
+			echo "$nfsdir $localnet(rw,sync,no_subtree_check,no_root_squash)" >> /etc/exports
+	  		exportfs -ra
+	  		read -p "export $nfsdir created"
+		fi
+    elif [[ ${inp,} = "d" ]]
+	then # Data mount (default /var/), option to populate with standard content
+		defdir="/var/"    	
+		read -p "Path to directory for mounting share (press enter for default = $defdir): " userdir
+		mntdir=${userdir:="$defdir"}
+ 		# Data share path/name (default /home/username/share name)
+ 		shrdir="$usrpath"
+ 		read -p "Data share path (default /home/username/)"
+ 		read -p "Data share name (default /home/username/share name)"
+ 		#read -p "NFS export added, press any key to return to menu" input
+    else
+    	read -p "invalid input"
+    fi
 }
 
 # Add remote mount
