@@ -87,7 +87,7 @@ check_package_status() # Takes package name and install (if needed) as arguments
 {
 	if [[ "$(dpkg -l | grep $1 | cut --fields 1 -d " ")" == "" ]] # Not installed
 	then
-		if [[ "$2" = "y" ]] # Do install
+		if [[ $2 = "y" ]] # Do install
 		then
 			apt-get install -y -q $1
    			read -p "$1 install done, press enter to continue"
