@@ -95,6 +95,8 @@ setup_network()
 	localip=$(hostname -I | awk '{print $1}')
 	echo "$localip   $piname.local $piname" >> /etc/hosts
 	sed -i "s/rootwait/rootwait ipv6.disable=1/g" /boot/firmware/cmdline.txt
+ 	echo "net.ipv6.conf.all.disable_ipv6 = 1" >> /etc/sysctl.conf
+  	sysctl -p
 }
 
 # Configure firewall (ufw)
@@ -140,7 +142,6 @@ get_subnet_cidr()
 	wifi=$(tail -n+3 /proc/net/wireless | grep -q . && echo "yes") # works
 	wired=$(ethtool eth0 | grep "Link\ detected" | cut -f 2 -d ":" | tr -d '[:blank:]') # works
  	dev="eth0" # default device
-  
  	if [[ $wifi = "yes" ]] && [[ $wired = "yes" ]]
 	then
 		read -p "Use ethernet or wifi for setup? (e/w): " inp
@@ -154,20 +155,21 @@ get_subnet_cidr()
 			printf "invalid option"
 		fi
 	fi
- 	localnet="$(nmcli -t device show $dev | grep "ROUTE\[1\]" | cut -f 2 -d "=" | tr -d '[:blank:]' | sed "s/,nh//")"
+ 	localnet=$(nmcli -t device show $dev | grep "ROUTE\[1\]" | cut -f 2 -d "=" | tr -d '[:blank:]' | sed "s/,nh//")
+	echo "$localnet"
 }
 
 # Run setup
 # ---------
-#set_default_shell
-#update_system
-#setup_fail2ban
-#disable_root_ssh
-get_subnet_cidr
+set_default_shell
+update_system
+setup_fail2ban
+disable_root_ssh
 setup_network
 setup_git
 create_local
 create_venv
+get_subnet_cidr
 setup_firewall
 update_firmware
 
