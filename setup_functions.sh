@@ -98,3 +98,18 @@ check_package_status() # Takes package name and install (if needed) as arguments
 		read -p "$1 already installed, press enter to continue"
 	fi
 }
+
+get_subnet_cidr()
+{
+	wifi=$(tail -n+3 /proc/net/wireless | grep -q . && echo "yes") # works
+	wired=$(ethtool eth0 | grep "Link\ detected" | cut -f 2 -d ":" | tr -d '[:blank:]') # works
+	if [[ $wifi = "yes" ]]
+	then
+		localnet=$(nmcli -t device show wlan0 | grep "ROUTE\[1\]" | cut -f 2 -d "=" | tr -d '[:blank:]' | sed "s/,nh//")
+	fi
+	if [[ $wired = "yes" ]]
+	then
+		localnet=$(nmcli -t device show eth0 | grep "ROUTE\[1\]" | cut -f 2 -d "=" | tr -d '[:blank:]' | sed "s/,nh//")
+	fi
+	#printf "%s\n" "localnet = $localnet"
+}
