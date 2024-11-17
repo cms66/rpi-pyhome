@@ -19,7 +19,6 @@ piname=$(hostname)
 repo="rpi-pyhome"
 repobranch="main"
 pimodelnum=$(cat /sys/firmware/devicetree/base/model | cut -d " " -f 3)
-#localnet="$(get_subnet_cidr)"
 
 # Functions
 # ---------
