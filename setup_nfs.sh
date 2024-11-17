@@ -5,7 +5,8 @@ install_nfs_server()
  	check_package_status nfs-kernel-server y
   	if ! [[ $(ufw status | grep 2049) ]] # Add firewall rule
    	then
-    		ufw allow from $localnet to any port nfs
+    		get_subnet_cidr
+    		yes | sudo ufw allow from $localnet to any port nfs
        	fi
 	read -p "NFS Server setup done, press any key to continue" input
 }
