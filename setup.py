@@ -14,7 +14,7 @@ import subprocess, sys
 # Run commands
 print("Python setup")
 subprocess.run(["wget", "https://raw.githubusercontent.com/cms66/rpi-pyhome/main/base_setup.sh"])
-subprocess.call(["sudo", "bash", "./base_setup.sh"])
+subprocess.run(["sudo", "bash", "./base_setup.sh"])
 # TODO remove bash script
 #subprocess.run(["sudo", "rm", "-f", "./base_setup.sh"])
 print("Python setup done")
