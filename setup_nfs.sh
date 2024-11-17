@@ -57,8 +57,8 @@ add_nfs_local()
 		fi
   		chown -R $usrname:$usrname $mntdir/nfs-export/
     		mkdir $usrpath/$shrname
-      		echo "$usrpath/$shrname $localnet(rw,sync,no_subtree_check,no_root_squash)" >> /etc/exports
-		echo "$usrpath/$shrname    none	bind	0	0" >> /etc/fstab
+      		echo "$mntdir/nfs-export $localnet(rw,sync,no_subtree_check,no_root_squash)" >> /etc/exports
+		echo "$mntdir/nfs-export $usrpath/$shrname    none	bind	0	0" >> /etc/fstab
 		exportfs -ra
 		mount -a
  		#read -p "NFS export added, press any key to return to menu" input
