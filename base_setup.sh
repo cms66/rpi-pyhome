@@ -139,16 +139,23 @@ get_subnet_cidr()
 {
 	wifi=$(tail -n+3 /proc/net/wireless | grep -q . && echo "yes") # works
 	wired=$(ethtool eth0 | grep "Link\ detected" | cut -f 2 -d ":" | tr -d '[:blank:]') # works
-	if [[ $wifi = "yes" ]]
+ 	dev="eth0" # default device
+ 	if [[ $wifi = "yes" ]] && [[ $wired = "yes" ]]
 	then
-		localnet=$(nmcli -t device show wlan0 | grep "ROUTE\[1\]" | cut -f 2 -d "=" | tr -d '[:blank:]' | sed "s/,nh//")
+		read -p "Use ethernet or wifi for setup? (e/w): " inp
+		if [[ ${inp,} = "e" ]]
+		then
+			dev="eth0"
+		elif [[ ${inp,} = "w" ]]
+		then
+			dev="wlan0"
+		else
+			printf "invalid option"
+		fi
 	fi
-	if [[ $wired = "yes" ]]
-	then
-		localnet=$(nmcli -t device show eth0 | grep "ROUTE\[1\]" | cut -f 2 -d "=" | tr -d '[:blank:]' | sed "s/,nh//")
-	fi
-	#printf "%s\n" "localnet = $localnet"
+ 	$localnet=$(nmcli -t device show $dev | grep "ROUTE\[1\]" | cut -f 2 -d "=" | tr -d '[:blank:]' | sed "s/,nh//")
 }
+
 # Run setup
 # ---------
 set_default_shell
