@@ -95,7 +95,7 @@ setup_network()
 	echo "$localip   $piname.local $piname" >> /etc/hosts
 	sed -i "s/rootwait/rootwait ipv6.disable=1/g" /boot/firmware/cmdline.txt
  	echo "net.ipv6.conf.all.disable_ipv6 = 1" >> /etc/sysctl.conf
-  	sysctl -p
+  	sysctl --system
    	read -p "ipv6 disabled"
 }
 
@@ -155,7 +155,8 @@ get_subnet_cidr()
 			printf "invalid option"
 		fi
 	fi
- 	localnet=$(nmcli -t device show $dev | grep "ROUTE\[1\]" | cut -f 2 -d "=" | tr -d '[:blank:]' | sed "s/,nh//")
+ 	export localnet=$(nmcli -t device show $dev | grep "ROUTE\[1\]" | cut -f 2 -d "=" | tr -d '[:blank:]' | sed "s/,nh//")
+  	#export x=1; echo "$x"; command
 	echo "$localnet"
 }
 
