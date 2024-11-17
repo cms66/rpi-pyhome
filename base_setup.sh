@@ -140,6 +140,7 @@ get_subnet_cidr()
 	wifi=$(tail -n+3 /proc/net/wireless | grep -q . && echo "yes") # works
 	wired=$(ethtool eth0 | grep "Link\ detected" | cut -f 2 -d ":" | tr -d '[:blank:]') # works
  	dev="eth0" # default device
+  
  	if [[ $wifi = "yes" ]] && [[ $wired = "yes" ]]
 	then
 		read -p "Use ethernet or wifi for setup? (e/w): " inp
