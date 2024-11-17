@@ -74,7 +74,7 @@ add_nfs_remote()
  	defdir="/var/nfs-export"
 	read -p "Full path to remote directory (press enter for default = $defdir): " userdir
  	mntdir=${userdir:="$defdir"}
-  	deflocal="$usrpath/share$(echo $remnode | cut - f 2 -d "-")"
+  	deflocal="$usrpath/share$(echo $remnode | cut -f 2 -d "-")"
   	read -p "Full path to local directory (press enter for default = $deflocal): " shruser
    	shrdir=${shruser:="$deflocal"}
 	mkdir $shrdir
