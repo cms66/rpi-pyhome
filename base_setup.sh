@@ -96,6 +96,7 @@ setup_network()
 	sed -i "s/rootwait/rootwait ipv6.disable=1/g" /boot/firmware/cmdline.txt
  	echo "net.ipv6.conf.all.disable_ipv6 = 1" >> /etc/sysctl.conf
   	sysctl -p
+   	read -p "ipv6 disabled"
 }
 
 # Configure firewall (ufw)
