@@ -28,3 +28,14 @@ wifissid = $wfssid\n\
 wifipassword = $wfpwd\n\
 # End of custom config\n" > $instdir/custom.conf
 }
+
+read_config()
+{
+	while read line; do
+  		[ "${line:0:1}" = "#" ] && continue # Ignore comment lines works
+  		key=${line%% *} # Works
+		value=${line#* } # TODO
+		value=${value#= } # TODO
+		arrconf[$key]="$value"
+	done < /usr/local/sdm/custom.conf
+}
