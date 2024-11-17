@@ -19,7 +19,7 @@ piname=$(hostname)
 repo="rpi-pyhome"
 repobranch="main"
 pimodelnum=$(cat /sys/firmware/devicetree/base/model | cut -d " " -f 3)
-localnet=""
+localnet="$(get_subnet_cidr)"
 
 # Functions
 # ---------
@@ -153,7 +153,7 @@ get_subnet_cidr()
 			printf "invalid option"
 		fi
 	fi
- 	$localnet=$(nmcli -t device show $dev | grep "ROUTE\[1\]" | cut -f 2 -d "=" | tr -d '[:blank:]' | sed "s/,nh//")
+ 	echo $(nmcli -t device show $dev | grep "ROUTE\[1\]" | cut -f 2 -d "=" | tr -d '[:blank:]' | sed "s/,nh//")
 }
 
 # Run setup
