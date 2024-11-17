@@ -90,12 +90,12 @@ create_local()
 # Networking
 setup_network()
 {
-	echo "127.0.0.1   $piname.local $piname" >> /etc/hosts
-	localip=$(hostname -I | awk '{print $1}')
-	echo "$localip   $piname.local $piname" >> /etc/hosts
-	sed -i "s/rootwait/rootwait ipv6.disable=1/g" /boot/firmware/cmdline.txt
+	#echo "127.0.0.1   $piname.local $piname" >> /etc/hosts
+	#localip=$(hostname -I | awk '{print $1}')
+	#echo "$localip   $piname.local $piname" >> /etc/hosts
+	#sed -i "s/rootwait/rootwait ipv6.disable=1/g" /boot/firmware/cmdline.txt
  	echo "net.ipv6.conf.all.disable_ipv6 = 1" >> /etc/sysctl.conf
-  	act=$(sysctl -p /etc/sysctl.conf)
+  	sysctl --system
    	read -p "ipv6 disabled"
 }
 
