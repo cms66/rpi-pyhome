@@ -20,7 +20,6 @@ done
 usrname=$(logname)
 usrpath="/home/$usrname"
 pinum=$(hostname | tr -cd '[:digit:].')
-localnet=$(ip route | awk '/proto/ && !/default/ {print $1}')
 pimodel=$(cat /sys/firmware/devicetree/base/model)
 pirev=$(cat /proc/cpuinfo | grep 'Revision' | awk '{print $3}' | sed 's/^1000//')
 pimem=$(free -mt)
