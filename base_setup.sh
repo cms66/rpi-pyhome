@@ -16,10 +16,10 @@ trap handle_error ERR
 # Variables
 usrname=$(logname) # Script runs as root
 piname=$(hostname)
-localnet=$(ip route | awk '/proto/ && !/default/ {print $1}')
 repo="rpi-pyhome"
 repobranch="main"
 pimodelnum=$(cat /sys/firmware/devicetree/base/model | cut -d " " -f 3)
+localnet=""
 
 # Functions
 # ---------
@@ -135,12 +135,27 @@ update_firmware()
 	fi
 }
 
+get_subnet_cidr()
+{
+	wifi=$(tail -n+3 /proc/net/wireless | grep -q . && echo "yes") # works
+	wired=$(ethtool eth0 | grep "Link\ detected" | cut -f 2 -d ":" | tr -d '[:blank:]') # works
+	if [[ $wifi = "yes" ]]
+	then
+		localnet=$(nmcli -t device show wlan0 | grep "ROUTE\[1\]" | cut -f 2 -d "=" | tr -d '[:blank:]' | sed "s/,nh//")
+	fi
+	if [[ $wired = "yes" ]]
+	then
+		localnet=$(nmcli -t device show eth0 | grep "ROUTE\[1\]" | cut -f 2 -d "=" | tr -d '[:blank:]' | sed "s/,nh//")
+	fi
+	#printf "%s\n" "localnet = $localnet"
+}
 # Run setup
 # ---------
 set_default_shell
 update_system
 setup_fail2ban
 disable_root_ssh
+get_subnet_cidr
 setup_network
 setup_git
 create_local
