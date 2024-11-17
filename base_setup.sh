@@ -95,7 +95,7 @@ setup_network()
 	echo "$localip   $piname.local $piname" >> /etc/hosts
 	sed -i "s/rootwait/rootwait ipv6.disable=1/g" /boot/firmware/cmdline.txt
  	echo "net.ipv6.conf.all.disable_ipv6 = 1" >> /etc/sysctl.conf
-  	sysctl --system
+  	sysctl -p /etc/sysctl.conf
    	read -p "ipv6 disabled"
 }
 
