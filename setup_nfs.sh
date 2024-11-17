@@ -14,6 +14,7 @@ install_nfs_server()
 # Add local export
 add_nfs_local()
 {
+	get_subnet_cidr
  	# Check server installed
   	if [[ $(check_package_status nfs-kernel-server | grep "not installed") ]]
    	then
