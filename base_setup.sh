@@ -158,10 +158,10 @@ get_subnet_cidr()
 
 # Run setup
 # ---------
-set_default_shell
-update_system
-setup_fail2ban
-disable_root_ssh
+#set_default_shell
+#update_system
+#setup_fail2ban
+#disable_root_ssh
 get_subnet_cidr
 setup_network
 setup_git
