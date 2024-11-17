@@ -3,6 +3,7 @@
 install_sdm_local()
 {
     # Default setup - install to /usr/local/sdm
+    	instdir="/usr/local/sdm" # Default installation directory (target for custom.conf)
 	curl -L https://raw.githubusercontent.com/gitbls/sdm/master/EZsdmInstaller | bash
   	# Create directories for images
    	# Assumes
