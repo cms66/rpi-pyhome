@@ -15,7 +15,7 @@ install_sdm_local()
   	mkdir -p $imgdir/current
   	mkdir -p $imgdir/latest
    	mkdir -p $imgdir/archive
-    	chown -R $usrname:$usrname $imgdir
+    chown -R $usrname:$usrname $imgdir
   	# Create custom.conf in installation directory
    	printf "# Custom configuration\n# --------------------\n\
 imgdirectory = $imgdir\n\
@@ -68,9 +68,10 @@ download_latest_os_images()
 modify_sdm_image()
 {
 	show_sdm_config
+ 	read -p "Finished, press any key to continue"
 }
 
 burn_sdm_image()
 {
-
+	read -p "Function not yet available, press any key to continue"
 }
