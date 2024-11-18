@@ -42,5 +42,7 @@ declare -a mnuSDMFull=(
 "Setup - SDM menu#"
 "Install - local#install_sdm_local"
 "Install - server#install_server"
+"Download latest images#download_latest_os_images"
+"Modify image#read_sdm_config;modify_sdm_image"
 "Back#break 2"
 )
