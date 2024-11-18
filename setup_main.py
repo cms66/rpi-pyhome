@@ -3,6 +3,12 @@
 # Imports
 import subprocess, sys
 
+def main():
+    print("Main setup")
+    
+
+if __name__ == "__main__":
+    main()
 # Run bash commands
 #print("Main setup")
 #subprocess.run(["wget", "https://raw.githubusercontent.com/cms66/rpi-pyhome/main/base_setup.sh"])
