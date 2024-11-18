@@ -55,14 +55,15 @@ download_latest_os_images()
 	url32lite=https://downloads.raspberrypi.com/raspios_lite_armhf/images/raspios_lite_armhf-$verlatest/$verlatest-raspios-bookworm-armhf-lite.img.xz
 	url32desk=https://downloads.raspberrypi.com/raspios_armhf/images/raspios_armhf-$verlatest/$verlatest-raspios-bookworm-armhf.img.xz
 	# Replace uncustomized latest images
-  	rm -rf $imgdir/latest/*.img
+  	#rm -rf $imgdir/latest/*.img
 	# Download latest images and extract
-	wget -P $imgdir/latest $url64lite
- 	wget -P $imgdir/latest $url64desk
-  	wget -P $imgdir/latest $url32lite
-   	wget -P $imgdir/latest $url32desk
-    unxz $imgdir/latest/*.xz
-    chown $usrname:$usrname $imgdir/latest/*.img
+	#wget -P $imgdir/latest $url64lite
+ 	#wget -P $imgdir/latest $url64desk
+  	#wget -P $imgdir/latest $url32lite
+   	#wget -P $imgdir/latest $url32desk
+    #unxz $imgdir/latest/*.xz
+    #chown $usrname:$usrname $imgdir/latest/*.img
+    printf "%s\n" "$url64lite"
     read -rp "Downloads for $verlatest to $imgdir/latest complete, press enter to continue" input
 }
 
