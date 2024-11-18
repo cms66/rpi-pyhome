@@ -33,7 +33,7 @@ read_sdm_config()
   		key=${line%% *} # Works
 		value=${line#* } # TODO
 		value=${value#= } # TODO
-		arrconf[$key]="$value"
+		arrSDMconf[$key]="$value"
 	done < /usr/local/sdm/custom.conf
 }
 
@@ -41,10 +41,10 @@ show_sdm_config()
 {
 	declare -A arrSDMconf
 	printf "SDM Config\n----------\n\
-${arrconf[imgdirectory]}\n\
-${arrconf[wificountry]}\n\
-${arrconf[wifissid]}\n\
-${arrconf[wifipassword]}\n"
+${arrSDMconf[imgdirectory]}\n\
+${arrSDMconf[wificountry]}\n\
+${arrSDMconf[wifissid]}\n\
+${arrSDMconf[wifipassword]}\n"
 read -p "Show config done " n
 }
 download_latest_os_images()
