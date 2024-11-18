@@ -69,7 +69,8 @@ download_latest_os_images()
 
 modify_sdm_image()
 {
-	show_sdm_config
+	read_sdm_config
+ 	show_sdm_config
  	read -p "Finished, press any key to continue"
 }
 
