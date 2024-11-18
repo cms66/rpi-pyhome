@@ -3,23 +3,19 @@
 install_sdm_local()
 {
     # Default setup - install to /usr/local/sdm
-    	instdir="/usr/local/sdm" # Default installation directory (target for custom.conf)
+    instdir="/usr/local/sdm" # Default installation directory (target for custom.conf)
 	curl -L https://raw.githubusercontent.com/gitbls/sdm/master/EZsdmInstaller | bash
   	# Create directories for images
-   	# Assumes
-    	# - NFS share already created
-     	# - 
-    
-  	read -rp "Path to image directory (press enter for default = $usrpath/share$pinum/sdm/images/): " userdir </dev/tty
-	$imgdir=${userdir:="$usrpath/share$pinum/sdm/images/"}
- 	read -rp "WiFi country : " wfcountry </dev/tty
- 	read -rp "WiFi SSID : " wfssid </dev/tty
-  	read -rp "WiFi Password : " wfpwd </dev/tty
+   	defdir="$usrpath/share$pinum/sdm/images/"
+  	read -rp "Path to image directory (press enter for default = $usrpath/share$pinum/sdm/images/): " userdir
+	$imgdir=${userdir:="$defdir"}
+ 	read -rp "WiFi country : " wfcountry
+ 	read -rp "WiFi SSID : " wfssid
+  	read -rp "WiFi Password : " wfpwd
   	mkdir -p $imgdir/current
   	mkdir -p $imgdir/latest
    	mkdir -p $imgdir/archive
     	chown -R $usrname:$usrname $imgdir
- 	#download_latest_images
   	# Create custom.conf in installation directory
    	printf "# Custom configuration\n# --------------------\n\
 imgdirectory = $imgdir\n\
@@ -29,7 +25,7 @@ wifipassword = $wfpwd\n\
 # End of custom config\n" > $instdir/custom.conf
 }
 
-read_config()
+read_sdm_config()
 {
 	while read line; do
   		[ "${line:0:1}" = "#" ] && continue # Ignore comment lines works
@@ -38,4 +34,43 @@ read_config()
 		value=${value#= } # TODO
 		arrconf[$key]="$value"
 	done < /usr/local/sdm/custom.conf
+}
+
+show_sdm_config()
+{
+	printf "SDM Config\n----------\n\
+${arrconf[imgdirectory]}\n\
+${arrconf[wificountry]}\n\
+${arrconf[wifissid]}\n\
+${arrconf[wifipassword]}\n"
+read -p "Show config done " n
+}
+download_latest_os_images()
+{
+	# Latest images
+	verlatest=$(curl -s https://downloads.raspberrypi.org/operating-systems-categories.json | grep "releaseDate" | head -n 1 | cut -d '"' -f 4)
+	url64lite=https://downloads.raspberrypi.org/raspios_lite_arm64/images/raspios_lite_arm64-$verlatest/$verlatest-raspios-bookworm-arm64-lite.img.xz
+	url64desk=https://downloads.raspberrypi.org/raspios_arm64/images/raspios_arm64-$verlatest/$verlatest-raspios-bookworm-arm64.img.xz
+	url32lite=https://downloads.raspberrypi.com/raspios_lite_armhf/images/raspios_lite_armhf-$verlatest/$verlatest-raspios-bookworm-armhf-lite.img.xz
+	url32desk=https://downloads.raspberrypi.com/raspios_armhf/images/raspios_armhf-$verlatest/$verlatest-raspios-bookworm-armhf.img.xz
+	# Replace uncustomized latest images
+  	rm -rf $imgdir/latest/*.img
+	# Download latest images and extract
+	wget -P $imgdir/latest $url64lite
+ 	wget -P $imgdir/latest $url64desk
+  	wget -P $imgdir/latest $url32lite
+   	wget -P $imgdir/latest $url32desk
+    unxz $imgdir/latest/*.xz
+    chown $usrname:$usrname $imgdir/latest/*.img
+    read -rp "Downloads for $verlatest to $imgdir/latest complete, press enter to continue" input
+}
+
+modify_sdm_image()
+{
+	show_sdm_config
+}
+
+burn_sdm_image()
+{
+
 }
