@@ -39,7 +39,7 @@ read_sdm_config()
 
 show_sdm_config()
 {
-	declare -A arrSDMconf
+	#declare -A arrSDMcurr
 	printf "SDM Config\n----------\n\
 ${arrSDMconf[imgdirectory]}\n\
 ${arrSDMconf[wificountry]}\n\
