@@ -27,6 +27,7 @@ wifipassword = $wfpwd\n\
 
 read_sdm_config()
 {
+	declare -A arrSDMconf
 	while read line; do
   		[ "${line:0:1}" = "#" ] && continue # Ignore comment lines works
   		key=${line%% *} # Works
@@ -38,6 +39,7 @@ read_sdm_config()
 
 show_sdm_config()
 {
+	declare -A arrSDMconf
 	printf "SDM Config\n----------\n\
 ${arrconf[imgdirectory]}\n\
 ${arrconf[wificountry]}\n\
