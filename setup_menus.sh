@@ -39,7 +39,7 @@ declare -a mnuOpenCVFull=(
 "Back#break 2"
 )
 declare -a mnuSDMFull=(
-"Setup - SDM menu#"
+"Setup - SDM menu#init_sdm"
 "Install - local#install_sdm_local"
 "Install - server#install_server"
 "Download latest images#download_latest_os_images"
