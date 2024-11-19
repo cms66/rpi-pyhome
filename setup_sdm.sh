@@ -53,8 +53,9 @@ ${arrSDMconf[imgdirectory]}\n\
 ${arrSDMconf[wificountry]}\n\
 ${arrSDMconf[wifissid]}\n\
 ${arrSDMconf[wifipassword]}\n"
-read -p "Show config done " n
+#read -p "Show config done " n
 }
+
 download_latest_os_images()
 {
 #https://downloads.raspberrypi.com/raspios_lite_arm64/images/raspios_lite_arm64-2024-11-18/2024-11-13-raspios-bookworm-arm64-lite.img.xz
