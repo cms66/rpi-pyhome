@@ -17,6 +17,7 @@ show_menu()
 			if [[ $ind -eq 0 ]]
 			then				
 				underline "${arrMenuOptions[0]}" # Print underlined title
+    				${arrMenuActions[$ind]}
 			else
 				printf "%s\n" "$ind - $opt" # Print numbered menu option
 			fi
