@@ -76,6 +76,7 @@ download_latest_os_images()
    	#wget -P $imgdir/latest $url32desk
     #unxz $imgdir/latest/*.xz
     #chown $usrname:$usrname $imgdir/latest/*.img
+    printf "%s\n" "$imgdir"
     printf "%s\n" "$url64lite"
     read -rp "Downloads for $verlatest to $imgdir/latest complete, press enter to continue" input
 }
