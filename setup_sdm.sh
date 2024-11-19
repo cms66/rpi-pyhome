@@ -5,9 +5,9 @@ init_sdm()
 	export instdir="/usr/local/sdm" # Default installation directory (target for custom.conf)
 	declare -A arrSDMconf
  	read_sdm_config
-  	read -p "read config done from init"
+  	read -p "read config from init done"
    	show_sdm_config
-    	read -p "show config done from init"
+    	read -p "show config from init done"
 }
 
 install_sdm_local()
