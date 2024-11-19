@@ -44,7 +44,7 @@ read_sdm_config()
 		value=${line#* } # TODO
 		value=${value#= } # TODO
 		arrSDMconf[$key]="$value"
-	done < /usr/local/sdm/custom.conf
+	done < $instdir/custom.conf
 }
 
 show_sdm_config()
