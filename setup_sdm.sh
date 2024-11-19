@@ -6,8 +6,8 @@ init_sdm()
 	declare -A arrSDMconf
  	read_sdm_config
   	read -p "read config done from init"
-   	#show_sdm_config
-    	#read -p "show config done from init"
+   	show_sdm_config
+    	read -p "show config done from init"
 }
 
 install_sdm_local()
