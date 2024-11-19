@@ -1,9 +1,16 @@
 # SDM setup functions
 
+init_sdm()
+{
+	instdir="/usr/local/sdm" # Default installation directory (target for custom.conf)
+	declare -A arrSDMconf
+ 	read_sdm_config
+}
+
 install_sdm_local()
 {
     # Default setup - install to /usr/local/sdm
-    instdir="/usr/local/sdm" # Default installation directory (target for custom.conf)
+    #instdir="/usr/local/sdm" # Default installation directory (target for custom.conf)
 	#curl -L https://raw.githubusercontent.com/gitbls/sdm/master/EZsdmInstaller | bash
   	# Create directories for images
    	defdir="$usrpath/share$pinum/sdm/images/"
@@ -27,8 +34,8 @@ wifipassword = $wfpwd\n\
 
 read_sdm_config()
 {
-	declare -A arrSDMconf
- 	export arrSDMconf[@]
+	#declare -A arrSDMconf
+ 	#export arrSDMconf[@]
 	while read line; do
   		[ "${line:0:1}" = "#" ] && continue # Ignore comment lines works
   		key=${line%% *} # Works
@@ -51,6 +58,7 @@ read -p "Show config done " n
 download_latest_os_images()
 {
 #https://downloads.raspberrypi.com/raspios_lite_arm64/images/raspios_lite_arm64-2024-11-18/2024-11-13-raspios-bookworm-arm64-lite.img.xz
+	imgdir=${arrSDMconf[imgdirectory]}
 	# Latest images
 	verlatest=$(curl -s https://downloads.raspberrypi.org/operating-systems-categories.json | grep "releaseDate" | head -n 1 | cut -d '"' -f 4)
 	url64lite=https://downloads.raspberrypi.org/raspios_lite_arm64/images/raspios_lite_arm64-$verlatest/$verlatest-raspios-bookworm-arm64-lite.img.xz
