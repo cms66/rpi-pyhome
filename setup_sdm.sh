@@ -5,9 +5,9 @@ init_sdm()
 	export instdir="/usr/local/sdm" # Default installation directory (target for custom.conf)
 	declare -A arrSDMconf
  	read_sdm_config
-  	read -p "read config from init done"
+  	#read -p "read config from init done"
    	show_sdm_config
-    	read -p "show config from init done"
+    	#read -p "show config from init done"
 }
 
 install_sdm_local()
@@ -37,8 +37,6 @@ wifipassword = $wfpwd\n\
 
 read_sdm_config()
 {
-	#declare -A arrSDMconf
- 	#export arrSDMconf[@]
 	while read line; do
   		[ "${line:0:1}" = "#" ] && continue # Ignore comment lines works
   		key=${line%% *} # Works
@@ -50,7 +48,6 @@ read_sdm_config()
 
 show_sdm_config()
 {
-	#declare -p arrSDMconf
 	printf "SDM Config\n----------\n\
 ${arrSDMconf[imgdirectory]}\n\
 ${arrSDMconf[wificountry]}\n\
