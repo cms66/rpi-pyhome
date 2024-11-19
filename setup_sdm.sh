@@ -6,6 +6,7 @@ init_sdm()
 	declare -A arrSDMconf
  	read_sdm_config
   	read -p "read config done"
+   	show_sdm_config
 }
 
 install_sdm_local()
