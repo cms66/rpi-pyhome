@@ -62,7 +62,7 @@ show_system_summary()
 	printf "\nDrive usage:\n"
  	df -h
   	printf "\nNetwork:\n$(nmcli dev status)\n"
-	printf "\nFirewall"
+	printf "\nFirewall\n"
 	ufw status
 	read -p "Press enter to return to menu"
 }
