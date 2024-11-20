@@ -90,10 +90,12 @@ modify_sdm_image()
 	then
 		# Latest
   		dirlist="$imgdir/latest/"
+    		printf "$(ls $dirlist)"
 	elif [[ ${inp,} = "c" ]]
 	then
 		# Current
-  		dirlist="$imgdir/current/"
+  		#dirlist="$imgdir/current/"
+    		printf "$(ls "$imgdir/current/")"
 	else
 		printf "invalid option"
 	fi
