@@ -85,17 +85,19 @@ modify_sdm_image()
 {
 	imgdir=${arrSDMconf[imgdirectory]}
   	read -p "Use New (latest) or Current image? (n/c): " inp
+   	dirlist=""
 	if [[ ${inp,} = "n" ]]
 	then
 		# Latest
-  		printf "%s" "$(ls $imgdir/latest/)"
+  		$dirlist="$(ls $imgdir/latest/)"
 	elif [[ ${inp,} = "c" ]]
 	then
 		# Current
-  		printf "%s" "$(ls $imgdir/current/)"
+  		$dirlist="$(ls $imgdir/current/)"
 	else
 		printf "invalid option"
 	fi
+ 	printf "$(ls $dirlist)"
  	#imginp=$imgdir/latest/2024-11-19-raspios-bookworm-arm64-lite.img
   	# imgmod=$imgdir/latest/2024-07-04-raspios-bookworm-arm64.img
   	# Set target filename + copy to current 
