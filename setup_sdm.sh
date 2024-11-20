@@ -89,15 +89,15 @@ modify_sdm_image()
 	if [[ ${inp,} = "n" ]]
 	then
 		# Latest
-  		$dirlist=${ls $imgdir/latest/}
+  		$dirlist="$imgdir/latest/"
 	elif [[ ${inp,} = "c" ]]
 	then
 		# Current
-  		$dirlist="$(ls $imgdir/current/)"
+  		$dirlist="$imgdir/current/"
 	else
 		printf "invalid option"
 	fi
- 	printf "$(ls $dirlist)"
+ 	printf "${ls $dirlist}"
  	#imginp=$imgdir/latest/2024-11-19-raspios-bookworm-arm64-lite.img
   	# imgmod=$imgdir/latest/2024-07-04-raspios-bookworm-arm64.img
   	# Set target filename + copy to current 
