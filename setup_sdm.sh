@@ -53,7 +53,7 @@ ${arrSDMconf[imgdirectory]}\n\
 ${arrSDMconf[wificountry]}\n\
 ${arrSDMconf[wifissid]}\n\
 ${arrSDMconf[wifipassword]}\n"
-#read -p "Show config done " n
+read -p "Press enter to contine" n
 }
 
 download_latest_os_images()
