@@ -42,7 +42,7 @@ read_sdm_config()
   		key=${line%% *} # Works
 		value=${line#* } # TODO
 		value=${value#= } # TODO
-		arrSDMconf[$key]="$value"
+		$arrSDMconf[$key]="$value"
 	done < $instdir/custom.conf
 }
 
