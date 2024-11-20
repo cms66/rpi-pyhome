@@ -67,9 +67,9 @@ download_latest_os_images()
   	rm -rf $imgdir/latest/*.img
 	# Download latest images and extract
 	wget -P $imgdir/latest $url64lite
- 	wget -P $imgdir/latest $url64desk
-  	wget -P $imgdir/latest $url32lite
-   	wget -P $imgdir/latest $url32desk
+ 	#wget -P $imgdir/latest $url64desk
+  	#wget -P $imgdir/latest $url32lite
+   	#wget -P $imgdir/latest $url32desk
     unxz $imgdir/latest/*.xz
     chown $usrname:$usrname $imgdir/latest/*.img
     read -rp "Downloads for $verlatest to $imgdir/latest complete, press enter to continue" input
@@ -77,10 +77,30 @@ download_latest_os_images()
 
 modify_sdm_image()
 {
- 	read -p "Function not yet available, press any key to continue"
+  	# read -rp "Use latest or current image? (l/c): " inp
+ 	imginp=$imgdir/latest/2024-11-19-raspios-bookworm-arm64-lite.img
+  	# imgmod=$imgdir/latest/2024-07-04-raspios-bookworm-arm64.img
+  	# Set target filename + copy to current 
+   	imgmod=$imgdir/current/2024-11-19_64lite.img
+    # imgout=$imgdir/current/2024-07-04_64desk.img
+	cp $imginp $imgmod
+	# - current
+ 
+  	# Set username/password
+	read -rp "Password for $usrname: " usrpass </dev/tty
+	sdm --customize --plugin user:"adduser=$usrname|password=$usrpass" --plugin user:"deluser=pi" --plugin network:"wifissid=${arrconf[wifissid]}|wifipassword=${arrconf[wifipassword]}|wificountry=${arrconf[wificountry]}noipv6" --plugin L10n:host --plugin disables:piwiz --extend --expand-root --regen-ssh-host-keys --restart $imgmod
+
 }
 
 burn_sdm_image()
 {
-	read -p "Function not yet available, press any key to continue"
+	# Select image
+ 	imgburn=$imgdir/current/2024-11-19_64lite.img
+  	#imgburn=$imgdir/current/2024-07-04_64desk.img
+	# Create list for drive selection
+ 	lsblk | cut -f 1 -d " " | sed "s/[^[:alnum:]]//g" # gives sd* mmcblk* nvme*
+  	read -p "Select drive" inpdrv
+ 	drvtarget=$inpdrv
+  	read -p "Hostname: " inphost
+	sdm --burn /dev/$drvtarget --hostname pinode-$inphost --expand-root $imgburn
 }
