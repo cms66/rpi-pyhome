@@ -6,7 +6,7 @@ init_sdm()
 	declare -xA arrSDMconf
  	read_sdm_config
   	#read -p "read config from init done"
-   	show_sdm_config
+   	#show_sdm_config
     	#read -p "show config from init done"
 }
 
@@ -62,7 +62,6 @@ download_latest_os_images()
 	#show_sdm_config
 	imgdir=${arrSDMconf[imgdirectory]}
  	#imgdir=$arrSDMconf[imgdirectory]
-  	printf "%s" "$imgdir"
 	# Latest images
 	verlatest=$(curl -s https://downloads.raspberrypi.org/operating-systems-categories.json | grep "releaseDate" | head -n 1 | cut -d '"' -f 4)
 	url64lite=https://downloads.raspberrypi.org/raspios_lite_arm64/images/raspios_lite_arm64-$verlatest/$verlatest-raspios-bookworm-arm64-lite.img.xz
