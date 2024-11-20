@@ -77,6 +77,7 @@ download_latest_os_images()
 
 modify_sdm_image()
 {
+	imgdir=${arrSDMconf[imgdirectory]}
   	# read -rp "Use latest or current image? (l/c): " inp
  	imginp=$imgdir/latest/2024-11-19-raspios-bookworm-arm64-lite.img
   	# imgmod=$imgdir/latest/2024-07-04-raspios-bookworm-arm64.img
@@ -94,6 +95,7 @@ modify_sdm_image()
 
 burn_sdm_image()
 {
+	imgdir=${arrSDMconf[imgdirectory]}
 	# Select image
  	imgburn=$imgdir/current/2024-11-19_64lite.img
   	#imgburn=$imgdir/current/2024-07-04_64desk.img
