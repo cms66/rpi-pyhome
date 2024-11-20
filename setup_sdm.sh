@@ -88,11 +88,11 @@ modify_sdm_image()
 	if [[ ${inp,} = "n" ]]
 	then
 		# Latest
-  		printf "$(ls $imgdir/latest/)"
+  		printf "%s" "$(ls $imgdir/latest/)"
 	elif [[ ${inp,} = "c" ]]
 	then
 		# Current
-  		printf "$(ls $imgdir/current/)"
+  		printf "%s" "$(ls $imgdir/current/)"
 	else
 		printf "invalid option"
 	fi
