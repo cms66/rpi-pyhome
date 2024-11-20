@@ -85,15 +85,15 @@ modify_sdm_image()
 {
 	imgdir=${arrSDMconf[imgdirectory]}
   	read -p "Use New (latest) or Current image? (n/c): " inp
-   	dirlist=""
+   	#dirlist=""
 	if [[ ${inp,} = "n" ]]
 	then
 		# Latest
-  		$dirlist=$imgdir/latest
+  		dirlist=$imgdir/latest
 	elif [[ ${inp,} = "c" ]]
 	then
 		# Current
-  		$dirlist="$imgdir/current"
+  		dirlist="$imgdir/current"
 	else
 		printf "invalid option"
 	fi
