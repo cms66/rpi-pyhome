@@ -47,16 +47,15 @@ read_sdm_config()
 show_sdm_config()
 {
 	#read_sdm_config
-	printf "SDM Config\n----------\n\
-	for cnf in "${!arrSDMconf[@]}"
+	printf "SDM Config\n----------\n\"
+	for elem in "${!arrSDMconf[@]}"
 	do
-    		echo "${cnf}"
-		echo "${cnfval[${cnf}]}"
-	done 
-${arrSDMconf[imgdirectory]}\n\
-${arrSDMconf[wificountry]}\n\
-${arrSDMconf[wifissid]}\n\
-${arrSDMconf[wifipassword]}\n"
+	 echo "key : ${elem}" -- "value: ${arrSDMconf[${elem}]}"
+	done
+#${arrSDMconf[imgdirectory]}\n\
+#${arrSDMconf[wificountry]}\n\
+#${arrSDMconf[wifissid]}\n\
+#${arrSDMconf[wifipassword]}\n"
 read -p "Press enter to contine"
 }
 
