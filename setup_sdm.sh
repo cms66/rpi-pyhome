@@ -93,7 +93,7 @@ modify_sdm_image()
 	elif [[ ${inp,} = "c" ]]
 	then
 		# Current
-  		$dirlist="${ls $imgdir/current/}"
+  		$dirlist="$(ls $imgdir/current/)"
 	else
 		printf "invalid option"
 	fi
