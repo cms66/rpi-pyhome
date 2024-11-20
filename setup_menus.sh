@@ -44,6 +44,7 @@ declare -a mnuSDMFull=(
 "Install - server#install_server"
 "Download latest images#download_latest_os_images"
 "Modify image#modify_sdm_image"
+"Burn image#burn_sdm_image"
 "Show configuration#show_sdm_config"
 "Back#break 2"
 )
