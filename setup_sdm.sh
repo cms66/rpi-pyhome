@@ -89,11 +89,11 @@ modify_sdm_image()
 	if [[ ${inp,} = "n" ]]
 	then
 		# Latest
-  		$dirlist=$imgdir/latest/
+  		$dirlist=$imgdir/latest
 	elif [[ ${inp,} = "c" ]]
 	then
 		# Current
-  		$dirlist="$imgdir/current/"
+  		$dirlist="$imgdir/current"
 	else
 		printf "invalid option"
 	fi
