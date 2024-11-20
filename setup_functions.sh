@@ -57,7 +57,7 @@ show_system_summary()
 	printf "Revision: $pirev \n"
 	printf "Architecture: $osarch \n"
 	printf "Firmware: $(rpi-eeprom-update) \n"
-	printf "\nMemory:\n$pimem \n"
+	printf "\nMemory:\n$(free -mt) \n"
 	printf "\nStorage:\n$(lsblk) \n"
 	printf "\nDrive usage:\n"
  	df -h
