@@ -47,7 +47,7 @@ read_sdm_config()
 show_sdm_config()
 {
 	#read_sdm_config
-	printf "SDM Config\n----------\n\"
+	printf "SDM Config\n----------\n\
 Image directory: ${arrSDMconf[imgdirectory]}\n\
 WiFi Country: ${arrSDMconf[wificountry]}\n\
 WiFi SSID: ${arrSDMconf[wifissid]}\n\
