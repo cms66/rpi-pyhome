@@ -6,7 +6,7 @@ init_sdm()
 	declare -gA arrSDMconf
  	read_sdm_config
   	#read -p "read config from init done"
-   	show_sdm_config
+   	#show_sdm_config
     	#read -p "show config from init done"
 }
 
@@ -85,9 +85,7 @@ download_latest_os_images()
 
 modify_sdm_image()
 {
-	read_sdm_config
- 	show_sdm_config
- 	read -p "Finished, press any key to continue"
+ 	read -p "Function not yet available, press any key to continue"
 }
 
 burn_sdm_image()
