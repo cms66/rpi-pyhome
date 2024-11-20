@@ -60,7 +60,7 @@ download_latest_os_images()
 {
 #https://downloads.raspberrypi.com/raspios_lite_arm64/images/raspios_lite_arm64-2024-11-18/2024-11-13-raspios-bookworm-arm64-lite.img.xz
 	#imgdir=${arrSDMconf[imgdirectory]}
- 	imgdir=$arrSDMconf[imgdirectory]
+ 	imgdir=arrSDMconf[imgdirectory]
 	# Latest images
 	verlatest=$(curl -s https://downloads.raspberrypi.org/operating-systems-categories.json | grep "releaseDate" | head -n 1 | cut -d '"' -f 4)
 	url64lite=https://downloads.raspberrypi.org/raspios_lite_arm64/images/raspios_lite_arm64-$verlatest/$verlatest-raspios-bookworm-arm64-lite.img.xz
