@@ -48,6 +48,11 @@ show_sdm_config()
 {
 	#read_sdm_config
 	printf "SDM Config\n----------\n\
+	for cnf in "${!arrSDMconf[@]}"
+	do
+    		echo "${cnf}"
+		echo "${cnfval[${cnf}]}"
+	done 
 ${arrSDMconf[imgdirectory]}\n\
 ${arrSDMconf[wificountry]}\n\
 ${arrSDMconf[wifissid]}\n\
