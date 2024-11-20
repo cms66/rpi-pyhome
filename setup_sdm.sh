@@ -5,9 +5,6 @@ init_sdm()
 	export instdir="/usr/local/sdm" # Default installation directory (target for custom.conf)
 	declare -gA arrSDMconf
  	read_sdm_config
-  	#read -p "read config from init done"
-   	#show_sdm_config
-    	#read -p "show config from init done"
 }
 
 install_sdm_local()
@@ -59,10 +56,7 @@ read -p "Press enter to contine" n
 
 download_latest_os_images()
 {
-#https://downloads.raspberrypi.com/raspios_lite_arm64/images/raspios_lite_arm64-2024-11-18/2024-11-13-raspios-bookworm-arm64-lite.img.xz
-	#show_sdm_config
 	imgdir=${arrSDMconf[imgdirectory]}
- 	#imgdir=$arrSDMconf[imgdirectory]
 	# Latest images
 	verlatest=$(curl -s https://downloads.raspberrypi.org/operating-systems-categories.json | grep "releaseDate" | head -n 1 | cut -d '"' -f 4)
 	url64lite=https://downloads.raspberrypi.org/raspios_lite_arm64/images/raspios_lite_arm64-$verlatest/$verlatest-raspios-bookworm-arm64-lite.img.xz
@@ -70,16 +64,14 @@ download_latest_os_images()
 	url32lite=https://downloads.raspberrypi.com/raspios_lite_armhf/images/raspios_lite_armhf-$verlatest/$verlatest-raspios-bookworm-armhf-lite.img.xz
 	url32desk=https://downloads.raspberrypi.com/raspios_armhf/images/raspios_armhf-$verlatest/$verlatest-raspios-bookworm-armhf.img.xz
 	# Replace uncustomized latest images
-  	#rm -rf $imgdir/latest/*.img
+  	rm -rf $imgdir/latest/*.img
 	# Download latest images and extract
-	#wget -P $imgdir/latest $url64lite
- 	#wget -P $imgdir/latest $url64desk
-  	#wget -P $imgdir/latest $url32lite
-   	#wget -P $imgdir/latest $url32desk
-    #unxz $imgdir/latest/*.xz
-    #chown $usrname:$usrname $imgdir/latest/*.img
-    printf "%s\n" "$imgdir"
-    printf "%s\n" "$url64lite"
+	wget -P $imgdir/latest $url64lite
+ 	wget -P $imgdir/latest $url64desk
+  	wget -P $imgdir/latest $url32lite
+   	wget -P $imgdir/latest $url32desk
+    unxz $imgdir/latest/*.xz
+    chown $usrname:$usrname $imgdir/latest/*.img
     read -rp "Downloads for $verlatest to $imgdir/latest complete, press enter to continue" input
 }
 
