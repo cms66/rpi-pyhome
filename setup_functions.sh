@@ -61,8 +61,8 @@ show_system_summary()
 	printf "\nStorage:\n$(lsblk) \n"
 	printf "\nDrive usage:\n"
  	df -h
-  	printf "Network\n$(nmcli dev status)"
-	printf "Firewall"
+  	printf "\nNetwork:\n$(nmcli dev status)"
+	printf "\nFirewall"
 	ufw status
 	read -p "Press enter to return to menu"
 }
