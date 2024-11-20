@@ -48,14 +48,10 @@ show_sdm_config()
 {
 	#read_sdm_config
 	printf "SDM Config\n----------\n\"
-	for elem in "${!arrSDMconf[@]}"
-	do
-	 echo "key : ${elem}" -- "value: ${arrSDMconf[${elem}]}"
-	done
-#${arrSDMconf[imgdirectory]}\n\
-#${arrSDMconf[wificountry]}\n\
-#${arrSDMconf[wifissid]}\n\
-#${arrSDMconf[wifipassword]}\n"
+Image directory: ${arrSDMconf[imgdirectory]}\n\
+WiFi Country: ${arrSDMconf[wificountry]}\n\
+WiFi SSID: ${arrSDMconf[wifissid]}\n\
+WiFi Password: ${arrSDMconf[wifipassword]}\n"
 read -p "Press enter to contine"
 }
 
@@ -63,6 +59,7 @@ edit_sdm_config()
 {
 	read -p "Function not yet available, press enter to contine"
 }
+
 download_latest_os_images()
 {
 	imgdir=${arrSDMconf[imgdirectory]}
