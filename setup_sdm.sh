@@ -101,8 +101,8 @@ burn_sdm_image()
   	#imgburn=$imgdir/current/2024-07-04_64desk.img
 	# Create list for drive selection
  	lsblk | cut -f 1 -d " " | sed "s/[^[:alnum:]]//g" # gives sd* mmcblk* nvme*
-  	read -p "Select drive" inpdrv
+  	read -p "Select drive: " inpdrv
  	drvtarget=$inpdrv
   	read -p "Hostname: " inphost
-	sdm --burn /dev/$drvtarget --hostname pinode-$inphost --expand-root $imgburn
+	sdm --burn /dev/$drvtarget --hostname $inphost --expand-root $imgburn
 }
