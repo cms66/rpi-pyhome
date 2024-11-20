@@ -89,7 +89,7 @@ modify_sdm_image()
 	if [[ ${inp,} = "n" ]]
 	then
 		# Latest
-  		$dirlist="${ls $imgdir/latest/}"
+  		$dirlist=${ls $imgdir/latest/}
 	elif [[ ${inp,} = "c" ]]
 	then
 		# Current
