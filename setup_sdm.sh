@@ -77,7 +77,7 @@ download_latest_os_images()
     #chown $usrname:$usrname $imgdir/latest/*.img
     printf "%s\n" "$imgdir"
     printf "%s\n" "$url64lite"
-    read -rp "Downloads for $verlatest to $imgdir/latest complete, press enter to continue" input
+    read -rp "Downloads for $verlatest to ${arrSDMconf[imgdirectory]}/latest complete, press enter to continue" input
 }
 
 modify_sdm_image()
