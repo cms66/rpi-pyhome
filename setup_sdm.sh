@@ -55,7 +55,7 @@ ${arrSDMconf[wifipassword]}\n"
 read -p "Press enter to contine"
 }
 
-edit_sdm_config
+edit_sdm_config()
 {
 	read -p "Function not yet available, press enter to contine"
 }
