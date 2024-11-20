@@ -9,8 +9,8 @@ init_sdm()
 
 install_sdm_local()
 {
-    # Default setup - install to /usr/local/sdm
-    #instdir="/usr/local/sdm" # Default installation directory (target for custom.conf)
+    	# Default setup - install to /usr/local/sdm
+    	#instdir="/usr/local/sdm" # Default installation directory (target for custom.conf)
 	#curl -L https://raw.githubusercontent.com/gitbls/sdm/master/EZsdmInstaller | bash
   	# Create directories for images
    	defdir="$usrpath/share$pinum/sdm/images"
@@ -22,7 +22,7 @@ install_sdm_local()
   	mkdir -p $imgdir/current
   	mkdir -p $imgdir/latest
    	mkdir -p $imgdir/archive
-    chown -R $usrname:$usrname $imgdir
+	chown -R $usrname:$usrname $imgdir
   	# Create custom.conf in installation directory
    	printf "# Custom configuration\n# --------------------\n\
 imgdirectory = $imgdir\n\
@@ -51,7 +51,7 @@ ${arrSDMconf[imgdirectory]}\n\
 ${arrSDMconf[wificountry]}\n\
 ${arrSDMconf[wifissid]}\n\
 ${arrSDMconf[wifipassword]}\n"
-read -p "Press enter to contine" n
+read -p "Press enter to contine"
 }
 
 download_latest_os_images()
@@ -70,9 +70,9 @@ download_latest_os_images()
  	#wget -P $imgdir/latest $url64desk
   	#wget -P $imgdir/latest $url32lite
    	#wget -P $imgdir/latest $url32desk
-    unxz $imgdir/latest/*.xz
-    chown $usrname:$usrname $imgdir/latest/*.img
-    read -rp "Downloads for $verlatest to $imgdir/latest complete, press enter to continue" input
+	unxz $imgdir/latest/*.xz
+	chown $usrname:$usrname $imgdir/latest/*.img
+	read -p "Downloads for $verlatest to $imgdir/latest complete, press enter to continue" input
 }
 
 modify_sdm_image()
@@ -83,14 +83,14 @@ modify_sdm_image()
   	# imgmod=$imgdir/latest/2024-07-04-raspios-bookworm-arm64.img
   	# Set target filename + copy to current 
    	imgmod=$imgdir/current/2024-11-19_64lite.img
-    # imgout=$imgdir/current/2024-07-04_64desk.img
+    	# imgout=$imgdir/current/2024-07-04_64desk.img
 	cp $imginp $imgmod
 	# - current
  
   	# Set username/password
-	read -rp "Password for $usrname: " usrpass </dev/tty
+	read -p "Password for $usrname: " usrpass
 	sdm --customize --plugin user:"adduser=$usrname|password=$usrpass" --plugin user:"deluser=pi" --plugin network:"ifname=wlan0|wifissid=${arrSDMconf[wifissid]}|wifipassword=${arrSDMconf[wifipassword]}|wificountry=${arrSDMconf[wificountry]}|noipv6" --plugin network:"ifname=eth0|noipv6" --plugin L10n:host --plugin disables:piwiz --extend --expand-root --regen-ssh-host-keys --restart $imgmod
-
+	read -p "Modification finished, press enter to contine"
 }
 
 burn_sdm_image()
@@ -105,4 +105,5 @@ burn_sdm_image()
  	drvtarget=$inpdrv
   	read -p "Hostname: " inphost
 	sdm --burn /dev/$drvtarget --hostname $inphost --expand-root $imgburn
+ 	read -p "Burn finished, press enter to contine"
 }
