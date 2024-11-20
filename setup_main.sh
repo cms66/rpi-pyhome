@@ -22,7 +22,6 @@ usrpath="/home/$usrname"
 pinum=$(hostname | tr -cd '[:digit:].')
 pimodel=$(cat /sys/firmware/devicetree/base/model)
 pirev=$(cat /proc/cpuinfo | grep 'Revision' | awk '{print $3}' | sed 's/^1000//')
-pimem=$(free -mt)
 osarch=$(getconf LONG_BIT)
 repo="rpi-pyhome"
 dirscr=$PWD # Directory of calling script
