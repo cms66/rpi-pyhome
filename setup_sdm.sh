@@ -6,7 +6,7 @@ init_sdm()
 	declare -xA arrSDMconf
  	read_sdm_config
   	#read -p "read config from init done"
-   	#show_sdm_config
+   	show_sdm_config
     	#read -p "show config from init done"
 }
 
