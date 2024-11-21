@@ -102,7 +102,7 @@ modify_sdm_image()
  	#printf "$(ls $dirlist)"
  	#imginp=$imgdir/latest/2024-11-19-raspios-bookworm-arm64-lite.img
   	# Set target filename + copy to current 
-   	#imgmod=$imgdir/current/2024-11-19_64lite.img
+   	imgmod=$imgdir/current/2024-11-19_64lite.img
 	#cp $imginp $imgmod
   	# Set username/password
 	read -p "Password for $usrname: " usrpass
