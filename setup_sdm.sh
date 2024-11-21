@@ -100,18 +100,14 @@ modify_sdm_image()
 		printf "invalid option"
 	fi
  	#printf "$(ls $dirlist)"
- 	#imginp=$imgdir/latest/2024-11-19-raspios-bookworm-arm64-lite.img
-  	# imgmod=$imgdir/latest/2024-07-04-raspios-bookworm-arm64.img
+ 	imginp=$imgdir/latest/2024-11-19-raspios-bookworm-arm64-lite.img
   	# Set target filename + copy to current 
-   	#imgmod=$imgdir/current/2024-11-19_64lite.img
-    	# imgout=$imgdir/current/2024-07-04_64desk.img
-	#cp $imginp $imgmod
-	# - current
- 
+   	imgmod=$imgdir/current/2024-11-19_64lite.img
+	cp $imginp $imgmod
   	# Set username/password
 	#read -p "Password for $usrname: " usrpass
 	#sdm --customize --plugin user:"adduser=$usrname|password=$usrpass" --plugin user:"deluser=pi" --plugin network:"ifname=wlan0|wifissid=${arrSDMconf[wifissid]}|wifipassword=${arrSDMconf[wifipassword]}|wificountry=${arrSDMconf[wificountry]}" --plugin network:"noipv6" --plugin L10n:host --plugin disables:piwiz --extend --expand-root --regen-ssh-host-keys --restart $imgmod
-	read -p "Modification finished, press enter to contine"
+	read -p "Modification finished, press enter to continue"
 }
 
 burn_sdm_image()
