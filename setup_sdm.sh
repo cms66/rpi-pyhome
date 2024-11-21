@@ -110,7 +110,7 @@ modify_sdm_image()
  
   	# Set username/password
 	#read -p "Password for $usrname: " usrpass
-	#sdm --customize --plugin user:"adduser=$usrname|password=$usrpass" --plugin user:"deluser=pi" --plugin network:"ifname=wlan0|wifissid=${arrSDMconf[wifissid]}|wifipassword=${arrSDMconf[wifipassword]}|wificountry=${arrSDMconf[wificountry]}|noipv6" --plugin network:"ifname=eth0|noipv6" --plugin L10n:host --plugin disables:piwiz --extend --expand-root --regen-ssh-host-keys --restart $imgmod
+	#sdm --customize --plugin user:"adduser=$usrname|password=$usrpass" --plugin user:"deluser=pi" --plugin network:"ifname=wlan0|wifissid=${arrSDMconf[wifissid]}|wifipassword=${arrSDMconf[wifipassword]}|wificountry=${arrSDMconf[wificountry]}" --plugin network:"noipv6" --plugin L10n:host --plugin disables:piwiz --extend --expand-root --regen-ssh-host-keys --restart $imgmod
 	read -p "Modification finished, press enter to contine"
 }
 
