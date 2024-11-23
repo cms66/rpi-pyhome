@@ -120,7 +120,8 @@ modify_sdm_image()
 	 			printf "WiFi selected" # wifi setup
      			elif [[ ${usrcon,} = "e" ]]
 			then
-   				printf "Ethernet selected" # eth setup    				
+   				printf "Ethernet selected" # eth setup
+       				sdm --customize --plugin user:"adduser=$usrname|password=$usrpass" --plugin user:"deluser=pi" --plugin network:"netman=nm|noipv6" --plugin L10n:host --plugin disables:piwiz --extend --expand-root --regen-ssh-host-keys --restart $imgmod
        			else
 	  			printf "Invalid option"
       				return 1
