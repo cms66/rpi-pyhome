@@ -115,14 +115,15 @@ modify_sdm_image()
 	  		fi
      			imgmod=$imgdir/current/$img
 			read -p "Use WiFi or Ethernet? (w/e): " usrcon
-   			if [[ ${inp,} = "w" ]]
+   			if [[ ${usrcon,} = "w" ]]
       			then
 	 			printf "WiFi selected" # wifi setup
-     			elif [[ ${inp,} = "e" ]]
+     			elif [[ ${usrcon,} = "e" ]]
 			then
    				printf "Ethernet selected" # eth setup    				
        			else
 	  			printf "Invalid option"
+      				return 1
       			fi
   			# Set username/password
 			read -p "Password for $usrname: " usrpass
