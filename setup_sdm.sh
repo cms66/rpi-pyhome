@@ -114,6 +114,7 @@ modify_sdm_image()
 	  			chmod 777 $imgmod
       				read -p "Copy done, press enter to continue"
 	  		fi
+     			read -p "Modify $imgmod :"
       			;;
     		"Quit")
       			echo "Quit selected"
