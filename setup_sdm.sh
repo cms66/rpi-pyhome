@@ -108,10 +108,10 @@ modify_sdm_image()
       				imginp=$imgdir/$dirlist/$img
 	  			imgmod=$imgdir/current/$img
       				printf "copying image $imginp to $imgmod\n"
-	  			#cp $imginp > $imgmod
       				curl -o $imgmod FILE://$imginp
       				chown $usrname:$usrname $imgmod
 	  			chmod 777 $imgmod
+      				export $imgmod
       				read -p "Copy done, press enter to continue"
 	  		fi
      			read -p "Modify $imgmod :"
