@@ -97,6 +97,7 @@ modify_sdm_image()
  	readarray -t arrImg < <(find $imgdir/$dirlist -type f | awk -F "/" '{print $NF}')
   	#printf "Images\n-----\n"
 	#printf "Image: %s\n" "${arrImg[@]}"
+ 	clear
 	PS3="Select image: "
 	COLUMNS=1
 	select opt in "${arrImg[@]}" "Quit"
