@@ -95,8 +95,8 @@ modify_sdm_image()
 		printf "invalid option"
 	fi	
  	readarray -t arrImg < <(find $imgdir/$dirlist -type f | awk -F "/" '{print $NF}')
-  	printf "Images\n-----\n"
-	printf "Image: %s\n" "${arrImg[@]}"
+  	#printf "Images\n-----\n"
+	#printf "Image: %s\n" "${arrImg[@]}"
 	PS3="Select image: "
 	COLUMNS=1
 	select opt in "${arrImg[@]}" "Quit"
