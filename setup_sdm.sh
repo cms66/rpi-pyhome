@@ -113,7 +113,19 @@ modify_sdm_image()
 	  			chmod 777 $imgmod
       				read -p "Copy done, press enter to continue"
 	  		fi
-     			read -p "Modify $imgdir/current/$img :"
+     			imgmod=$imgdir/current/$img
+			read -p "Use WiFi or Ethernet? (w/e): " usrcon
+   			if [[ ${inp,} = "w" ]]
+      			then
+	 			printf "WiFi selected" # wifi setup
+     			elif [[ ${inp,} = "e" ]]
+			then
+   				printf "Ethernet selected" # eth setup    				
+       			else
+	  			printf "Invalid option"
+      			fi
+  			Set username/password
+			read -p "Password for $usrname: " usrpass
       			;;
     		"Quit")
       			echo "Quit selected"
