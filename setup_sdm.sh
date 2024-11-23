@@ -86,10 +86,13 @@ modify_sdm_image()
 	imgdir=${arrSDMconf[imgdirectory]}
 	read -p "Use Latest or Current image? (L/C): " userdir
 	if [[ ${userdir,} = "l" ]]
- 	then; dirlist="latest" # Latest	
+ 	then
+  		dirlist="latest" # Latest	
 	elif [[ ${userdir,} = "c" ]]
- 	then; dirlist="current" # Current
-	else; printf "Invalid option"	
+ 	then
+  		dirlist="current" # Current
+	else
+ 		printf "Invalid option"	
 	fi	
  	readarray -t arrImg < <(find $imgdir/$dirlist -type f | awk -F "/" '{print $NF}')
   	#clear
