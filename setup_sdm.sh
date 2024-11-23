@@ -114,6 +114,8 @@ modify_sdm_image()
       				read -p "Copy done, press enter to continue"
 	  		fi
      			imgmod=$imgdir/current/$img
+			# Set username/password
+			read -p "Password for $usrname: " usrpass
 			read -p "Use WiFi or Ethernet? (w/e): " usrcon
    			if [[ ${usrcon,} = "w" ]]
       			then
@@ -126,8 +128,6 @@ modify_sdm_image()
 	  			printf "Invalid option"
       				return 1
       			fi
-  			# Set username/password
-			read -p "Password for $usrname: " usrpass
       			;;
     		"Quit")
       			echo "Quit selected"
