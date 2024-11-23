@@ -149,13 +149,39 @@ burn_sdm_image()
 {
 	imgdir=${arrSDMconf[imgdirectory]}
 	# Select image
- 	imgburn=$imgdir/current/2024-11-19_64lite.img
+ 	readarray -t arrImg < <(find $imgdir/current -type f | awk -F "/" '{print $NF}')
+  	printf "Images\n-----\n"
+	PS3="Select image: "
+	COLUMNS=1
+	select img in "${arrImg[@]}" "Quit"
+	do
+  		case $img in
+    		*.img)
+     			imgburn=$imgdir/current/$img
+			printf "Drives\n------\n"
+			lsblk | cut -f 1 -d " " | sed "s/[^[:alnum:]]//g" # gives sd* mmcblk* nvme*
+   			read -p "Select drive: " inpdrv
+      			drvtarget=$inpdrv
+	 		read -p "Hostname: " inphost
+    			read -p "Burn $imgburn to $inpdrv with hostname $inphost"
+    			#sdm --burn /dev/$drvtarget --hostname $inphost --expand-root $imgburn
+      			;;
+    		"Quit")
+      			echo "Quit selected"
+      			break
+      			;;
+    		*)
+      			echo "Invalid option"
+      			;;
+  		esac
+	done
+ 	#imgburn=$imgdir/current/2024-11-19_64lite.img
   	#imgburn=$imgdir/current/2024-07-04_64desk.img
 	# Create list for drive selection
- 	lsblk | cut -f 1 -d " " | sed "s/[^[:alnum:]]//g" # gives sd* mmcblk* nvme*
-  	read -p "Select drive: " inpdrv
- 	drvtarget=$inpdrv
-  	read -p "Hostname: " inphost
-	sdm --burn /dev/$drvtarget --hostname $inphost --expand-root $imgburn
+ 	#lsblk | cut -f 1 -d " " | sed "s/[^[:alnum:]]//g" # gives sd* mmcblk* nvme*
+  	#read -p "Select drive: " inpdrv
+ 	#drvtarget=$inpdrv
+  	#read -p "Hostname: " inphost
+	#sdm --burn /dev/$drvtarget --hostname $inphost --expand-root $imgburn
  	read -p "Burn finished, press enter to contine"
 }
