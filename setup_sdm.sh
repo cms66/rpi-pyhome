@@ -111,10 +111,9 @@ modify_sdm_image()
       				curl -o $imgmod FILE://$imginp
       				chown $usrname:$usrname $imgmod
 	  			chmod 777 $imgmod
-      				export $imgmod
       				read -p "Copy done, press enter to continue"
 	  		fi
-     			read -p "Modify $imgmod :"
+     			read -p "Modify $imgdir/current/$img :"
       			;;
     		"Quit")
       			echo "Quit selected"
