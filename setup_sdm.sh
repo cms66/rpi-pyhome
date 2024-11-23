@@ -84,31 +84,46 @@ download_latest_os_images()
 modify_sdm_image()
 {
 	imgdir=${arrSDMconf[imgdirectory]}
-  	read -p "Use New (latest) or Current image? (n/c): " inp
-   	#dirlist=""
-	if [[ ${inp,} = "n" ]]
-	then
-		# Latest
-  		dirlist="$imgdir/latest/"
-    		printf "$(ls $dirlist)"
-	elif [[ ${inp,} = "c" ]]
-	then
-		# Current
-  		#dirlist="$imgdir/current/"
-    		printf "$(ls "$imgdir/current/")"
+	read -p "Use Latest or Current image? (L/C): " userdir
+	if [[ ${userdir,} = "L" ]]
+	then # Latest
+		dirlist="latest"
+	elif [[ ${userdir,} = "C" ]]
+	then # Current
+		dirlist="current"
 	else
 		printf "invalid option"
-	fi
- 	#printf "$(ls $dirlist)"
- 	imginp=$imgdir/latest/2024-11-19-raspios-bookworm-arm64-lite.img
+	fi	
+ 	readarray -t arrImg < <(find $imgdir/$dirlist -type f | awk -F "/" '{print $NF}')
+  	printf "Images\n-----\n"
+	printf "Image: %s\n" "${arrImg[@]}"
+	PS3="Select image: "
+	COLUMNS=1
+	select opt in "${arrImg[@]}" "Quit"
+	do
+  		case $opt in
+    		*.img)
+      			echo "Image $opt selected"
+      			# processing
+      			;;
+    		"Quit")
+      			echo "Quit selected"
+      			break
+      			;;
+    		*)
+      			echo "Invalid option"
+      			;;
+  		esac
+	done
+ 	#imginp=$imgdir/latest/2024-11-19-raspios-bookworm-arm64-lite.img
   	# Set target filename + copy to current 
-   	imgmod=$imgdir/current/2024-11-19_64lite.img
-    	printf "copying image\n"
-	cp $imginp $imgmod
+   	#imgmod=$imgdir/current/2024-11-19_64lite.img
+    	#printf "copying image\n"
+	#cp $imginp $imgmod
   	# Set username/password
-	read -p "Password for $usrname: " usrpass
- 	sdm --customize --plugin user:"adduser=$usrname|password=$usrpass" --plugin user:"deluser=pi" --plugin network:"noipv6" --plugin L10n:host --plugin disables:piwiz --extend --expand-root --regen-ssh-host-keys --restart $imgmod
-	sdm --customize --plugin user:"adduser=$usrname|password=$usrpass" --plugin user:"deluser=pi" --plugin network:"ifname=wlan0|wifissid=${arrSDMconf[wifissid]}|wifipassword=${arrSDMconf[wifipassword]}|wificountry=${arrSDMconf[wificountry]}" --plugin network:"noipv6" --plugin L10n:host --plugin disables:piwiz --extend --expand-root --regen-ssh-host-keys --restart $imgmod
+	#read -p "Password for $usrname: " usrpass
+ 	#sdm --customize --plugin user:"adduser=$usrname|password=$usrpass" --plugin user:"deluser=pi" --plugin network:"noipv6" --plugin L10n:host --plugin disables:piwiz --extend --expand-root --regen-ssh-host-keys --restart $imgmod
+	#sdm --customize --plugin user:"adduser=$usrname|password=$usrpass" --plugin user:"deluser=pi" --plugin network:"ifname=wlan0|wifissid=${arrSDMconf[wifissid]}|wifipassword=${arrSDMconf[wifipassword]}|wificountry=${arrSDMconf[wificountry]}" --plugin network:"noipv6" --plugin L10n:host --plugin disables:piwiz --extend --expand-root --regen-ssh-host-keys --restart $imgmod
 	read -p "Modification finished, press enter to continue"
 }
 
