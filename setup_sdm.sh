@@ -124,7 +124,7 @@ modify_sdm_image()
        			else
 	  			printf "Invalid option"
       			fi
-  			Set username/password
+  			# Set username/password
 			read -p "Password for $usrname: " usrpass
       			;;
     		"Quit")
