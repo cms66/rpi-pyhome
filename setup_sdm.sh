@@ -95,17 +95,22 @@ modify_sdm_image()
  		printf "Invalid option"	
 	fi	
  	readarray -t arrImg < <(find $imgdir/$dirlist -type f | awk -F "/" '{print $NF}')
-  	#clear
   	printf "Images\n-----\n"
-	#printf "Image: %s\n" "${arrImg[@]}"
 	PS3="Select image: "
 	COLUMNS=1
-	select opt in "${arrImg[@]}" "Quit"
+	select img in "${arrImg[@]}" "Quit"
 	do
-  		case $opt in
+  		case $img in
     		*.img)
-      			echo "Image $opt selected"
-      			# processing
+      			#echo "Image $img selected"
+	 		if [[ ${dirlist} = "latest" ]] # Copy to /current for modification
+    			then
+      				imginp=$imgdir/$dirlist/$img
+	  			imgmod=$imgdir/current/$img
+      				printf "copying image $img\n"
+	  			cp $imginp $imgmod
+      				read -p "Copy done, press enter to continue"
+	  		fi
       			;;
     		"Quit")
       			echo "Quit selected"
@@ -116,11 +121,6 @@ modify_sdm_image()
       			;;
   		esac
 	done
- 	#imginp=$imgdir/latest/2024-11-19-raspios-bookworm-arm64-lite.img
-  	# Set target filename + copy to current 
-   	#imgmod=$imgdir/current/2024-11-19_64lite.img
-    	#printf "copying image\n"
-	#cp $imginp $imgmod
   	# Set username/password
 	#read -p "Password for $usrname: " usrpass
  	#sdm --customize --plugin user:"adduser=$usrname|password=$usrpass" --plugin user:"deluser=pi" --plugin network:"noipv6" --plugin L10n:host --plugin disables:piwiz --extend --expand-root --regen-ssh-host-keys --restart $imgmod
