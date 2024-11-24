@@ -38,7 +38,7 @@ add_nfs_local()
 		fi
 	elif [[ ${inp,} = "d" ]]
 	then # Data mount (default /var/), option to populate with standard content
-		defdir="/var/"    	
+		defdir="/var"    	
 		read -p "Path to directory for mounting share (press enter for default = $defdir): " userdir
 		mntdir=${userdir:="$defdir"}
  		# Data share path/name (default /home/username/share name)
