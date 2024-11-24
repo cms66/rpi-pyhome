@@ -4,7 +4,7 @@ init_sdm()
 {
 	declare -gA arrSDMconf
  	export instdir="/usr/local/sdm" # Default installation directory (target for custom.conf)
-	if [[ ! ${command -v sdm} ]]
+	if [[ ! $command -v sdm ]]
  	then
  		read -p "SDM not installed"
    	else
@@ -81,10 +81,12 @@ download_latest_os_images()
 	# Replace uncustomized latest images
   	rm -rf $imgdir/latest/*.img
 	# Download latest images and extract
+ 	printf "Downloading latest images"
 	wget -P $imgdir/latest $url64lite
  	wget -P $imgdir/latest $url64desk
   	wget -P $imgdir/latest $url32lite
    	wget -P $imgdir/latest $url32desk
+    	printf "Downloads done, extracting images"
 	unxz $imgdir/latest/*.xz
 	chown $usrname:$usrname $imgdir/latest/*.img
 	read -p "Downloads for $verlatest to $imgdir/latest complete, press enter to continue" input
