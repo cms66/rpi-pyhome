@@ -41,7 +41,7 @@ wifipassword = $wfpwd\n\
 
 read_sdm_config()
 {
-	if [[ command -v sdm ]]
+	if [[ ${command -v sdm} ]]
  	then
 		while read line; do
 	  		[ "${line:0:1}" = "#" ] && continue # Ignore comment lines works
