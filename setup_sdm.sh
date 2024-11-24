@@ -6,7 +6,7 @@ init_sdm()
  	export instdir="/usr/local/sdm" # Default installation directory (target for custom.conf)
 	if [[ -d "/usr/local/sdm" ]]
  	then
- 		read_sdm_config
+ 		#read_sdm_config
    	else
     		read -p "SDM not installed"
 	fi
