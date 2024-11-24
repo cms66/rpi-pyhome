@@ -40,13 +40,16 @@ wifipassword = $wfpwd\n\
 
 read_sdm_config()
 {
-	while read line; do
-  		[ "${line:0:1}" = "#" ] && continue # Ignore comment lines works
-  		key=${line%% *} # Works
-		value=${line#* } # TODO
-		value=${value#= } # TODO
-		arrSDMconf[$key]="$value"
-	done < $instdir/custom.conf
+	if [[ -d "/usr/local/sdm" ]]
+ 	then
+		while read line; do
+	  		[ "${line:0:1}" = "#" ] && continue # Ignore comment lines works
+	  		key=${line%% *} # Works
+			value=${line#* } # TODO
+			value=${value#= } # TODO
+			arrSDMconf[$key]="$value"
+		done < $instdir/custom.conf
+  	fi
 }
 
 show_sdm_config()
