@@ -120,6 +120,7 @@ modify_sdm_image()
    			if [[ ${usrcon,} = "w" ]]
       			then
 	 			printf "WiFi selected" # wifi setup
+     				sdm --customize --plugin user:"adduser=$usrname|password=$usrpass" --plugin user:"deluser=pi" --plugin network:"ifname=wlan0|wifissid=${arrSDMconf[wifissid]}|wifipassword=${arrSDMconf[wifipassword]}|wificountry=${arrSDMconf[wificountry]}" --plugin L10n:host --plugin disables:piwiz --extend --expand-root --regen-ssh-host-keys --restart $imgmod
      			elif [[ ${usrcon,} = "e" ]]
 			then
    				printf "Ethernet selected" # eth setup
