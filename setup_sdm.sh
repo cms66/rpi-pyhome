@@ -22,15 +22,16 @@ install_sdm_local()
   	# Create directories for images
    	defdir="$usrpath/share$pinum/sdm/images"
   	read -rp "Path to image directory (press enter for default = $defdir): " userdir
-	$imgdir=${userdir:="$defdir"}
- 	read -rp "WiFi country : " wfcountry
- 	read -rp "WiFi SSID : " wfssid
-  	read -rp "WiFi Password : " wfpwd
+	imgdir=${userdir:="$defdir"} # TODO
+ 	#imgdir="/home/multipi/share1/sdm/images"
   	mkdir -p $imgdir/current
   	mkdir -p $imgdir/latest
    	mkdir -p $imgdir/archive
 	chown -R $usrname:$usrname $imgdir
   	# Create custom.conf in installation directory
+   	read -rp "WiFi country : " wfcountry
+ 	read -rp "WiFi SSID : " wfssid
+  	read -rp "WiFi Password : " wfpwd
    	printf "# Custom configuration\n# --------------------\n\
 imgdirectory = $imgdir\n\
 wificountry = $wfcountry\n\
