@@ -111,10 +111,10 @@ get_subnet_cidr()
 		read -p "Use ethernet or wifi for setup? (e/w): " inp
 		if [[ ${inp,} = "e" ]]
 		then
-			$dev="eth0"
+			dev="eth0"
 		elif [[ ${inp,} = "w" ]]
 		then
-			$dev="wlan0"
+			dev="wlan0"
 		else
 			printf "invalid option"
 		fi
