@@ -37,7 +37,7 @@ add_nfs_local()
 			read -p "export $nfsdir created"
 		fi
 	elif [[ ${inp,} = "d" ]]
-	then # Data mount (default /var/), option to populate with standard content
+	then # Data mount (default /var), option to populate with standard content
 		defdir="/var"    	
 		read -p "Path to directory for mounting share (press enter for default = $defdir): " userdir
 		mntdir=${userdir:="$defdir"}
