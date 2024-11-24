@@ -92,6 +92,7 @@ download_latest_os_images()
 
 modify_sdm_image()
 {
+	# TODO - Add rename image file option after modification
 	imgdir=${arrSDMconf[imgdirectory]}
 	read -p "Use Latest or Current image? (L/C): " userdir
 	if [[ ${userdir,} = "l" ]]
@@ -111,7 +112,6 @@ modify_sdm_image()
 	do
   		case $img in
     		*.img)
-      			#echo "Image $img selected"
 	 		if [[ ${dirlist} = "latest" ]] # Copy to /current for modification
     			then
       				imginp=$imgdir/$dirlist/$img
@@ -122,7 +122,7 @@ modify_sdm_image()
 	  			chmod 777 $imgmod
       				read -p "Copy done, press enter to continue"
 	  		fi
-     			imgmod=$imgdir/current/$img
+     			imgmod=$imgdir/current/$img # Modify image in current
 			# Set username/password
 			read -p "Password for $usrname: " usrpass
 			read -p "Use WiFi or Ethernet? (w/e): " usrcon
