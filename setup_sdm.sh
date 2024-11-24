@@ -9,7 +9,7 @@ init_sdm()
  		read -p "SDM not installed"
    	else
     		read -p "SDM installed"
-      		read_sdm_config
+      		#read_sdm_config
 	fi
 }
 
