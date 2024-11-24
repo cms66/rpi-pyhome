@@ -55,7 +55,7 @@ add_nfs_local()
 		else
 			mkdir $mntdir/nfs-export   			
 		fi
-  		chown -R $usrname:$usrname $mntdir/nfs-export/
+  		chown -R $usrname:$usrname $mntdir/nfs-export
     		mkdir $usrpath/$shrname
       		echo "$mntdir/nfs-export $localnet(rw,sync,no_subtree_check,no_root_squash)" >> /etc/exports
 		echo "$mntdir/nfs-export $usrpath/$shrname    none	bind	0	0" >> /etc/fstab
