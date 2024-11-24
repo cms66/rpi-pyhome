@@ -79,12 +79,12 @@ download_latest_os_images()
 	# Replace uncustomized latest images
   	rm -rf $imgdir/latest/*.img
 	# Download latest images and extract
- 	printf "Downloading latest images"
+ 	printf "Downloading latest images\n"
 	wget -P $imgdir/latest $url64lite
  	wget -P $imgdir/latest $url64desk
   	wget -P $imgdir/latest $url32lite
    	wget -P $imgdir/latest $url32desk
-    	printf "Downloads done, extracting images"
+    	printf "Downloads done, extracting images\n"
 	unxz $imgdir/latest/*.xz
 	chown $usrname:$usrname $imgdir/latest/*.img
 	read -p "Downloads for $verlatest to $imgdir/latest complete, press enter to continue" input
