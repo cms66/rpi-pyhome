@@ -92,7 +92,7 @@ setup_network()
 {
 	echo "127.0.0.1   $piname.local $piname" >> /etc/hosts
 	localip=$(hostname -I | awk '{print $1}')
-	echo "$localip  $piname.local $piname" >> /etc/hosts
+	echo "$localip  $piname.local $piname" >> /etc/hosts # TODO - Setup for eth or wifi
 }
 
 # Configure firewall (ufw)
