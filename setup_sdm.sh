@@ -4,12 +4,9 @@ init_sdm()
 {
 	declare -gA arrSDMconf
  	export instdir="/usr/local/sdm" # Default installation directory (target for custom.conf)
-	if [[ ! $(command -v sdm) ]]
+	if [[ $(command -v sdm) ]]
  	then
- 		read -p "SDM not installed"
-   	else
-    		read -p "SDM installed"
-      		#read_sdm_config
+ 		read_sdm_config  		
 	fi
 }
 
