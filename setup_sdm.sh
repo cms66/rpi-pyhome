@@ -7,6 +7,8 @@ init_sdm()
 	if [[ -d "/usr/local/sdm" ]]
  	then
  		read_sdm_config
+   	else
+    		read -p "SDM not installed"
 	fi
 }
 
