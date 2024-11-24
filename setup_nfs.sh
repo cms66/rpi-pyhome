@@ -78,7 +78,7 @@ add_nfs_remote()
   	read -p "Full path to local directory (press enter for default = $deflocal): " shruser
    	shrdir=${shruser:="$deflocal"}
 	mkdir $shrdir
-	chown $usrname:$usrname $shrdir
+	chown -R $usrname:$usrname $shrdir
 	echo "$remnode:$mntdir $shrdir    nfs defaults,user,exec,noauto,x-systemd.automount 0 0" >> /etc/fstab
 	mount -a
 	read -p "NFS remote mount done, press enter to return to menu" input
