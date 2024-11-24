@@ -2,16 +2,19 @@
 
 init_sdm()
 {
-	export instdir="/usr/local/sdm" # Default installation directory (target for custom.conf)
 	declare -gA arrSDMconf
- 	read_sdm_config
+ 	export instdir="/usr/local/sdm" # Default installation directory (target for custom.conf)
+	if [[ -d "/usr/local/sdm" ]]
+ 	then
+ 		read_sdm_config
+	fi
 }
 
 install_sdm_local()
 {
     	# Default setup - install to /usr/local/sdm
      	# TODO - select install location
-    	instdir="/usr/local/sdm" # Default installation directory (target for custom.conf)
+    	#instdir="/usr/local/sdm" # Default installation directory (target for custom.conf)
 	curl -L https://raw.githubusercontent.com/gitbls/sdm/master/EZsdmInstaller | bash
   	# Create directories for images
    	defdir="$usrpath/share$pinum/sdm/images"
