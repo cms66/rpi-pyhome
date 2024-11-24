@@ -1,5 +1,5 @@
 # SDM setup functions
-
+# TODO - Disable SDM install in image modification
 init_sdm()
 {
 	declare -gA arrSDMconf
