@@ -4,7 +4,7 @@ init_sdm()
 {
 	declare -gA arrSDMconf
  	export instdir="/usr/local/sdm" # Default installation directory (target for custom.conf)
-	if [[ ! -d "/usr/local/sdm" ]]
+	if [[ ! command -v sdm ]]
  	then
  		read -p "SDM not installed"
    	else
@@ -41,7 +41,7 @@ wifipassword = $wfpwd\n\
 
 read_sdm_config()
 {
-	if [[ -d "/usr/local/sdm" ]]
+	if [[ command -v sdm ]]
  	then
 		while read line; do
 	  		[ "${line:0:1}" = "#" ] && continue # Ignore comment lines works
