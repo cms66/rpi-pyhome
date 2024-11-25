@@ -39,8 +39,14 @@ update_system()
 	apt-get -y update
 	apt-get -y upgrade
 	apt-get -y install python3-dev gcc g++ gfortran libraspberrypi-dev libomp-dev git-core build-essential cmake pkg-config make screen htop stress zip nfs-common fail2ban ufw ntpdate
-	rm - rf /usr/local/sdm
+	remove_sdm
+}
+
+remove_sdm()
+{
+	rm -rf /usr/local/sdm
  	rm -rf /usr/local/bin/sdm
+  	rm -rf /etc/sdm
 }
 
 # Git setup
