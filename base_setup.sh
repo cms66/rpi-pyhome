@@ -39,6 +39,8 @@ update_system()
 	apt-get -y update
 	apt-get -y upgrade
 	apt-get -y install python3-dev gcc g++ gfortran libraspberrypi-dev libomp-dev git-core build-essential cmake pkg-config make screen htop stress zip nfs-common fail2ban ufw ntpdate
+	rm - rf /usr/local/sdm
+ 	rm -rf /usr/local/bin/sdm
 }
 
 # Git setup
@@ -135,25 +137,25 @@ update_firmware()
 
 get_subnet_cidr()
 {
-	wifi=$(tail -n+3 /proc/net/wireless | grep -q . && echo "yes") # works
-	wired=$(ethtool eth0 | grep "Link\ detected" | cut -f 2 -d ":" | tr -d '[:blank:]') # works
- 	dev="eth0" # default device
- 	if [[ $wifi = "yes" ]] && [[ $wired = "yes" ]]
+	wired="$(nmcli -t connection show --active | grep ethernet | cut -f 4 -d ":")"
+	wifi="$(nmcli -t connection show --active | grep wireless | cut -f 4 -d ":")"
+ 	if [[ $wifi ]] && [[ $wired ]] # Multiple connections
 	then
 		read -p "Use ethernet or wifi for setup? (e/w): " inp
 		if [[ ${inp,} = "e" ]]
 		then
-			dev="eth0"
+			dev=$wired
 		elif [[ ${inp,} = "w" ]]
 		then
-			dev="wlan0"
+			dev=$wifi
 		else
 			printf "invalid option"
 		fi
+	else
+		dev="$wifi$wired"
 	fi
  	export localnet=$(nmcli -t device show $dev | grep "ROUTE\[1\]" | cut -f 2 -d "=" | tr -d '[:blank:]' | sed "s/,nh//")
-  	#export x=1; echo "$x"; command
-	echo "$localnet"
+	printf "Device = $dev | localnet = $localnet\n"
 }
 
 # Run setup
