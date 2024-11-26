@@ -153,8 +153,8 @@ get_subnet_cidr()
 		else
 			printf "invalid option"
 		fi
-	else
-		dev="$wifi$wired"
+	else # Single connection
+		dev="$wifi$wired" 
 	fi
  	export localnet=$(nmcli -t device show $dev | grep "ROUTE\[1\]" | cut -f 2 -d "=" | tr -d '[:blank:]' | sed "s/,nh//")
 	printf "Device = $dev | localnet = $localnet\n"
