@@ -72,15 +72,33 @@ add_nfs_local()
 add_nfs_remote()
 {
 	read -p "Remote node: " remnode
- 	defdir="/var/nfs-export"
-	read -p "Full path to remote directory (press enter for default = $defdir): " userdir
- 	mntdir=${userdir:="$defdir"}
-  	deflocal="$usrpath/share$(echo $remnode | cut -f 2 -d "-")"
-  	read -p "Full path to local directory (press enter for default = $deflocal): " shruser
-   	shrdir=${shruser:="$deflocal"}
-	mkdir $shrdir
-	chown -R $usrname:$usrname $shrdir
-	echo "$remnode:$mntdir $shrdir    nfs defaults,user,exec,noauto,x-systemd.automount 0 0" >> /etc/fstab
+	# Check mount type
+    	read -p "System mount (default /usr/local) or Data share? (s/d) " inp
+    	if [[ ${inp,} = "s" ]]
+    	then # System mount (default /usr/local)
+     		nfsdir="/usr/local"
+     		read -p "Full path to remote directory (press enter for default = $nfsdir): " userdir
+       		mntdir=${userdir:="$nfsdir"}
+	 	echo "$remnode:$mntdir $mntdir    nfs defaults,user,exec,noauto,x-systemd.automount 0 0" >> /etc/fstab
+	elif [[ ${inp,} = "d" ]]
+	then # Data mount (default /var)
+ 		read -p "TODO - Remote data mount"
+	fi
 	mount -a
-	read -p "NFS remote mount done, press enter to return to menu" input
+	read -p "NFS remote mount done, press enter to return to menu"
+
+
+ 
+ 
+ 	#defdir="/var/nfs-export"
+	#read -p "Full path to remote directory (press enter for default = $defdir): " userdir
+ 	#mntdir=${userdir:="$defdir"}
+  	#deflocal="$usrpath/share$(echo $remnode | cut -f 2 -d "-")"
+  	#read -p "Full path to local directory (press enter for default = $deflocal): " shruser
+   	#shrdir=${shruser:="$deflocal"}
+	#mkdir $shrdir
+	#chown -R $usrname:$usrname $shrdir
+	#echo "$remnode:$mntdir $shrdir    nfs defaults,user,exec,noauto,x-systemd.automount 0 0" >> /etc/fstab
+	#mount -a
+	#read -p "NFS remote mount done, press enter to return to menu" input
 }
