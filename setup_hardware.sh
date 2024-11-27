@@ -17,7 +17,8 @@ setup_sense_hat()
 
 update_firmware()
 {
-	if [[ $pimodelnum = "4" ]] || [[ $pimodelnum = "5" ]]; then # Model has firmware
+	if [[ $pimodelnum -ge 4 ]] # || [[ $pimodelnum = "5" ]]
+ 	then # Model has firmware
 		printf "Model has firmware\n"
 		updfirm=$(sudo rpi-eeprom-update | grep BOOTLOADER | cut -d ":" -f 2 | tr -d '[:blank:]') # Check for updates
 		printf "Update status: $updfirm\n"
