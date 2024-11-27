@@ -17,4 +17,8 @@ subprocess.run(["wget", "https://raw.githubusercontent.com/cms66/rpi-pyhome/main
 subprocess.run(["sudo", "bash", "./base_setup.sh"])
 # TODO remove bash script
 subprocess.run(["sudo", "rm", "-f", "./base_setup.sh"])
-print("Python setup done")
+char = input ("Python setup done, press p to poweroff or any other key to reboot: ")
+    if char == 'p':
+       subprocess.run(["sudo", "poweroff"])
+    else:
+       subprocess.run(["sudo", "reboot"])
