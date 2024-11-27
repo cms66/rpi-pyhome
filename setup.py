@@ -18,7 +18,7 @@ subprocess.run(["sudo", "bash", "./base_setup.sh"])
 # TODO remove bash script
 subprocess.run(["sudo", "rm", "-f", "./base_setup.sh"])
 char = input ("Python setup done, press p to poweroff or any other key to reboot: ")
-    if char == 'p':
-       subprocess.run(["sudo", "poweroff"])
-    else:
-       subprocess.run(["sudo", "reboot"])
+if char == 'p':
+   subprocess.run(["sudo", "poweroff"])
+else:
+   subprocess.run(["sudo", "reboot"])
