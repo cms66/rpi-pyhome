@@ -174,10 +174,3 @@ get_subnet_cidr
 setup_firewall
 update_firmware
 
-#read -rp "Finished base setup press p to poweroff or any other key to reboot: " inp </dev/tty
-#if [ X$inp = X"p" ]
-#then
-#	poweroff
-#else
-#	reboot
-#fi
