@@ -20,8 +20,8 @@ usropt=input("Base seup done, press p to poweroff or any other key to reboot: ")
 os.remove(__file__)
 if usropt == 'p':
     print ("Poweroff selected")
-    subprocess.call(["shutdown", "-s", "-t", "0"])
+    subprocess.call(["shutdown", "-s", "now"])
 else:
     print ("Reboot selected")
-    subprocess.call(["shutdown", "-r", "-t", "0"])
+    subprocess.call(["shutdown", "-r", "now"])
 
