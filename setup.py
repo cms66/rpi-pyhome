@@ -25,10 +25,8 @@ subprocess.run(["wget", "https://raw.githubusercontent.com/cms66/rpi-pyhome/main
 #    print('Reboot')
 #    subprocess.run(["sudo", "reboot"])
 #print("done")
-prompt1=input('Can I make this stupid thing work?').lower()
-if prompt1 == 'yes':
-    print('Hooray, I can!')
-elif prompt1 == 'no':
-    print('Well I did anyway!')
+prompt1=input("Base seup done, press p to poweroff or any other key to reboot: ").lower()
+if prompt1 == 'p':
+    print('Poweroff')
 else:
-    print('Huh?') #an answer that wouldn't be yes or no
+    print('Reboot') #an answer that wouldn't be yes or no
