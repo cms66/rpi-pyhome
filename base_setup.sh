@@ -39,7 +39,6 @@ update_system()
 	apt-get -y update
 	apt-get -y upgrade
 	apt-get -y install python3-dev gcc g++ gfortran libraspberrypi-dev libomp-dev git-core build-essential cmake pkg-config make screen htop stress zip nfs-common fail2ban ufw ntpdate
-	# TODO - Remove default SDM installation during modify/burn?
  	rm -rf /usr/local/sdm
  	rm -rf /usr/local/bin/sdm
   	rm -rf /etc/sdm
@@ -114,7 +113,7 @@ setup_firewall()
 	yes | sudo ufw enable
 }
 
-# Update firmware - Only applies to model 4/5
+# Update firmware - Only applies to model 4/5 TODO
 update_firmware()
 {
 	if [ $pimodelnum = "4" ] || [ $pimodelnum = "5" ]; then # Model has firmware
