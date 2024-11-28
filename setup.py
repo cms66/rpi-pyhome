@@ -24,4 +24,4 @@ if usropt == 'p':
 else:
     print('Reboot')
     subprocess.run(["sudo", "reboot"])
-print("")
+print("done")
