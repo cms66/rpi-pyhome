@@ -17,6 +17,7 @@ subprocess.run(["wget", "https://raw.githubusercontent.com/cms66/rpi-pyhome/main
 #subprocess.run(["sudo", "bash", "./base_setup.sh"])
 subprocess.run(["sudo", "rm", "-f", "./base_setup.sh"])
 usropt=input("Base seup done, press p to poweroff or any other key to reboot: ").lower()
+os.remove(__file__)
 if usropt == 'p':
     print ("Poweroff selected")
     subprocess.call(["shutdown", "-s", "-t", "0"])
