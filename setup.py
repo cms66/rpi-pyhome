@@ -20,9 +20,9 @@ subprocess.run(["sudo", "rm", "-f", "./base_setup.sh"])
 usropt=input("Base seup done, press p to poweroff or any other key to reboot: ").lower()
 if usropt == 'p':
     print ("Poweroff selected")
-    os.system("shutdown /s /t 5")
+    os.system("shutdown /s /t 0")
 else:
     print ("Reboot selected")
-    os.system("shutdown /r /t 5")
+    os.system("shutdown /r /t 0")
 #print (usropt)
 #sys.exit()
