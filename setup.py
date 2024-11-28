@@ -23,4 +23,5 @@ if usropt == 'p':
     subprocess.run(["sudo", "poweroff"])
 else:
     print('Reboot')
-    subprocess.run(["sudo", "poweroff"])
+    subprocess.run(["sudo", "reboot"])
+print("")
