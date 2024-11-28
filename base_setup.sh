@@ -110,7 +110,7 @@ setup_firewall()
 	else # Local
 		yes | sudo ufw allow from $localnet to any port ssh
 	fi
-	yes | sudo ufw logging on
+	sudo ufw logging on
 	yes | sudo ufw enable
 }
 
