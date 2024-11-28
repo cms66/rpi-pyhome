@@ -15,14 +15,12 @@ import subprocess, sys, os
 print("Python setup")
 subprocess.run(["wget", "https://raw.githubusercontent.com/cms66/rpi-pyhome/main/base_setup.sh"])
 #subprocess.run(["sudo", "bash", "./base_setup.sh"])
-# TODO remove bash script
 subprocess.run(["sudo", "rm", "-f", "./base_setup.sh"])
 usropt=input("Base seup done, press p to poweroff or any other key to reboot: ").lower()
 if usropt == 'p':
     print ("Poweroff selected")
-    os.system("shutdown /s /t 0")
+    os.system("shutdown /s")
 else:
     print ("Reboot selected")
-    os.system("shutdown /r /t 0")
-#print (usropt)
-#sys.exit()
+    os.system("shutdown /r")
+
