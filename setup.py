@@ -11,7 +11,7 @@ import subprocess, sys, os
 # Run commands
 print("Python setup")
 try:
-    subprocess.run(["wget", "https://raw.githubusercontent.com/cms66/rpi-pyhome/main/base_setup1.sh"])
+    subprocess.run(["wget", "https://raw.githubusercontent.com/cms66/rpi-pyhome/main/base_setup2.sh"])
     #subprocess.run(["sudo", "bash", "./base_setup.sh"])
     subprocess.run(["sudo", "rm", "-f", "./base_setup.sh"]) # Delete bash script
     usropt=input("Base seup done, press p to poweroff or any other key to reboot: ").lower()
