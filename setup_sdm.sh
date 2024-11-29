@@ -164,6 +164,7 @@ burn_sdm_image()
   		case $img in
     		*.img)
      			imgburn=$imgdir/current/$img
+			udevadm trigger
 			printf "Drives\n------\n"
 			lsblk | cut -f 1 -d " " | sed "s/[^[:alnum:]]//g" # gives sd* mmcblk* nvme*
    			read -p "Select drive: " inpdrv
