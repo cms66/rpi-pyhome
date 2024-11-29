@@ -93,66 +93,23 @@ download_latest_os_images()
 
 modify_sdm_image()
 {
-	# TODO - Add rename image file option after modification
-	imgdir=${arrSDMconf[imgdirectory]}
-	read -p "Use Latest or Current image? (L/C): " userdir
-	if [[ ${userdir,} = "l" ]]
- 	then
-  		dirlist="latest" # Latest	
-	elif [[ ${userdir,} = "c" ]]
- 	then
-  		dirlist="current" # Current
-	else
- 		printf "Invalid option"	
-	fi	
- 	readarray -t arrImg < <(find $imgdir/$dirlist -type f | awk -F "/" '{print $NF}')
-  	printf "Images\n-----\n"
+	# Setup select menu
 	PS3="Select image: "
 	COLUMNS=1
-	select img in "${arrImg[@]}" "Quit"
-	do
-  		case $img in
-    		*.img)
-	 		if [[ ${dirlist} = "latest" ]] # Copy to /current for modification
-    			then
-      				imginp=$imgdir/$dirlist/$img
-	  			read -p "Add identifier to $imginp e.g. base: " imgid
-      				#$imgmod+="-$imgid"
-	  			imgmod=$imgdir/current/$img | sed -i "s/.img/$imgid.img/g"
-      
-      				printf "copying image $imginp to $imgmod\n"
-      				#curl -o $imgmod FILE://$imginp
-      				#chown $usrname:$usrname $imgmod
-	  			#chmod 777 $imgmod
-      				read -p "Copy done, press enter to continue"
-	  		fi 
-     			#imgmod=$imgdir/current/$img # Modify image in current
-			# Set username/password
-			#read -p "Password for $usrname: " usrpass
-			read -p "Use WiFi or Ethernet? (w/e): " usrcon
-   			if [[ ${usrcon,} = "w" ]]
-      			then
-	 			printf "WiFi selected" # wifi setup
-     				#sdm --customize --plugin user:"adduser=$usrname|password=$usrpass" --plugin user:"deluser=pi" --plugin network:"netman=nm|ifname=wlan0|wifissid=${arrSDMconf[wifissid]}|wifipassword=${arrSDMconf[wifipassword]}|wificountry=${arrSDMconf[wificountry]}" --plugin L10n:host --plugin disables:piwiz --extend --expand-root --regen-ssh-host-keys --restart $imgmod
-     			elif [[ ${usrcon,} = "e" ]]
-			then
-   				printf "Ethernet selected" # eth setup
-       				#sdm --customize --plugin user:"adduser=$usrname|password=$usrpass" --plugin user:"deluser=pi" --plugin L10n:host --plugin disables:piwiz --extend --expand-root --regen-ssh-host-keys --restart $imgmod
-       			else
-	  			printf "Invalid option"
-      				return 1
-      			fi
-      			;;
-    		"Quit")
-      			echo "Quit selected"
-      			break
-      			;;
-    		*)
-      			echo "Invalid option"
-      			;;
-  		esac
-	done
-	read -p "Modification finished, press enter to continue"
+	
+	# Select latest or current directory
+	read -p "Use Latest or Current image? (L/C): " userdir
+	
+	# Output image list for selection
+	if [[ ${userdir,} = "l" ]]; then dirlist="latest" # copy to current		
+	elif [[ ${userdir,} = "c" ]]; then dirlist="current" # Modify a current image  		
+	else
+ 		read -p "Invalid option, press any key to continue"
+ 		kill -INT $$ # Exit function
+	fi		
+	readarray -t arrImg < <(find $imgdir/$dirlist -type f | awk -F "/" '{print $NF}')
+	printf "Images - "$dirlist"\n--------\n"
+	printf "%s\n" "${arrImg[@]}"
 }
 
 burn_sdm_image()
