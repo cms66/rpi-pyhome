@@ -107,7 +107,6 @@ modify_sdm_image()
 	else
  		read -p "Invalid option, press any key to continue"
  		kill -INT $$ # Exit function
-   		;;
 	fi		
 	readarray -t arrImg < <(find $imgdir/$dirlist -type f | awk -F "/" '{print $NF}')
 	printf "Images - "$dirlist"\n--------\n"
