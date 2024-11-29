@@ -2,7 +2,7 @@
 # TODO - Disable SDM install in image modification
 init_sdm()
 {
-	declare -gA arrSDMconf
+	declare -gA arrSDMconf # Array for configuration settings
  	export instdir="/usr/local/sdm" # Default installation directory (target for custom.conf)
 	if [[ $(command -v sdm) ]]
  	then
@@ -77,6 +77,7 @@ download_latest_os_images()
 	url32lite=https://downloads.raspberrypi.com/raspios_lite_armhf/images/raspios_lite_armhf-$verlatest/$verlatest-raspios-bookworm-armhf-lite.img.xz
 	url32desk=https://downloads.raspberrypi.com/raspios_armhf/images/raspios_armhf-$verlatest/$verlatest-raspios-bookworm-armhf.img.xz
 	# Replace uncustomized latest images
+ 	# TODO - check if new versions available
   	rm -rf $imgdir/latest/*.img
 	# Download latest images and extract
  	printf "Downloading latest images\n"
@@ -115,25 +116,28 @@ modify_sdm_image()
 	 		if [[ ${dirlist} = "latest" ]] # Copy to /current for modification
     			then
       				imginp=$imgdir/$dirlist/$img
-	  			imgmod=$imgdir/current/$img
+	  			read -p "Add identifier to $imginp e.g. base: " imgid
+      				#$imgmod+="-$imgid"
+	  			imgmod=$imgdir/current/$img | sed -i "s/.img/$imgid.img/g"
+      
       				printf "copying image $imginp to $imgmod\n"
-      				curl -o $imgmod FILE://$imginp
-      				chown $usrname:$usrname $imgmod
-	  			chmod 777 $imgmod
+      				#curl -o $imgmod FILE://$imginp
+      				#chown $usrname:$usrname $imgmod
+	  			#chmod 777 $imgmod
       				read -p "Copy done, press enter to continue"
-	  		fi
-     			imgmod=$imgdir/current/$img # Modify image in current
+	  		fi 
+     			#imgmod=$imgdir/current/$img # Modify image in current
 			# Set username/password
-			read -p "Password for $usrname: " usrpass
+			#read -p "Password for $usrname: " usrpass
 			read -p "Use WiFi or Ethernet? (w/e): " usrcon
    			if [[ ${usrcon,} = "w" ]]
       			then
 	 			printf "WiFi selected" # wifi setup
-     				sdm --customize --plugin user:"adduser=$usrname|password=$usrpass" --plugin user:"deluser=pi" --plugin network:"netman=nm|ifname=wlan0|wifissid=${arrSDMconf[wifissid]}|wifipassword=${arrSDMconf[wifipassword]}|wificountry=${arrSDMconf[wificountry]}" --plugin L10n:host --plugin disables:piwiz --extend --expand-root --regen-ssh-host-keys --restart $imgmod
+     				#sdm --customize --plugin user:"adduser=$usrname|password=$usrpass" --plugin user:"deluser=pi" --plugin network:"netman=nm|ifname=wlan0|wifissid=${arrSDMconf[wifissid]}|wifipassword=${arrSDMconf[wifipassword]}|wificountry=${arrSDMconf[wificountry]}" --plugin L10n:host --plugin disables:piwiz --extend --expand-root --regen-ssh-host-keys --restart $imgmod
      			elif [[ ${usrcon,} = "e" ]]
 			then
    				printf "Ethernet selected" # eth setup
-       				sdm --customize --plugin user:"adduser=$usrname|password=$usrpass" --plugin user:"deluser=pi" --plugin L10n:host --plugin disables:piwiz --extend --expand-root --regen-ssh-host-keys --restart $imgmod
+       				#sdm --customize --plugin user:"adduser=$usrname|password=$usrpass" --plugin user:"deluser=pi" --plugin L10n:host --plugin disables:piwiz --extend --expand-root --regen-ssh-host-keys --restart $imgmod
        			else
 	  			printf "Invalid option"
       				return 1
