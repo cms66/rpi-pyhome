@@ -93,6 +93,7 @@ download_latest_os_images()
 
 modify_sdm_image()
 {
+	imgdir=${arrSDMconf[imgdirectory]}
 	# Setup select menu
 	PS3="Select image: "
 	COLUMNS=1
