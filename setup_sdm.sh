@@ -110,10 +110,27 @@ modify_sdm_image()
 	select img in "${arrImg[@]}" "Quit"; do
   		case $img in
     		*.img)
-	 		read -p "Image selected $img"
-	 		;;
+	 		if [[ ${dirlist} = "latest" ]]; then # Copy to /current for modification and rename
+				imginp=$imgdir/$dirlist/$img
+      				read -p "Add identifier to image name: " imgid
+      				imgnew="${img//".img"/"-$imgid.img"}"
+	  			if [[  -f $imgdir/current/$imgnew ]]; then # Image exists in /current
+      					echo "File exists"
+	   				return
+				else
+					printf "copying image $imginp to $imgnew\n"
+					imgmod=$imgdir/current/$imgnew
+					curl -o $imgmod FILE://$imginp
+      					chown $usrname:$usrname $imgmod
+	  				chmod 777 $imgmod
+	  				read -p "Copy done, press enter to continue"						
+				fi
+			else
+				imgmod=$imgdir/current/$img
+	  		fi
+     			read -p "Image to modify = $imgmod"
+    			;;
     		"Quit")
-      			#read -p "Quit selected"
 	 		break
       			;;
     		*)
