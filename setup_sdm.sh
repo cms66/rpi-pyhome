@@ -101,7 +101,8 @@ modify_sdm_image()
 	else
  		read -p "Invalid option, press any key to continue"
  		#kill -INT $$ # Exit function
-   		exit 1
+   		#exit 1
+     		break 2
 	fi
 	# Output image list for selection
 	PS3="Select image: "
