@@ -113,11 +113,11 @@ modify_sdm_image()
 	 		read -p "Image selected $img"
 	 		;;
     		"Quit")
-      			read -p "Quit selected"
+      			#read -p "Quit selected"
 	 		break
       			;;
     		*)
-      			read -p "Invalid option"
+      			read -p "Invalid option, press any key to continue"
 	 		break
       			;;
   		esac
