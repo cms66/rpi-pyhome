@@ -100,7 +100,7 @@ modify_sdm_image()
 	elif [[ ${userdir,} = "c" ]]; then dirlist="current" # Modify a current image  		
 	else
  		read -p "Invalid option, press any key to continue"
- 		kill -INT $$ # Exit function
+ 		#kill -INT $$ # Exit function
 	fi
 	# Output image list for selection
 	PS3="Select image: "
@@ -118,13 +118,13 @@ modify_sdm_image()
 					if [[  -f $imgdir/current/$imgnew ]]
 					then
 						echo "File exists"
-						kill -INT $$ # Exit function
+						#kill -INT $$ # Exit function
 					else
 						printf "copying image $imginp to $imgnew\n"
 						imgmod=$imgdir/current/$imgnew
-						curl -o $imgmod FILE://$imginp
-      						chown $usrname:$usrname $imgmod
-	  					chmod 777 $imgmod
+						#curl -o $imgmod FILE://$imginp
+      						#chown $usrname:$usrname $imgmod
+	  					#chmod 777 $imgmod
 	  					read -p "Copy done, press enter to continue"						
 					fi
 				else
@@ -132,8 +132,8 @@ modify_sdm_image()
 	  			fi
 	  			printf "%s\n" "Image to modify = $imgmod" 
 	  			# Set username/password
-				read -p "Password for $usrname: " usrpass
-				read -p "Use WiFi or Ethernet? (w/e): " usrcon
+				#read -p "Password for $usrname: " usrpass
+				#read -p "Use WiFi or Ethernet? (w/e): " usrcon
    				if [[ ${usrcon,} = "w" ]]
       			then
 	 				printf "WiFi selected" # wifi setup      			
@@ -142,15 +142,15 @@ modify_sdm_image()
       				printf "Ethernet selected" # eth setup
       			else
 	  			printf "Invalid option"
-      				kill -INT $$
+      				#kill -INT $$
       			fi	
       			;;
     		"Quit")
       			echo "Quit selected"
-      			kill -INT $$
+      			#kill -INT $$
     		*)
       			echo "Invalid option"
-      			kill -INT $$
+      			#kill -INT $$
   		esac
 	done
 }
