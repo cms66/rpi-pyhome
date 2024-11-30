@@ -147,10 +147,10 @@ modify_sdm_image()
       			;;
     		"Quit")
       			echo "Quit selected"
-      			#kill -INT $$
+      			break
     		*)
       			echo "Invalid option"
-      			#kill -INT $$
+      			break
   		esac
 	done
 }
