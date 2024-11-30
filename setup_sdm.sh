@@ -111,13 +111,13 @@ modify_sdm_image()
   		case $img in
     		*.img)
 	 		read -p "Image selected"
-	 		break 2
+	 		;;
     		"Quit")
       			read -p "Quit selected"
-      			break 2
+      			;;
     		*)
       			read -p "Invalid option"
-      			break 2
+      			;;
   		esac
 	done
 }
