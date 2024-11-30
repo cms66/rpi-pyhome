@@ -136,6 +136,7 @@ modify_sdm_image()
       				read -p "Wifi selected, press enter to continue"
       			elif [[ ${usrcon,} = "e" ]]; then
 	 			read -p "ethernet selected, press enter to continue"
+     				sdm --customize --plugin user:"adduser=$usrname|password=$usrpass" --plugin user:"deluser=pi" --plugin L10n:host --plugin disables:piwiz --extend --expand-root --regen-ssh-host-keys --restart $imgmod
 	 		else
     				read -p "Invalid option, press enter to continue"
 				return
