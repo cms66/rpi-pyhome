@@ -93,24 +93,66 @@ download_latest_os_images()
 
 modify_sdm_image()
 {
-	imgdir=${arrSDMconf[imgdirectory]}
-	# Setup select menu
-	PS3="Select image: "
-	COLUMNS=1
-	
 	# Select latest or current directory
 	read -p "Use Latest or Current image? (L/C): " userdir
-	
-	# Output image list for selection
 	if [[ ${userdir,} = "l" ]]; then dirlist="latest" # copy to current		
 	elif [[ ${userdir,} = "c" ]]; then dirlist="current" # Modify a current image  		
 	else
  		read -p "Invalid option, press any key to continue"
  		kill -INT $$ # Exit function
-	fi		
+	fi
+	# Output image list for selection
+	PS3="Select image: "
+	COLUMNS=1
 	readarray -t arrImg < <(find $imgdir/$dirlist -type f | awk -F "/" '{print $NF}')
 	printf "Images - "$dirlist"\n--------\n"
-	printf "%s\n" "${arrImg[@]}"
+	select img in "${arrImg[@]}" "Quit"; do
+  		case $img in
+    		*.img)
+	 			if [[ ${dirlist} = "latest" ]] # Copy to /current for modification and rename
+    			then
+      				imginp=$imgdir/$dirlist/$img
+      				read -p "Add identifier to image name: " imgid
+      				imgnew="${img//".img"/"-$imgid.img"}"
+					if [[  -f $imgdir/current/$imgnew ]]
+					then
+						echo "File exists"
+						break # kill -INT $$ # Exit function
+					else
+						printf "copying image $imginp to $imgnew\n"
+						imgmod=$imgdir/current/$imgnew
+						curl -o $imgmod FILE://$imginp
+      					chown $usrname:$usrname $imgmod
+	  					chmod 777 $imgmod
+	  					read -p "Copy done, press enter to continue"						
+					fi
+				else
+					imgmod=$imgdir/current/$img
+	  			fi
+	  			printf "%s\n" "Image to modify = $imgmod" 
+	  			# Set username/password
+				read -p "Password for $usrname: " usrpass
+				read -p "Use WiFi or Ethernet? (w/e): " usrcon
+   				if [[ ${usrcon,} = "w" ]]
+      			then
+	 				printf "WiFi selected" # wifi setup      			
+      			elif [[ ${usrcon,} = "e" ]]
+      			then
+      				printf "Ethernet selected" # eth setup
+      			else
+	  				printf "Invalid option"
+      				return 1
+      			fi	
+      			;;
+    		"Quit")
+      			echo "Quit selected"
+      			break
+      			;;
+    		*)
+      			echo "Invalid option"
+      			;;
+  		esac
+	done
 }
 
 burn_sdm_image()
