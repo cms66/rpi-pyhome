@@ -144,6 +144,7 @@ modify_sdm_image()
 	  			printf "Invalid option"
       				#kill -INT $$
       			fi
+	 		break
     		"Quit")
       			echo "Quit selected"
       			break
