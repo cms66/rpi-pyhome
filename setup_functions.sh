@@ -58,6 +58,7 @@ show_system_summary()
 	printf "Architecture: $osarch \n"
 	printf "Firmware: $(rpi-eeprom-update) \n"
 	printf "\nMemory:\n$(free -mt) \n"
+ 	udevadm trigger
 	printf "\nStorage:\n$(lsblk) \n"
 	printf "\nDrive usage:\n"
  	df -h
