@@ -100,8 +100,7 @@ modify_sdm_image()
 	elif [[ ${userdir,} = "c" ]]; then dirlist="current" # Modify a current image  		
 	else
  		read -p "Invalid option, press any key to continue"
- 		#kill -INT $$ # Exit function
-   		break
+ 		kill -INT $$ # Exit function
 	fi
 	# Output image list for selection
 	PS3="Select image: "
@@ -111,7 +110,7 @@ modify_sdm_image()
 	select img in "${arrImg[@]}" "Quit"; do
   		case $img in
     		*.img)
-	 			if [[ ${dirlist} = "latest" ]] # Copy to /current for modification and rename
+	 		if [[ ${dirlist} = "latest" ]] # Copy to /current for modification and rename
     			then
       				imginp=$imgdir/$dirlist/$img
       				read -p "Add identifier to image name: " imgid
@@ -119,12 +118,12 @@ modify_sdm_image()
 					if [[  -f $imgdir/current/$imgnew ]]
 					then
 						echo "File exists"
-						break # kill -INT $$ # Exit function
+						kill -INT $$ # Exit function
 					else
 						printf "copying image $imginp to $imgnew\n"
 						imgmod=$imgdir/current/$imgnew
 						curl -o $imgmod FILE://$imginp
-      					chown $usrname:$usrname $imgmod
+      						chown $usrname:$usrname $imgmod
 	  					chmod 777 $imgmod
 	  					read -p "Copy done, press enter to continue"						
 					fi
@@ -142,16 +141,16 @@ modify_sdm_image()
       			then
       				printf "Ethernet selected" # eth setup
       			else
-	  				printf "Invalid option"
-      				return 1
+	  			printf "Invalid option"
+      				kill -INT $$
       			fi	
       			;;
     		"Quit")
       			echo "Quit selected"
-      			break
+      			kill -INT $$
     		*)
       			echo "Invalid option"
-      			break
+      			kill -INT $$
   		esac
 	done
 }
