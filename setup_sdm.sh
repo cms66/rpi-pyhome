@@ -110,13 +110,13 @@ modify_sdm_image()
 	select img in "${arrImg[@]}" "Quit"; do
   		case $img in
     		*.img)
-	 		echo "Image selected"
-	 		break
+	 		read -p "Image selected"
+	 		#break
     		"Quit")
-      			echo "Quit selected"
+      			read -p "Quit selected"
       			break
     		*)
-      			echo "Invalid option"
+      			read -p "Invalid option"
       			break
   		esac
 	done
