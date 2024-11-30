@@ -115,6 +115,7 @@ modify_sdm_image()
 	 		;;
     		"Quit")
       			read -p "Quit selected"
+	 		break 2
       			;;
     		*)
       			read -p "Invalid option"
