@@ -100,9 +100,7 @@ modify_sdm_image()
 	elif [[ ${userdir,} = "c" ]]; then dirlist="current" # Modify a current image  		
 	else
  		read -p "Invalid option, press any key to continue"
- 		#kill -INT $$ # Exit function
-   		#exit 1
-     		break 2
+ 		return
 	fi
 	# Output image list for selection
 	PS3="Select image: "
