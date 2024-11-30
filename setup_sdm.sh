@@ -110,7 +110,7 @@ modify_sdm_image()
 	select img in "${arrImg[@]}" "Quit"; do
   		case $img in
     		*.img)
-	 		read -p "Image selected"
+	 		read -p "Image selected $img"
 	 		;;
     		"Quit")
       			read -p "Quit selected"
