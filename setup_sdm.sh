@@ -115,10 +115,11 @@ modify_sdm_image()
 	 		;;
     		"Quit")
       			read -p "Quit selected"
-	 		break 2
+	 		break
       			;;
     		*)
       			read -p "Invalid option"
+	 		break
       			;;
   		esac
 	done
