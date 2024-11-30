@@ -93,11 +93,11 @@ download_latest_os_images()
 
 modify_sdm_image()
 {
-	export dirlist=""
+	#export dirlist=""
 	# Select latest or current directory
 	read -p "Use Latest or Current image? (L/C): " userdir
-	if [[ ${userdir,} = "l" ]]; then $dirlist="latest" # copy to current		
-	elif [[ ${userdir,} = "c" ]]; then $dirlist="current" # Modify a current image  		
+	if [[ ${userdir,} = "l" ]]; then export dirlist="latest" # copy to current		
+	elif [[ ${userdir,} = "c" ]]; then export dirlist="current" # Modify a current image  		
 	else
  		read -p "Invalid option, press any key to continue"
  		kill -INT $$ # Exit function
