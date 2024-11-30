@@ -93,7 +93,7 @@ download_latest_os_images()
 
 modify_sdm_image()
 {
-	dirlist=""
+	export dirlist=""
 	# Select latest or current directory
 	read -p "Use Latest or Current image? (L/C): " userdir
 	if [[ ${userdir,} = "l" ]]; then $dirlist="latest" # copy to current		
