@@ -115,7 +115,7 @@ modify_sdm_image()
       				read -p "Add identifier to image name: " imgid
       				imgnew="${img//".img"/"-$imgid.img"}"
 	  			if [[  -f $imgdir/current/$imgnew ]]; then # Image exists in /current
-      					echo "File exists"
+      					read -p "File exists, press any key to continue"
 	   				return
 				else
 					printf "copying image $imginp to $imgnew\n"
@@ -129,7 +129,18 @@ modify_sdm_image()
 				imgmod=$imgdir/current/$img
 	  		fi
      			read -p "Image to modify = $imgmod"
-    			;;
+	  		# Set username/password
+			read -p "Password for $usrname: " usrpass
+			read -p "Use WiFi or Ethernet? (w/e): " usrcon
+   			if [[ ${usrcon,} = "w" ]]; then
+      				read -p "Wifi selected, press enter to continue"
+      			elif [[ ${usrcon,} = "e" ]]; then
+	 			read -p "ethernet selected, press enter to continue"
+	 		else
+    				read -p "Invalid option, press enter to continue"
+				return
+    			fi
+    ;;
     		"Quit")
 	 		break
       			;;
