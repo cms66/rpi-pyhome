@@ -36,7 +36,7 @@ set_default_shell()
 # Install/update software
 update_system()
 {
-	printf "Updating system"
+	printf "%s\n" "Updating system"
 	apt-get -y update
 	apt-get -y upgrade
 	apt-get -y install python3-dev gcc g++ gfortran libraspberrypi-dev libomp-dev git-core build-essential cmake pkg-config make screen htop stress zip nfs-common fail2ban ufw ntpdate
@@ -48,7 +48,7 @@ update_system()
 # Git setup
 setup_git()
 {
-	printf "Setting up Git"
+	printf "%s\n" "Setting up Git"
 	mkdir /home/$usrname/.pisetup
 	cd /home/$usrname/.pisetup
 	git clone https://github.com/cms66/$repo.git
@@ -66,7 +66,7 @@ setup_git()
 # - Create python Virtual Environment (with access to system level packages) and bash alias for activation
 create_venv()
 {
-	printf "Creating python Virtual Environment"
+	printf "%s\n" "Creating python Virtual Environment"
 	python -m venv --system-site-packages /home/$usrname/.venv
 	echo "alias myvp=\"source ~/.venv/bin/activate\"" >> /home/$usrname/.bashrc
 	echo "alias dvp=\"deactivate\"" >> /home/$usrname/.bashrc
@@ -76,7 +76,7 @@ create_venv()
 # Configure fail2ban
 setup_fail2ban()
 {
-	printf "Configuring fail2ban"
+	printf "%s\n" "Configuring fail2ban"
 	cp /etc/fail2ban/fail2ban.conf /etc/fail2ban/fail2ban.local
 	cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
 }
@@ -90,7 +90,7 @@ disable_root_ssh()
 # create local folder structure for created user with code examples
 create_local()
 {
-	printf "Creating local"
+	printf "%s\n" "Creating local"
 	tar -xvzf /home/$usrname/.pisetup/$repo/local.tgz -C /home/$usrname
 	chown -R $usrname:$usrname /home/$usrname/local/
 }
@@ -98,7 +98,7 @@ create_local()
 # Networking
 setup_network()
 {
-	printf "Configuring network"
+	printf "%s\n" "Configuring network"
 	echo "127.0.0.1   $piname.local $piname" >> /etc/hosts
 	localip=$(hostname -I | awk '{print $1}')
 	echo "$localip  $piname.local $piname" >> /etc/hosts # TODO - Setup for eth or wifi
@@ -107,7 +107,7 @@ setup_network()
 # Configure firewall (ufw)
 setup_firewall()
 {
-	printf "Configuring firewall"
+	printf "%s\n" "Configuring firewall"
 	# Allow SSH from local subnet only, unless remote access needed
 	read -rp "Allow remote ssh acces (y/n): " inp </dev/tty
 	if [ X$inp = X"y" ] # TODO - not case insensitive
