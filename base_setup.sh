@@ -156,10 +156,10 @@ get_subnet_cidr()
 
 # Run setup
 # ---------
-set_default_shell
-update_system
-setup_fail2ban
-disable_root_ssh
+#set_default_shell
+#update_system
+#setup_fail2ban
+#disable_root_ssh
 setup_git
 create_local
 create_venv
