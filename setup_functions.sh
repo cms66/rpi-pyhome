@@ -92,6 +92,7 @@ check_package_status() # Takes package name and install (if needed) as arguments
 	then
 		if [[ $2 -eq "y" ]] # Do install
 		then
+  			printf "%s\n" "Installing $1"
 			apt-get install -y -q $1
    			read -p "$1 install done, press enter to continue"
 		else
