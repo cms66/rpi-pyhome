@@ -88,7 +88,7 @@ update_system()
 
 check_package_status() # Takes package name and install (if needed) as arguments
 {
-	if [[ "$(dpkg -l | grep $1 | cut --fields 1 -d " ")" == "" ]] # Not installed
+	if [[ "$(apt list --installed | grep $1 | cut --fields 1 -d " ")" == "" ]] # Not installed
 	then
 		if [[ $2 -eq "y" ]] # Do install
 		then
