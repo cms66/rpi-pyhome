@@ -79,7 +79,7 @@ add_nfs_remote()
      		nfsdir="/usr/local"
      		read -p "Full path to remote directory (press enter for default = $nfsdir): " userdir
        		mntdir=${userdir:="$nfsdir"}
-	 	echo "$remnode:$mntdir $mntdir    nfs defaults,user,exec,noauto,x-systemd.automount 0 0" >> /etc/fstab
+	 	echo "$remnode.local:$mntdir $mntdir    nfs defaults,user,exec,noauto,x-systemd.automount 0 0" >> /etc/fstab
 	elif [[ ${inp,} = "d" ]]
 	then # Data mount (default /var)
  		read -p "TODO - Remote data mount"
