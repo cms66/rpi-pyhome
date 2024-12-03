@@ -8,7 +8,7 @@ ver32="4.1.7"
 ver64="5.0.6"
 downlink=""
 instver=""
-if [[ "$osarch" = "64" ]]
+if [ "$osarch" = "64" ]
 then
 	$downlink=$url64
  	$instver=$ver64
