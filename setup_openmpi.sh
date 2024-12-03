@@ -6,8 +6,9 @@ url32=https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.7.tar.gz
 url64=https://download.open-mpi.org/release/open-mpi/v5.0/openmpi-5.0.6.tar.gz
 ver32="4.1.7"
 ver64="5.0.6"
+arch=$(getconf LONG_BIT)
 #if [ $(getconf LONG_BIT) = "64" ]
-if test "$osarch" = "64"
+if [ $arch = "64" ]
 then
 	downlink=$url64
  	instver=$ver64
