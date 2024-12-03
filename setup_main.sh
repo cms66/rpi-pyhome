@@ -23,7 +23,8 @@ pinum=$(hostname | tr -cd '[:digit:].')
 pimodel=$(cat /sys/firmware/devicetree/base/model)
 pimodelnum=$(echo $pimodel | cut -d " " -f 3)
 pirev=$(cat /proc/cpuinfo | grep 'Revision' | awk '{print $3}' | sed 's/^1000//')
-export osarch=$(getconf LONG_BIT)
+osarch=$(getconf LONG_BIT)
+export osarch
 repo="rpi-pyhome"
 dirscr=$PWD # Directory of calling script
 
