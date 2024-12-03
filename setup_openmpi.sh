@@ -29,5 +29,5 @@ install_openmpi_local()
 	#cd $usrpath
 	#rm -rf openmpi*
 	#mpirun --version
-	read -p "OpenMPI $instver - Local install finished, press enter to return to menu" input
+	read -p "$osarch bit OpenMPI $instver - Local install finished, press enter to return to menu" input
 }
