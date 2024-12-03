@@ -2,23 +2,37 @@
 
 # From version 5 32 bit OS is not supported
 # Latest versions
-url32=https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.7.tar.gz
-url64=https://download.open-mpi.org/release/open-mpi/v5.0/openmpi-5.0.6.tar.gz
-ver32="4.1.7"
-ver64="5.0.6"
-arch=$(getconf LONG_BIT)
+#url32=https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.7.tar.gz
+#url64=https://download.open-mpi.org/release/open-mpi/v5.0/openmpi-5.0.6.tar.gz
+#ver32="4.1.7"
+#ver64="5.0.6"
+#arch=$(getconf LONG_BIT)
 #if [ $(getconf LONG_BIT) = "64" ]
-if [ $arch = "64" ]
-then
-	downlink=$url64
- 	instver=$ver64
-else
-	downlink=$url32
-	instver=$ver32
-fi
+#if [ $arch = "64" ]
+#then
+#	downlink=$url64
+# 	instver=$ver64
+#else
+#	downlink=$url32
+#	instver=$ver32
+#fi
 
 install_openmpi_local()
 {
+	# From version 5 32 bit OS is not supported
+	# Latest versions
+	url32=https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.7.tar.gz
+	url64=https://download.open-mpi.org/release/open-mpi/v5.0/openmpi-5.0.6.tar.gz
+	ver32="4.1.7"
+	ver64="5.0.6"
+	if [ $osarch = "64" ]
+	then
+		downlink=$url64
+	 	instver=$ver64
+	else
+		downlink=$url32
+		instver=$ver32
+	fi
 	cd $usrpath
 	#wget $downlink
 	#tar -xzf openmpi*.tar.gz
