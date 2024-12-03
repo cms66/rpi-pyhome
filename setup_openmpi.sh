@@ -10,11 +10,11 @@ downlink=""
 instver=""
 if [ "$osarch" = "64" ]
 then
-	$downlink=$url64
- 	$instver=$ver64
+	$downlink = $url64
+ 	$instver = $ver64
 else
-	$downlink=$url32
-	$instver=$ver32
+	$downlink = $url32
+	$instver = $ver32
 fi
 
 install_openmpi_local()
