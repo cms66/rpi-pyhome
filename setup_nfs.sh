@@ -3,6 +3,8 @@
 install_nfs_server()
 {
  	check_package_status nfs-kernel-server y
+  	sed -i "s/RPCMOUNTDOPTS=\"--manage-gids\"/RPCMOUNTDOPTS=\"--manage-gids -N 2 -N 3\"/g" /etc/default/nfs-kernel-server # Enforce NFSv4
+	echo "RPCNFSDOPTS=\"-N 2 -N 3\"" >> /etc/default/nfs-kernel-server
   	if ! [[ $(ufw status | grep 2049) ]] # Add firewall rule
    	then
     		get_subnet_cidr
