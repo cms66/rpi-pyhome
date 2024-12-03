@@ -81,7 +81,7 @@ add_nfs_remote()
      		nfsdir="/usr/local"
      		read -p "Full path to remote directory (press enter for default = $nfsdir): " userdir
        		mntdir=${userdir:="$nfsdir"}
-	 	echo "$remnode.local:$mntdir $mntdir    nfs defaults,user,exec,noauto,x-systemd.automount 0 0" >> /etc/fstab
+	 	echo "$remnode.local:$mntdir $mntdir    nfs4 defaults,user,exec,auto,_netdev,x-systemd.automount,x-systemd.requires=network-online.target 0 0" >> /etc/fstab
 	elif [[ ${inp,} = "d" ]]
 	then # Data mount (default /var)
  		read -p "TODO - Remote data mount"
@@ -98,7 +98,7 @@ add_nfs_remote()
    	#shrdir=${shruser:="$deflocal"}
 	#mkdir $shrdir
 	#chown -R $usrname:$usrname $shrdir
-	#echo "$remnode:$mntdir $shrdir    nfs defaults,user,exec,noauto,x-systemd.automount 0 0" >> /etc/fstab
+	#echo "$remnode:$mntdir $shrdir    nfs4 defaults,user,exec,auto,_netdev,x-systemd.automount,x-systemd.requires=network-online.target 0 0" >> /etc/fstab
 	#mount -a
 	#read -p "NFS remote mount done, press enter to return to menu" input
 }
