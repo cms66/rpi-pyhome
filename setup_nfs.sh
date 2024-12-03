@@ -88,8 +88,6 @@ add_nfs_remote()
 	read -p "NFS remote mount done, press enter to return to menu"
 
 
- 
- 
  	#defdir="/var/nfs-export"
 	#read -p "Full path to remote directory (press enter for default = $defdir): " userdir
  	#mntdir=${userdir:="$defdir"}
