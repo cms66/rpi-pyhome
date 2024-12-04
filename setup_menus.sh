@@ -21,9 +21,9 @@ declare -a mnuHardwareFull=(
 )
 declare -a mnuNFSFull=(
 "Setup - NFS menu#"
-"Install server#install_nfs_server"
-"Add local export#add_nfs_local"
-"Add remote mount#add_nfs_remote"
+"Install NFS server#install_nfs_server"
+"Add NFS local export#add_nfs_local"
+"Add NFS remote mount#add_nfs_remote"
 "Back#break 2"
 )
 declare -a mnuOpenMPIFull=(
@@ -36,15 +36,15 @@ declare -a mnuOpenMPIFull=(
 )
 declare -a mnuOpenCVFull=(
 "Setup - OpenCV menu#"
-"Install - local#install_opencv_local"
-"Install - server#install_server"
-"Install - client#install_opencv_client"
+"Install - Local#install_opencv_local"
+"Install - Server#install_server"
+"Install - Client#install_opencv_client"
 "Back#break 2"
 )
 declare -a mnuSDMFull=(
 "Setup - SDM menu#init_sdm"
-"Install - local#install_sdm_local"
-"Install - server#install_server"
+"Install - SDM - Local#install_sdm_local"
+"Install - SDM - Server#install_server"
 "Download latest images#download_latest_os_images"
 "Modify image#modify_sdm_image"
 "Burn image#burn_sdm_image"
