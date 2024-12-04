@@ -30,6 +30,7 @@ declare -a mnuOpenMPIFull=(
 "Setup - OpenMPI menu#"
 "Install - local#install_openmpi_local"
 "Install - server#install_server"
+"Install - client#install_openmpi_client"
 "Back#break 2"
 )
 declare -a mnuOpenCVFull=(
