@@ -125,3 +125,8 @@ get_subnet_cidr()
  	export localnet=$(nmcli -t device show $dev | grep "ROUTE\[1\]" | cut -f 2 -d "=" | tr -d '[:blank:]' | sed "s/,nh//")
 	printf "Device = $dev | localnet = $localnet\n"
 }
+
+install_server()
+{
+	read -p "TODO check exports + firewall"
+}
