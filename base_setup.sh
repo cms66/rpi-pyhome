@@ -39,7 +39,7 @@ update_system()
 	printf "%s\n" "Updating system"
 	apt-get -y update
 	apt-get -y upgrade
-	apt-get -y install python3-dev gcc g++ gfortran libraspberrypi-dev libomp-dev git-core build-essential cmake pkg-config make screen htop stress zip nfs-common fail2ban ufw ntpdate
+	apt-get -y install python3-dev gcc g++ gfortran libraspberrypi-dev libomp-dev git-core build-essential cmake pkg-config make screen htop stress zip nfs-common fail2ban ufw ntpdate bzip2 pkgconf openssl
  	# TODO check SDM removal works on 32 bit
   	rm -rf /usr/local/sdm
  	rm -rf /usr/local/bin/sdm
