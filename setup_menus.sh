@@ -28,9 +28,10 @@ declare -a mnuNFSFull=(
 )
 declare -a mnuOpenMPIFull=(
 "Setup - OpenMPI menu#"
-"Install - local#install_openmpi_local"
-"Install - server#install_server"
-"Install - client#install_openmpi_client"
+"Install - OpenMPI - Local#install_openmpi_local"
+"Install - OpenMPI -Server#install_server"
+"Install - OpenMPI - Client#install_openmpi_client"
+"Install - Munge - Local#install_munge_local"
 "Back#break 2"
 )
 declare -a mnuOpenCVFull=(
