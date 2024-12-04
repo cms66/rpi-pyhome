@@ -15,7 +15,7 @@ install_opencv_local()
 		sed -i "s/CONF_SWAPSIZE=100/CONF_SWAPSIZE=2048/g" /etc/dphys-swapfile
 		/etc/init.d/dphys-swapfile restart
 	fi
- 	install_deps
+ 	install_opencv_deps
 	git clone https://github.com/opencv/opencv.git
 	git clone https://github.com/opencv/opencv_contrib.git
 	mkdir opencv/build
