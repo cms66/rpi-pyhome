@@ -41,8 +41,8 @@ install_openmpi_client()
 install_munge_local()
 {
 	# Create System group and user
-	groupadd -r -g 991 munge
- 	useradd -r -g munge -u 991 -d /var/lib/munge -s /sbin/nologin munge
+	#groupadd -r -g 991 munge
+ 	#useradd -r -g munge -u 991 -d /var/lib/munge -s /sbin/nologin munge
   	# Install from Git
    	git clone https://github.com/dun/munge.git
 	cd munge
