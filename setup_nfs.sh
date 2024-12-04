@@ -85,7 +85,7 @@ add_nfs_remote()
    		ldconfig
 	elif [[ ${inp,} = "d" ]]
 	then # Data mount (default /var)
- 		read -p "TODO - Remote data mount"
+ 		#read -p "TODO - Remote data mount"
  		defdir="/var/nfs-export"
 		read -p "Full path to remote directory (press enter for default = $defdir): " userdir
 	 	mntdir=${userdir:="$defdir"}
