@@ -40,33 +40,5 @@ install_openmpi_client()
 
 install_munge_local()
 {
-	# Create System group and user
-	#groupadd -r -g 991 munge
- 	#useradd -r -g munge -u 991 -d /var/lib/munge -s /sbin/nologin munge
-  	# Install from Git
-   	git clone https://github.com/dun/munge.git
-	cd munge
- 	./bootstrap
-  	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --runstatedir=/run
-   	make
-    	make check
-	make install
- 	# Security
- 	chown munge:munge /etc/munge
-  	chmod 0700 /etc/munge
- 	chown munge:munge /var/lib/munge
-  	chmod 0700 /var/lib/munge
- 	chown munge:munge /var/log/munge
-  	chmod 0700 /var/log/munge
- 	chown munge:munge /run/munge
-  	chmod 0755 /run/munge
-   	# Run munge at startup
-   	systemctl enable munge.service
-	# Create or copy key
- 	sudo -u munge /usr/sbin/mungekey --verbose
- 	#cp $usrpath/share1/munge.key /etc/munge/
-  	#sudo -u munge /usr/sbin/mungekey --verbose
-  	#chown munge:munge /etc/munge/munge.key
-	#sudo -u munge /usr/sbin/mungekey --verbose
- 	read -p "Munge - Local install done, press enter to return to menu" input
+	read -p "TODO Munge - Local install, press enter to return to menu"
 }
