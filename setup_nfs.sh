@@ -75,7 +75,7 @@ add_nfs_remote()
 {
 	read -p "Remote node: " remnode
 	# Check mount type
-    	read -p "System mount (default /usr/local) or Data share? (s/d) " inp
+    	read -p "System mount (default /usr/local) or Data share? (s/d): " inp
     	if [[ ${inp,} = "s" ]]
     	then # System mount (default /usr/local)
      		nfsdir="/usr/local"
