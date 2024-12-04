@@ -32,6 +32,10 @@ install_opencv_local()
 		sed -i "s/CONF_SWAPSIZE=2048/CONF_SWAPSIZE=100/g" /etc/dphys-swapfile
 		/etc/init.d/dphys-swapfile restart
 	fi
+ 	chown -R $usrname:$usrname .venv/lib/python3.11/site-packages/cv2
+  	mkdir -p $usrpath/share1/lib/python3/
+ 	cp -r $usrpath/.venv/lib/python3.11/site-packages/cv2 $usrpath/share1/lib/python3/
+  	chown -R $usrname:$usrname $usrpath/share1/lib/python3/
 	read -p "OpenCV $(opencv_version) Local install finished, press enter to return to menu" input
 }
 
@@ -39,6 +43,6 @@ install_opencv_client()
 {
 	install_opencv_deps
  	ldconfig
-  	#cp -r $usrpath/share1/lib/python3/cv2 $usrpath/.venv/lib/python3.11/site-packages/
+  	cp -r $usrpath/share1/lib/python3/cv2 $usrpath/.venv/lib/python3.11/site-packages/
   	read -p "OpenCV $(opencv_version) Client install done, press enter to return to menu" input
 }
