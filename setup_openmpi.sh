@@ -63,8 +63,9 @@ install_munge_local()
    	# Run munge at startup
    	systemctl enable munge.service
 	# Create or copy key
+ 	sudo -u munge /usr/sbin/mungekey --verbose
  	#cp $usrpath/share1/munge.key /etc/munge/
-  	#$ sudo -u munge /usr/sbin/mungekey --verbose
+  	#sudo -u munge /usr/sbin/mungekey --verbose
   	#chown munge:munge /etc/munge/munge.key
 	#sudo -u munge /usr/sbin/mungekey --verbose
  	read -p "Munge - Local install done, press enter to return to menu" input
