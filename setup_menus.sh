@@ -36,6 +36,7 @@ declare -a mnuOpenCVFull=(
 "Setup - OpenCV menu#"
 "Install - local#install_opencv_local"
 "Install - server#install_server"
+"Install - client#install_opencv_client"
 "Back#break 2"
 )
 declare -a mnuSDMFull=(
