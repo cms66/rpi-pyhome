@@ -21,7 +21,7 @@ declare -a mnuHardwareFull=(
 )
 declare -a mnuNFSFull=(
 "Setup - NFS menu#"
-"Install NFS server#install_nfs_server"
+"Install - NFS - Server#install_nfs_server"
 "Add NFS local export#add_nfs_local"
 "Add NFS remote mount#add_nfs_remote"
 "Back#break 2"
