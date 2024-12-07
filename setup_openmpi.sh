@@ -40,5 +40,21 @@ install_openmpi_client()
 
 install_munge_local()
 {
-	read -p "TODO Munge - Local install, press enter to return to menu"
+	# Create System group and user
+	# Check uid/guid/user available
+	defid=991
+	getent passwd $defid && mnguid=$? # 0 = uid exists
+	getent group $defid && mnggid=$? # 0 = guid exists
+	getent passwd munge && mngusr=$? # 0 = uid exists
+	if [[ $mnguid ]] || [[ $mnggid ]] || [[ $mngusr ]]; then # uid/guid/user exists
+		#printf "$mngusr\n$mnguid\n$mnggid\n"
+		read -p "UID, GUID or user exists"
+		kill -INT $$ # Exit function
+	else
+		#read -p "UID and GUID available"
+		groupadd -r -g $defid munge
+		useradd -r -g munge -u $defid -d /var/lib/munge -s /sbin/nologin munge
+		apt-get -y install libmunge-dev munge
+	fi
+    read -p "Munge install done"
 }
