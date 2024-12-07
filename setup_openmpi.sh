@@ -49,7 +49,8 @@ install_munge_local()
 	if [[ $mnguid ]] || [[ $mnggid ]] || [[ $mngusr ]]; then # uid/guid/user exists
 		#printf "$mngusr\n$mnguid\n$mnggid\n"
 		read -p "UID, GUID or user exists"
-		kill -INT $$ # Exit function
+		#kill -INT $$ # Exit function
+  		return
 	else
 		#read -p "UID and GUID available"
 		groupadd -r -g $defid munge
