@@ -101,9 +101,9 @@ setup_network()
 {
 	printf "%s\n" "Configuring network"
  	sed -i "s/#FallbackNTP/FallbackNTP/g" /etc/systemd/timesyncd.conf # Setup NTP
-	echo "127.0.0.1   $piname.local $piname" >> /etc/hosts
+	echo "127.0.1.1   $piname" >> /etc/hosts
 	localip=$(hostname -I | awk '{print $1}')
-	echo "$localip  $piname.local $piname" >> /etc/hosts # TODO - Setup for eth or wifi
+	echo "$localip  $piname $piname.local" >> /etc/hosts # TODO - Setup for eth or wifi
  	# Enforce NFSv4
 	sed -i "s/NEED_STATD=/NEED_STATD=\"no\"/g" /etc/default/nfs-common
 	sed -i "s/NEED_IDMAPD=/NEED_IDMAPD=\"yes\"/g" /etc/default/nfs-common
