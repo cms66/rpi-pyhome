@@ -130,18 +130,3 @@ install_server()
 {
 	read -p "TODO check exports + firewall"
 }
-
-create_user_ssh__key()
-{
-	# Create keys for user
-	runuser -l  $usrname -c "ssh-keygen -q -b 1024 -t rsa -f ~/.ssh/id_rsa -P \"\"" # Works
-	# Modify SSHD config to use created keys
-	echo "PubkeyAuthentication yes" >> /etc/ssh/sshd_config # Works
-	echo "HostKey $usrpath/.ssh/id_rsa" >> /etc/ssh/sshd_config # Works
-	#service sshd restart # Works
-	systemctl is-active sshd # Confirmation works
-	read -p "Remote node: " remnode
-	read -p "copy to $usrname@$remnode"
-	runuser -l  $usrname -c "ssh-copy-id $usrname@$remnode"
-	read -p "Server keys generated for $usrname, press enter to return to menu" input
-}
