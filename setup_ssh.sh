@@ -23,6 +23,6 @@ copy_user_ssh_keys()
 	#runuser -u  $usrname -- "ssh-copy-id -i $usrpath/.ssh/id_rsa.pub $usrname@$remnode"
 	#ssh-copy-id $usrname@$remnode
 	#runuser -l $usrname -c "sshpass –f $usrpath/.pisetup/pfile ssh-copy-id $usrname@$remnode"
-	#sudo -u $usrname -i bash -c 'ssh-copy-id -i /home/multipi/.ssh/id_rsa.pub $usrname@$remnode'
+	sudo -u $usrname -i bash -c 'ssh-copy-id -i /home/multipi/.ssh/id_rsa.pub $usrname@$remnode'
 	read -p "Pub key shared with $remnode, press enter to continue"
 }
