@@ -10,7 +10,7 @@ declare -a mnuMainFull=(
 "Update setup#git_pull_setup"
 "Update system#update_system"
 "System summary#show_system_summary"
-"SSH keys#create_user_ssh__key"
+"SSH keys#show_menu mnuSSHFull"
 "Quit#break 2"
 )
 declare -a mnuHardwareFull=(
