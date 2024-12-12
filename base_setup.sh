@@ -114,6 +114,7 @@ setup_network()
 	echo "127.0.1.1   $piname" >> /etc/hosts
 	localip=$(hostname -I | awk '{print $1}')
 	echo "$localip  $piname $piname.local" >> /etc/hosts # TODO - Setup for eth or wifi
+ 	sed -i "s/regdom=US/regdom=GB/g" /boot/firmware/cmdline.txt
  	# Enforce NFSv4
 	sed -i "s/NEED_STATD=/NEED_STATD=\"no\"/g" /etc/default/nfs-common
 	sed -i "s/NEED_IDMAPD=/NEED_IDMAPD=\"yes\"/g" /etc/default/nfs-common
