@@ -80,6 +80,16 @@ setup_fail2ban()
 	printf "%s\n" "Configuring fail2ban"
 	cp /etc/fail2ban/fail2ban.conf /etc/fail2ban/fail2ban.local
 	cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
+ 	# Setup ssh rules
+	strssh="filter	= sshd\n\
+banaction = iptables-multiport\n\
+bantime = -1\n\
+maxretry = 3\n\
+findtime = 24h\n\
+backend = systemd\n\
+journalmatch = _SYSTEMD_UNIT=ssh.service + _COMM=sshd\n\
+enabled = true\n"
+	sed -i "s/backend = %(sshd_backend)s/$strssh/g" /etc/fail2ban/jail.local
 }
 
 # Disable root SSH login
