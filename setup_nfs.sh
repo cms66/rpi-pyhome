@@ -81,7 +81,7 @@ add_nfs_remote()
      		nfsdir="/usr/local"
      		read -p "Full path to remote directory (press enter for default = $nfsdir): " userdir
        		mntdir=${userdir:="$nfsdir"}
-	 	echo "$remnode.local:$mntdir $mntdir    nfs4 rw,relatime,rsize=32768,wsize=32768,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,local_lock=none 0 0" >> /etc/fstab
+	 	echo "$remnode:$mntdir $mntdir    nfs4 rw,relatime,rsize=32768,wsize=32768,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,local_lock=none 0 0" >> /etc/fstab
    		ldconfig
 	elif [[ ${inp,} = "d" ]]
 	then # Data mount (default /var)
@@ -94,7 +94,7 @@ add_nfs_remote()
 	   	shrdir=${shruser:="$deflocal"}
 		mkdir $shrdir
 		chown -R $usrname:$usrname $shrdir
-		echo "$remnode.local:$mntdir $shrdir    nfs4 rw,relatime,rsize=32768,wsize=32768,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,local_lock=none 0 0" >> /etc/fstab
+		echo "$remnode:$mntdir $shrdir    nfs4 rw,relatime,rsize=32768,wsize=32768,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,local_lock=none 0 0" >> /etc/fstab
 		mount -a  		
 	fi
 	mount -a
