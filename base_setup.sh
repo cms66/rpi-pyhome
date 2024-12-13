@@ -111,7 +111,6 @@ setup_network()
 {
 	printf "%s\n" "Configuring network"
  	sed -i "s/#FallbackNTP/FallbackNTP/g" /etc/systemd/timesyncd.conf # Setup NTP
-	echo "127.0.1.1   $piname" >> /etc/hosts
 	localip=$(hostname -I | awk '{print $1}')
 	echo "$localip  $piname $piname.local" >> /etc/hosts # TODO - Setup for eth or wifi
  	sed -i "s/regdom=US/regdom=GB/g" /boot/firmware/cmdline.txt
