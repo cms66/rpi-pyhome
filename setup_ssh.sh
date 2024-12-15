@@ -21,7 +21,7 @@ copy_user_ssh_keys()
 	read -p "copy to $usrname@$remnode, press enter to continue" # Confirms correct username/hostname
 	#runuser -u  $usrname -- "ssh-copy-id $usrname@$remnode"
 	#runuser -u  $usrname -- 'ssh-copy-id -f -i $usrpath/.ssh/id_rsa.pub $usrname@$remnode'
-	#ssh-copy-id $usrname@$remnode
+	ssh-copy-id $usrname@$remnode
 	#runuser -l $usrname -c 'sshpass –f $usrpath/.pisetup/pfile ssh-copy-id $usrname@$remnode'
 	#sudo -u $usrname -i bash -c 'ssh-copy-id -i /home/multipi/.ssh/id_rsa.pub $usrname@$remnode'
  	#ssh-copy-id -f -i hostkey.rsa.pub $usrname@$remnode
