@@ -1,7 +1,7 @@
 create_user_ssh_keys()
 {
 	# Create keys for user
-	runuser -l  $usrname -c "ssh-keygen -f ~/.ssh/id_rsa -P \"\"" # Works including creates .ssh directory
+	runuser -l  $usrname -c "ssh-keygen -t ecdsa -b 521 -f ~/.ssh/id_ecdsa -P \"\"" # Works including creates .ssh directory
 	read -p "Server keys generated for $usrname, press enter to return to menu" input
 }
 
@@ -9,7 +9,7 @@ modify_sshd()
 {
 	# Modify SSHD config to use created keys
 	sed -i "s/#PubkeyAuthentication yes/PubkeyAuthentication yes/g" /etc/ssh/sshd_config
-	echo "HostKey $usrpath/.ssh/id_rsa" >> /etc/ssh/sshd_config
+	echo "HostKey $usrpath/.ssh/id_ecdsa" >> /etc/ssh/sshd_config
 	service sshd restart # Works
 	systemctl is-active sshd
 	read -p "PubkeyAuthentication enabled, press enter to continue"
